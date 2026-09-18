@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+build/
+dist/
+
+# Credentials
+.env
+.env.*
+!.env.example
+.netrc
+
+# Local data and training outputs
+/data/
+/outputs/
+/cache/
+wandb/
+checkpoints/*
+!checkpoints/.gitkeep
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+pytorch_model*.bin
+
+# Notebook and editor files
+.ipynb_checkpoints/
+.vscode/
+.idea/
+.DS_Store
+
+# LaTeX temporary files; compiled PDFs remain trackable
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
