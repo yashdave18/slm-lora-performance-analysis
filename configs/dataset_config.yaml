@@ -1,2 +1,78 @@
-# Configuration template: values pending.
-{}
+data:
+  seed: 42
+  output_dir: data/processed
+
+  preprocessing:
+    normalize_whitespace: true
+    deduplicate: true
+    min_characters: 40
+    max_characters: 20000
+
+  # Internal splits created from source training documents.
+  # Split documents before tokenization or chunking.
+  splitting:
+    train_fraction: 0.8
+    validation_fraction: 0.1
+    test_fraction: 0.1
+
+  # Maximum retained documents per source after filtering.
+  limits_per_dataset:
+    train: 1000
+    validation: 100
+    test: 100
+
+  datasets:
+    - name: Salesforce/wikitext
+      subset: wikitext-2-raw-v1
+      source_split: train
+      text_fields: [text]
+
+    - name: roneneldan/TinyStories
+      subset: null
+      source_split: train
+      text_fields: [text]
+
+    - name: fancyzhx/ag_news
+      subset: null
+      source_split: train
+      text_fields: [text]
+
+    - name: stanfordnlp/imdb
+      subset: null
+      source_split: train
+      text_fields: [text]
+
+    - name: Yelp/yelp_review_full
+      subset: null
+      source_split: train
+      text_fields: [text]
+
+    - name: fancyzhx/amazon_polarity
+      subset: null
+      source_split: train
+      text_fields: [title, content]
+
+    - name: abisee/cnn_dailymail
+      subset: "3.0.0"
+      source_split: train
+      text_fields: [article]
+
+    - name: EdinburghNLP/xsum
+      subset: null
+      source_split: train
+      text_fields: [document]
+
+    - name: rajpurkar/squad
+      subset: null
+      source_split: train
+      text_fields: [context]
+
+    - name: dair-ai/emotion
+      subset: split
+      source_split: train
+      text_fields: [text]
+
+    - name: cornell-movie-review-data/rotten_tomatoes
+      subset: null
+      source_split: train
+      text_fields: [text]
