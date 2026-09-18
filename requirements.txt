@@ -1,1 +1,4 @@
-# Add validated dependency versions during environment setup.
+PyYAML==6.0.2
+pytest>=8,<10
+datasets>=3.5,<5
+huggingface-hub>=0.30,<1
