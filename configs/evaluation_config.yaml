@@ -1,2 +1,27 @@
-# Configuration template: values pending.
-{}
+evaluation:
+  split: validation
+  batch_size: 2
+  max_sequence_length: 256
+
+  compare_with_base_model: true
+  checkpoint_selection_metric: token_loss
+  lower_is_better: true
+
+  length_bucket_upper_bounds: [64, 128, 256, 512, 1024]
+  output_dir: results
+
+  generation:
+    max_new_tokens: 64
+    do_sample: false
+    prompts:
+      - "The small library opened its doors"
+      - "Once upon a time, a little bird"
+      - "The city council announced"
+
+  benchmark:
+    warmup_runs: 2
+    measured_runs: 5
+    batch_sizes: [1, 2, 4]
+    precisions: [fp32, fp16]
+    prompt_lengths: [64, 128, 256]
+    max_new_tokens: 64
