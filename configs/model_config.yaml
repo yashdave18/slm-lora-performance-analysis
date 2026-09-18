@@ -1,6 +1,6 @@
 model:
   name: EleutherAI/pythia-410m
-  revision: main
+  revision: "9879c9b5f8bea9051dcb0e68dff21493d67e9d4f"
   trust_remote_code: false
 
   lora:
