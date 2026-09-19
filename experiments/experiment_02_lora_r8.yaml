@@ -1,2 +1,7 @@
-# Configuration template: values pending.
-{}
+name: lora-r8
+mode: train
+model:
+  lora:
+    enabled: true
+    rank: 8
+    alpha: 16

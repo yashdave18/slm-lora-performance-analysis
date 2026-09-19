@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -euo pipefail
-echo "train: implementation pending." >&2
-exit 1
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+python -m src.training.train "$@"
