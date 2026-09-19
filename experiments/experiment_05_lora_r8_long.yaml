@@ -1,0 +1,20 @@
+name: lora-r8-long
+mode: train
+model:
+  lora:
+    enabled: true
+    rank: 8
+    alpha: 16
+training:
+  max_steps: 3072
+  learning_rate: 0.0001
+  warmup_ratio: 0.05
+  batch_size: 2
+  gradient_accumulation_steps: 8
+  max_sequence_length: 256
+  evaluate_every_steps: 100
+  save_every_steps: 100
+  early_stopping:
+    enabled: true
+    patience: 5
+    min_delta: 0.001

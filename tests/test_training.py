@@ -146,7 +146,8 @@ def test_incomplete_checkpoint_is_rejected(tmp_path):
         latest_checkpoint(tmp_path)
 
 
-def test_training_runner_and_interrupted_resume(tmp_path, monkeypatch):
+@pytest.mark.parametrize("early_stop", [False, True])
+def test_training_runner_and_interrupted_resume(tmp_path, monkeypatch, early_stop):
     from tokenizers import Tokenizer
     from tokenizers.models import WordLevel
     from tokenizers.pre_tokenizers import Whitespace
@@ -212,6 +213,18 @@ def test_training_runner_and_interrupted_resume(tmp_path, monkeypatch):
                            "do_sample": False},
         },
     }
+    if early_stop:
+        config["training"].update({
+            "max_steps": 5, "evaluate_every_steps": 1,
+            "early_stopping": {"enabled": True, "patience": 1, "min_delta": 0.001},
+        })
+        actual_evaluate = trainer_module.evaluate_model
+        def plateau(*args, **kwargs):
+            metrics = actual_evaluate(*args, **kwargs)
+            metrics["token_loss"] = 3.0
+            metrics["ppl"] = 20.085536923187668
+            return metrics
+        monkeypatch.setattr(trainer_module, "evaluate_model", plateau)
     fresh = tmp_path / "fresh"
     interrupted = tmp_path / "interrupted"
     trainer_module.train(config, data_dir, fresh, device_name="cpu")
@@ -235,3 +248,10 @@ def test_training_runner_and_interrupted_resume(tmp_path, monkeypatch):
     summary = json.loads((interrupted / "summary.json").read_text())
     assert summary["completed_steps"] == 2
     assert summary["smoke"] is True
+
+    if early_stop:
+        assert summary["stop_reason"] == "early_stopping"
+        assert summary["early_stopping"]["bad_evaluations"] == 1
+        assert (interrupted / "best_checkpoint.json").exists()
+        with pytest.raises(ValueError, match="already finished by early stopping"):
+            trainer_module.train(config, data_dir, interrupted, resume=True, device_name="cpu")

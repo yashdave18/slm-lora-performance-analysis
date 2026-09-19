@@ -31,6 +31,9 @@ def main():
     parser.add_argument("--device", choices=["cpu", "cuda"])
     args = parser.parse_args()
     config = load_configs()
+    config["training"].setdefault("early_stopping", {
+        "enabled": False, "patience": 5, "min_delta": 0.001,
+    })
     if args.experiment:
         experiment = load_yaml(args.experiment)
         if experiment.get("mode") != "train":

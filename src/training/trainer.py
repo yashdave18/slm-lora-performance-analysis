@@ -25,6 +25,39 @@ from src.utils.seed import seed_everything, capture_rng, restore_rng
 from src.utils.logger import RunLogger
 
 
+class EarlyStopping:
+    """Patience uses cumulative improvement from the last significant best."""
+    def __init__(self, settings):
+        self.enabled = settings.get("enabled", False)
+        self.patience = settings.get("patience", 5)
+        self.min_delta = settings.get("min_delta", 0.001)
+        if type(self.enabled) is not bool:
+            raise ValueError("early_stopping.enabled must be boolean")
+        if type(self.patience) is not int or self.patience < 1:
+            raise ValueError("early_stopping.patience must be a positive integer")
+        if not math.isfinite(self.min_delta) or self.min_delta < 0:
+            raise ValueError("early_stopping.min_delta must be finite and nonnegative")
+        self.best = None
+        self.bad_evaluations = 0
+
+    def update(self, loss):
+        if not math.isfinite(loss):
+            raise FloatingPointError("Non-finite validation token loss")
+        if self.best is None or (loss < self.best and self.best - loss >= self.min_delta):
+            self.best = loss
+            self.bad_evaluations = 0
+        else:
+            self.bad_evaluations += 1
+        return self.enabled and self.bad_evaluations >= self.patience
+
+    def state_dict(self):
+        return {"best": self.best, "bad_evaluations": self.bad_evaluations}
+
+    def load_state_dict(self, state):
+        self.best = state["best"]
+        self.bad_evaluations = state["bad_evaluations"]
+
+
 class BatchStream:
     """Deterministic epoch permutations, with a serializable cursor."""
     def __init__(self, dataset, collator, batch_size, seed):
@@ -209,6 +242,7 @@ def train(config, data_dir, output_dir, baseline_path=None, resume=False, device
     t, e, m = config["training"], config["evaluation"], config["model"]
     device = torch.device(device_name or ("cuda" if torch.cuda.is_available() else "cpu"))
     validate_configuration(config, device)
+    stopper = EarlyStopping(t.get("early_stopping", {}))
     seed_everything(t["seed"])
     manifest = json.loads((data_dir / "tokenization_manifest.json").read_text())
     if m["revision"] != manifest["model_revision"] or m["name"] != manifest["model_name"]:
@@ -248,6 +282,8 @@ def train(config, data_dir, output_dir, baseline_path=None, resume=False, device
         state = read_state(resume_checkpoint)
         if state["signature"] != signature:
             raise ValueError("Resume config or data differs from checkpoint.")
+        if state.get("stop_reason") == "early_stopping":
+            raise ValueError("This run already finished by early stopping; see summary/checkpoint rankings.")
         if state["step"] >= t["max_steps"]:
             raise ValueError("This run has already completed its step budget.")
     elif output_dir.exists():
@@ -314,6 +350,8 @@ def train(config, data_dir, output_dir, baseline_path=None, resume=False, device
             state["step"], state["ema"], state["tokens_seen"], state["rankings"]
         )
         baseline_metrics = state["baseline_metrics"]
+        if "early_stopping" in state:
+            stopper.load_state_dict(state["early_stopping"])
 
     output_dir.mkdir(parents=True, exist_ok=True)
     environment = {
@@ -350,6 +388,7 @@ def train(config, data_dir, output_dir, baseline_path=None, resume=False, device
             restore_rng(state["rng"])
         model.train()
         last_checkpoint = resume_checkpoint
+        stop_reason = "max_steps"
         while step < t["max_steps"]:
             if device.type == "cuda":
                 torch.cuda.synchronize()
@@ -394,10 +433,16 @@ def train(config, data_dir, output_dir, baseline_path=None, resume=False, device
                     f"{stats['n_tokens']/elapsed:.0f} target tokens/s", flush=True
                 )
             evaluate_now = step % t["evaluate_every_steps"] == 0 or step == t["max_steps"]
+            should_stop = False
             if evaluate_now:
                 metrics = evaluate_model(
                     model, validation_data, collator, e, device, t["precision"]
                 )
+                should_stop = stopper.update(metrics["token_loss"])
+                if should_stop:
+                    stop_reason = "early_stopping"
+                logger.log({"step": step,
+                            "val/early_stopping_bad_evaluations": stopper.bad_evaluations})
                 examples = generate_examples(
                     model, tokenizer, e["generation"], device, t["precision"]
                 )
@@ -427,6 +472,8 @@ def train(config, data_dir, output_dir, baseline_path=None, resume=False, device
                         "signature": signature, "step": step, "ema": ema,
                         "tokens_seen": tokens_seen, "stream": stream.state_dict(),
                         "rankings": rankings, "baseline_metrics": baseline_metrics,
+                        "early_stopping": stopper.state_dict(),
+                        "stop_reason": "early_stopping" if should_stop else None,
                     },
                 )
                 logger.log({
@@ -437,7 +484,12 @@ def train(config, data_dir, output_dir, baseline_path=None, resume=False, device
                 if rankings:
                     write_json(output_dir / "best_checkpoint.json",
                                min(rankings, key=lambda row: row["token_loss"]))
+            if should_stop:
+                print(f"Early stopping at step {step}: {stopper.bad_evaluations} evaluations without significant improvement.", flush=True)
+                break
+        logger.log({"step": step, "train/stop_reason": stop_reason})
         write_json(output_dir / "summary.json", {
+            "stop_reason": stop_reason, "early_stopping": stopper.state_dict(),
             "completed_steps": step, "tokens_seen": tokens_seen,
             "fractional_epoch": stream.fractional_epoch,
             "baseline_ppl": baseline_metrics["ppl"], "rankings": rankings,
