@@ -1,7 +1,0 @@
-name: lora-r16
-mode: train
-model:
-  lora:
-    enabled: true
-    rank: 16
-    alpha: 32
