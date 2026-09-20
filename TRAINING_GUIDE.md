@@ -8,7 +8,7 @@ This update implements training, validation, W&B logging, local results, and res
 - src/training/checkpoints.py: checkpoint writing and completion markers.
 - src/utils/logger.py: W&B plus local JSONL logging.
 - src/utils/seed.py: seeding and random-state capture/restore.
-- tests/test_training.py: six offline tests using tiny random GPT-NeoX.
+- tests/test_training.py: offline tests using tiny random GPT-NeoX.
 - experiments/experiment_02_lora_r8.yaml and experiment_03_lora_r16.yaml: rank comparisons.
 - scripts/train.sh: shell entry point.
 
@@ -28,11 +28,11 @@ Required CLI arguments:
 - --resume: optional recovery using identical settings and output directory.
 
 ## Budget
-300 optimizer updates at batch size 2 and accumulation 8 consume approximately 4,800 of 16,381 training sequences, about 0.293 epochs. This is an initial fixed-budget experiment, not convergence or a complete epoch. Record tokens_seen and fractional_epoch. Agree on a larger fixed budget before the rank comparisons if the learning curves justify it.
+300 optimizer updates at batch size 2 and accumulation 8 consume approximately 4,800 of 16,381 training sequences, about 0.293 epochs. This is an initial fixed-budget experiment, not convergence or a complete epoch. Record tokens_seen and fractional_epoch. The longer experiments now use a fresh 3072-step schedule (about three epochs), with 154 warmup steps, validation every 100 steps, patience 5 and min_delta 0.001. Use experiment_05_lora_r8_long.yaml or experiment_06_lora_r16_long.yaml. Rank-8 long has completed; its best checkpoint is step 2800.
 
 ## Recovery
 Repeat the identical command with --resume, retaining --smoke for smoke runs.
-Restore covers adapter weights, optimizer, scheduler, AMP scaler, RNGs, batch cursor, EMA, rankings, and global step. Work after the latest checkpoint is replayed. Keep the same software/hardware stack.
+Restore covers adapter weights, optimizer, scheduler, AMP scaler, RNGs, batch cursor, EMA, rankings, early-stopping counter, and global step. Work after the latest checkpoint is replayed. Keep the same software/hardware stack.
 Each resumed execution is a new W&B segment in the same group, with its resumed_from field. Use the custom step axis. Local history may contain repeated steps from a failed segment.
 Before the first checkpoint, recover with a new output directory after addressing the error.
 Completed runs reject resume. Changed budgets/configurations require a new experiment.
@@ -66,7 +66,7 @@ Exceptions are recorded in failure-*.json.
 Keep checkpoints on Drive and later copy only small summaries/plots into Git.
 
 ## Verification
-Six CPU tests passed with Transformers 4.57.6, PEFT 0.18.1, W&B 0.28.1 and PyTorch 2.14.0:
+The training tests cover these behaviors using tiny local models:
 1. Sampler restoration across epochs.
 2. Unequal-length accumulation matches a combined token-weighted batch.
 3. Only LoRA parameters change.
@@ -74,4 +74,4 @@ Six CPU tests passed with Transformers 4.57.6, PEFT 0.18.1, W&B 0.28.1 and PyTor
 5. Incomplete checkpoints are rejected.
 6. The actual runner trains, logs offline, validates, generates and resumes after a simulated disconnect; final adapters match uninterrupted execution.
 
-Pythia-410M on a T4, CUDA mixed precision, memory and quality must still be checked in your Colab smoke run. No training results are fabricated.
+The T4 smoke test and short/long rank-8 training have completed. The training and early-stopping suite passed 10 tests before the long run. CPU recovery tests cover interrupted early stopping as well as optimizer state. GPU attention nondeterminism may cause small numerical differences. See documentation.md for actual run results and remaining work.

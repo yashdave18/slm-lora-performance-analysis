@@ -1,2 +1,11 @@
-# Configuration template: values pending.
-{}
+name: pythia-410m-baseline
+mode: evaluate
+model:
+  lora:
+    enabled: false
+training:
+  precision: fp16
+evaluation:
+  split: validation
+  batch_size: 2
+  max_sequence_length: 256

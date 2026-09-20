@@ -43,3 +43,8 @@ pytorch_model*.bin
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+
+# Full run folders and downloaded transport archives
+/runs/
+/repo_updates.zip
+/slm_results_export.zip

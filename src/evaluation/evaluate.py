@@ -21,16 +21,18 @@ from src.data.batching import (
     file_sha256,
 )
 from src.evaluation.metrics import causal_nll, MetricAccumulator
-from src.utils.helpers import load_configs
+from src.evaluation.configuration import baseline_config
+
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--data-dir", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument("--experiment", type=Path)
     args = parser.parse_args()
 
-    config = load_configs()
+    config = baseline_config(args.experiment)
     evaluation = config["evaluation"]
     tracking = config["training"]["wandb"]
 
@@ -95,7 +97,7 @@ def main():
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
         revision=revision,
-        torch_dtype=torch.float32,
+        dtype=torch.float32,
         trust_remote_code=False,
     ).to(device)
 
@@ -135,7 +137,7 @@ def main():
         project=tracking["project"],
         entity=tracking["entity"],
         mode=tracking["mode"],
-        name="pythia-410m-baseline",
+        name=config["experiment_name"],
         job_type="evaluation",
         config=run_config,
         tags=[
@@ -214,6 +216,7 @@ def main():
                 inputs = tokenizer(
                     prompt,
                     return_tensors="pt",
+                    return_token_type_ids=False,
                 ).to(device)
 
                 with torch.autocast("cuda", dtype=torch.float16):
