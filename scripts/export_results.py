@@ -22,7 +22,7 @@ def export_results(project, output):
     include(project / "results/baseline/metrics.json", "baseline/metrics.json")
     include(project / "data/processed/manifest.json", "data/manifest.json")
     include(project / "data/tokenized/tokenization_manifest.json", "data/tokenization_manifest.json")
-    for name in ("lora-r8", "lora-r8-long", "lora-r16", "lora-r16-long"):
+    for name in ("lora-r8", "lora-r8-long", "lora-r16", "lora-r16-long", "lora-r16-lr5e4"):
         run = project / "runs" / name
         if not run.is_dir():
             continue
@@ -32,6 +32,12 @@ def export_results(project, output):
         for pattern in ("validation-*.json", "failure-*.json"):
             for path in sorted(run.glob(pattern)):
                 include(path, f"runs/{name}/{path.name}")
+    # Final-stage artifacts: include only known JSON/CSV files, never W&B caches.
+    for name in ("final_test", "inference_benchmarks", "benchmark_smoke"):
+        folder = project / "results" / name
+        for pattern in ("*.json", "*.csv", "cases/*.json"):
+            for path in sorted(folder.glob(pattern)):
+                include(path, Path("final_stage") / name / path.relative_to(folder))
     if not sources:
         raise FileNotFoundError("No experiment artifacts found; check --project-dir")
     output.mkdir(parents=True)

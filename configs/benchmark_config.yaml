@@ -1,0 +1,12 @@
+variants:
+  - baseline
+  - lora-r8-long
+  - lora-r16-long
+  - lora-r16-lr5e4
+precisions: [fp32, fp16]
+batch_sizes: [1, 2, 4]
+prompt_lengths: [64, 128, 256]
+max_new_tokens: 64
+warmup_runs: 2
+measured_runs: 5
+seed: 42

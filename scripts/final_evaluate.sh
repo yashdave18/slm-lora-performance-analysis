@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname "$0")/.."
-python -m src.inference.benchmark "$@"
+python -m src.evaluation.final_evaluate "$@"

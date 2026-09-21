@@ -1,0 +1,7 @@
+selected_run: lora-r16-lr5e4
+expected_checkpoint: step-003072
+split: test
+precision: fp16
+batch_size: 2
+max_sequence_length: 256
+length_bucket_upper_bounds: [64, 128, 256, 512, 1024]
