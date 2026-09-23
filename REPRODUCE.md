@@ -88,4 +88,4 @@ inspect validation results and explicitly record a new selection before opening
 test data. Never modify selection in response to test scores. Fresh runs are new
 experiments and should not replace the archived original measurements.
 
-See FINAL_STAGE_GUIDE.md for final-stage recovery and timing semantics.
+See documentation.md for final-stage recovery and timing semantics.

@@ -35,7 +35,7 @@ python -m pip install -r requirements.txt
 python -m pytest -q
 ```
 
-Authenticate W&B interactively. Follow [TRAINING_GUIDE.md](TRAINING_GUIDE.md) for training/recovery and [FINAL_STAGE_GUIDE.md](FINAL_STAGE_GUIDE.md) for test evaluation and benchmark commands. Store data/checkpoints in Drive. Do not commit credentials, raw datasets or weights. Completed experiments need not be rerun for analysis.
+Authenticate W&B interactively. Follow [documentation.md](documentation.md) for training/recovery and [documentation.md](documentation.md) for test evaluation and benchmark commands. Store data/checkpoints in Drive. Do not commit credentials, raw datasets or weights. Completed experiments need not be rerun for analysis.
 
 ## Organization
 
@@ -48,4 +48,4 @@ Authenticate W&B interactively. Follow [TRAINING_GUIDE.md](TRAINING_GUIDE.md) fo
 
 No short rank-16 or sequence-1024 training result is claimed; unused templates have been removed. Length comparisons in the final results concern inference prompts. The editable Overleaf link and archival training-history export are tracked in [documentation.md](documentation.md).
 
-[Complete reproduction commands](REPRODUCE.md) · [Final repository audit](REPOSITORY_AUDIT.md)
+[Complete reproduction commands](REPRODUCE.md) · [Methods and results](documentation.md)

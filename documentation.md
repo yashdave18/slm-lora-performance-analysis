@@ -93,7 +93,7 @@ Replace `DATA_TOKENIZED` and `NEW_BASELINE_OUTPUT` with the appropriate paths.
 
 This evaluator supports the base model, validation split, and FP16 autocast on CUDA. The experiment override is applied and validated; unsupported settings are rejected.
 
-For saved-adapter test evaluation, use the separate `src.evaluation.final_evaluate` module described in `FINAL_STAGE_GUIDE.md`.
+For saved-adapter test evaluation, use the separate `src.evaluation.final_evaluate` module described in `documentation.md`.
 
 ## Training and checkpoint selection
 
@@ -388,3 +388,64 @@ Git had normalized two exported CSV files from CRLF to LF. The original bytes
 were restored, and `.gitattributes` now preserves all archive bytes. The original
 inventory is unchanged. Run `python scripts/verify_export.py` and, after staging,
 `python scripts/verify_export.py --staged` to check all 205 original hashes.
+
+## Operational reference
+
+### Training recovery details
+
+Repeat the identical command with --resume, retaining --smoke for smoke runs.
+Restore covers adapter weights, optimizer, scheduler, AMP scaler, RNGs, batch cursor, EMA, rankings, early-stopping counter, and global step. Work after the latest checkpoint is replayed. Keep the same software/hardware stack.
+Each resumed execution is a new W&B segment in the same group, with its resumed_from field. Use the custom step axis. Local history may contain repeated steps from a failed segment.
+Before the first checkpoint, recover with a new output directory after addressing the error.
+Completed runs reject resume. Changed budgets/configurations require a new experiment.
+Partial/stale checkpoint directories encountered during replay are preserved as recovered-*.
+Only load your own training_state.pt files; Python/NumPy RNG serialization requires pickle loading.
+
+### Training output layout
+
+Each run contains resolved_config.json, environment.json, history.jsonl, validation-XXXXXX.json, best_checkpoint.json, summary.json, and checkpoints.
+Each checkpoint includes adapter/, tokenizer/, training_state.pt and COMPLETE.json.
+checkpoints/latest.json points to the latest completed checkpoint.
+Exceptions are recorded in failure-*.json.
+Keep checkpoints on Drive and later copy only small summaries/plots into Git.
+
+### Training test coverage
+
+The training tests cover these behaviors using tiny local models:
+1. Sampler restoration across epochs.
+2. Unequal-length accumulation matches a combined token-weighted batch.
+3. Only LoRA parameters change.
+4. Adapter reload plus optimizer/scheduler/RNG restoration reproduces the next update.
+5. Incomplete checkpoints are rejected.
+6. The actual runner trains, logs offline, validates, generates and resumes after a simulated disconnect; final adapters match uninterrupted execution.
+
+The T4 smoke test and short/long rank-8 training have completed. The training and early-stopping suite passed 10 tests before the long run. CPU recovery tests cover interrupted early stopping as well as optimizer state. GPU attention nondeterminism may cause small numerical differences. See documentation.md for actual run results and remaining work.
+
+### GPU smoke benchmark
+
+```bash
+python -m src.inference.benchmark --project-dir /content/drive/MyDrive/slm-lora-performance-analysis --config configs/benchmark_smoke.yaml --output-dir /content/drive/MyDrive/slm-lora-performance-analysis/results/benchmark_smoke
+```
+
+Two small cases (base and selected adapter), eight generated tokens each, one warmup and two measurements. This verifies CUDA/PEFT generation compatibility without opening the test split. These timings are diagnostic, not final benchmark results. Inspect that both status values are `ok`.
+
+### Evaluation and benchmark recovery
+
+Restore Drive, code, dependencies and W&B login after a reset. Repeat the interrupted command with `--resume`, keeping settings and output directory unchanged. Each new execution gets its own W&B segment and environment file.
+
+Test evaluation restarts an interrupted model evaluation, but skips a model whose JSON was atomically completed. Benchmark recovery skips finished cases and repeats the interrupted case. Configuration/weight/data fingerprints and core GPU/software environment are checked; a different GPU or library stack requires a separate output directory to avoid mixing measurements. Recovery does not load optimizer pickle state.
+
+### Free-form generation
+
+```bash
+python -m src.inference.generate --project-dir /content/drive/MyDrive/slm-lora-performance-analysis --run lora-r16-lr5e4 --prompt "The small library opened its doors" --max-new-tokens 64
+```
+
+Use `--run baseline` for the original model. Generated text is an example, not a measured factuality or reasoning score.
+
+### Final submission checks
+
+Verify original export checksums with `python scripts/verify_export.py`.
+After staging changes, also run `python scripts/verify_export.py --staged`.
+Keep the report source, compiled PDF and Overleaf project synchronized.
+Confirm reviewer access to GitHub, W&B and the editable Overleaf project.
