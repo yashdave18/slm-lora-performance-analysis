@@ -72,7 +72,7 @@ Exact duplicate checks do not establish the absence of near-duplicates or overla
 | Rank 16, LR 1e-4, long | Early stopping at 3,000; best checkpoint at 3,000 | 19.282668 |
 | Rank 16, LR 5e-4, long | Completed 3,072 steps; best checkpoint at 3,072 | 19.093474 |
 | Short rank-16 configuration | Not reported as executed | — |
-| Sequence-1024 training placeholder | Not executed | — |
+| Sequence-1024 training | Not executed; unused template removed | — |
 
 An experiment configuration file is not evidence of an executed experiment.
 
@@ -263,7 +263,7 @@ Exact environment records and the source commit are included in the original JSO
 
 ## Archived training artifacts
 
-The verified export is intended to reside at:
+The verified export is archived at:
 
 `results/exports-submission-20260923-050201/`
 
@@ -377,3 +377,14 @@ Resumed-run links may contain only one segment of a training history. Use the ar
 - Experiment tracking: W&B links above
 
 Before submission, confirm that the exported folder and updated documentation are committed and pushed, and that the reviewer can access the repository, W&B results, and editable Overleaf project.
+## Final integrity and reproduction notes
+
+The data loader now uses immutable Parquet revisions and file lists in
+`configs/dataset_config.yaml`, copied from the original data manifest. Existing
+resolved training configs remain unchanged. See [REPRODUCE.md](REPRODUCE.md)
+for preparation, checksum verification, tokenization and experiment commands.
+
+Git had normalized two exported CSV files from CRLF to LF. The original bytes
+were restored, and `.gitattributes` now preserves all archive bytes. The original
+inventory is unchanged. Run `python scripts/verify_export.py` and, after staging,
+`python scripts/verify_export.py --staged` to check all 205 original hashes.

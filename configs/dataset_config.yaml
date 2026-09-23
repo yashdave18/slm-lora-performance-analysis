@@ -23,56 +23,97 @@ data:
 
   datasets:
     - name: Salesforce/wikitext
+      parquet_revision: "3f68cd45302c7b4b532d933e71d9e6e54b1c7d5e"
+      parquet_files:
+        - "wikitext-2-raw-v1/train/0000.parquet"
       subset: wikitext-2-raw-v1
       source_split: train
       text_fields: [text]
 
     - name: roneneldan/TinyStories
+      parquet_revision: "37346026e81060382814d5a773f3c34799e118e7"
+      parquet_files:
+        - "default/train/0000.parquet"
+        - "default/train/0001.parquet"
+        - "default/train/0002.parquet"
+        - "default/train/0003.parquet"
       subset: null
       source_split: train
       text_fields: [text]
 
     - name: fancyzhx/ag_news
+      parquet_revision: "530b2bfac25aff07a9a89ac6ffffff42cb837ef9"
+      parquet_files:
+        - "default/train/0000.parquet"
       subset: null
       source_split: train
       text_fields: [text]
 
     - name: stanfordnlp/imdb
+      parquet_revision: "0b525c3ee2447b87002590030af0cdeaf509422a"
+      parquet_files:
+        - "plain_text/train/0000.parquet"
       subset: null
       source_split: train
       text_fields: [text]
 
     - name: Yelp/yelp_review_full
+      parquet_revision: "460f2212884f0b7f6410e559d46df5b7c2f6fb14"
+      parquet_files:
+        - "yelp_review_full/train/0000.parquet"
       subset: null
       source_split: train
       text_fields: [text]
 
     - name: fancyzhx/amazon_polarity
+      parquet_revision: "957fcd8dc017a2600a583ccf52c1aa64e1b7ae62"
+      parquet_files:
+        - "amazon_polarity/train/0000.parquet"
+        - "amazon_polarity/train/0001.parquet"
+        - "amazon_polarity/train/0002.parquet"
+        - "amazon_polarity/train/0003.parquet"
       subset: null
       source_split: train
       text_fields: [title, content]
 
     - name: abisee/cnn_dailymail
+      parquet_revision: "690bb95a2ac2c5a99d7bde63ac1401539ddd3967"
+      parquet_files:
+        - "3.0.0/train/0000.parquet"
+        - "3.0.0/train/0001.parquet"
+        - "3.0.0/train/0002.parquet"
       subset: "3.0.0"
       source_split: train
       text_fields: [article]
 
     - name: EdinburghNLP/xsum
+      parquet_revision: "03339c27cd655c3369346bacb533293f222a9d42"
+      parquet_files:
+        - "default/train/0000.parquet"
       subset: null
       source_split: train
       text_fields: [document]
 
     - name: rajpurkar/squad
+      parquet_revision: "00279cb629a5422d5ebdfbd19f0cedf7fed4b918"
+      parquet_files:
+        - "plain_text/train/0000.parquet"
       subset: null
       source_split: train
       text_fields: [context]
 
     - name: dair-ai/emotion
+      parquet_revision: "ea18bb96cb411aaaeffa7e9a27ee2cfcd22b892c"
+      parquet_files:
+        - "split/train/0000.parquet"
       subset: split
       source_split: train
       text_fields: [text]
 
     - name: cornell-movie-review-data/rotten_tomatoes
+      parquet_revision: "a2b32381b51e711ccca777c4b295adf3212c4a2f"
+      parquet_files:
+        - "default/train/0000.parquet"
       subset: null
       source_split: train
       text_fields: [text]

@@ -1,6 +1,6 @@
 # LoRA training stage
 
-This update implements training, validation, W&B logging, local results, and resumable adapter checkpoints. Inference benchmarking, final test evaluation, dataset-level analysis, and the final report remain later stages.
+This update implements training, validation, W&B logging, local results, and resumable adapter checkpoints. Inference benchmarking, final test evaluation, dataset-level analysis and the report are complete. See documentation.md for results and REPRODUCE.md for commands.
 
 ## Files
 - src/training/train.py: CLI and experiment overrides.
@@ -9,7 +9,7 @@ This update implements training, validation, W&B logging, local results, and res
 - src/utils/logger.py: W&B plus local JSONL logging.
 - src/utils/seed.py: seeding and random-state capture/restore.
 - tests/test_training.py: offline tests using tiny random GPT-NeoX.
-- experiments/experiment_02_lora_r8.yaml and experiment_03_lora_r16.yaml: rank comparisons.
+- experiments/experiment_05_lora_r8_long.yaml, experiment_06_lora_r16_long.yaml and experiment_08_lora_r16_lr5e4.yaml: main comparisons.
 - scripts/train.sh: shell entry point.
 
 ## Run order
@@ -28,7 +28,7 @@ Required CLI arguments:
 - --resume: optional recovery using identical settings and output directory.
 
 ## Budget
-300 optimizer updates at batch size 2 and accumulation 8 consume approximately 4,800 of 16,381 training sequences, about 0.293 epochs. This is an initial fixed-budget experiment, not convergence or a complete epoch. Record tokens_seen and fractional_epoch. The longer experiments now use a fresh 3072-step schedule (about three epochs), with 154 warmup steps, validation every 100 steps, patience 5 and min_delta 0.001. Use experiment_05_lora_r8_long.yaml or experiment_06_lora_r16_long.yaml. Rank-8 long has completed; its best checkpoint is step 2800.
+300 optimizer updates at batch size 2 and accumulation 8 consume approximately 4,800 of 16,381 training sequences, about 0.293 epochs. This is an initial fixed-budget experiment, not convergence or a complete epoch. Record tokens_seen and fractional_epoch. The longer experiments now use a fresh 3072-step schedule (about three epochs), with 154 warmup steps, validation every 100 steps, patience 5 and min_delta 0.001. Use experiment_05_lora_r8_long.yaml or experiment_06_lora_r16_long.yaml. All three main runs completed: rank 8 selects step 2800, rank 16 at 1e-4 selects step 3000, and rank 16 at 5e-4 selects step 3072.
 
 ## Recovery
 Repeat the identical command with --resume, retaining --smoke for smoke runs.

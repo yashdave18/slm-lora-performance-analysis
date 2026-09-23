@@ -48,3 +48,12 @@ pytorch_model*.bin
 /runs/
 /repo_updates.zip
 /slm_results_export.zip
+
+# Local update packages and installers
+/final_cleanup.zip
+/final_cleanup/
+/final_stage_code.zip
+/submission_update.zip
+/install_training.py
+/install_long_training.py
+/results/exports-submission-*.zip

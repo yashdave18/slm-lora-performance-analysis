@@ -46,4 +46,6 @@ Authenticate W&B interactively. Follow [TRAINING_GUIDE.md](TRAINING_GUIDE.md) fo
 - `results/`: original small artifacts, derived tables and figures.
 - `report/`: LaTeX source, bibliography, figure assets and compiled PDF.
 
-The short rank-16 and sequence-1024 configurations are not completed experiments. Length comparisons in the final results concern inference prompts. The editable Overleaf link and archival training-history export are tracked in [documentation.md](documentation.md).
+No short rank-16 or sequence-1024 training result is claimed; unused templates have been removed. Length comparisons in the final results concern inference prompts. The editable Overleaf link and archival training-history export are tracked in [documentation.md](documentation.md).
+
+[Complete reproduction commands](REPRODUCE.md) · [Final repository audit](REPOSITORY_AUDIT.md)

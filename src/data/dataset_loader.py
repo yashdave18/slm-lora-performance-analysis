@@ -5,6 +5,7 @@ from contextlib import ExitStack
 import hashlib
 from importlib.metadata import version
 import json
+import re
 from pathlib import Path
 import shutil
 import tempfile
@@ -33,12 +34,19 @@ def open_source(spec, seed, buffer_size):
     name = spec["name"]
     source_split = spec["source_split"]
 
-    # Resolve the conversion branch to an immutable commit.
-    info = api.dataset_info(
-        name,
-        revision="refs/convert/parquet",
-    )
+    # Use the exact conversion commit recorded during the original preparation.
+    pinned = spec.get("parquet_revision")
+    if not isinstance(pinned, str) or not re.fullmatch(r"[0-9a-f]{40}", pinned):
+        raise ValueError(f"{name}: parquet_revision must be an immutable 40-character SHA")
+    files = spec.get("parquet_files")
+    if (not isinstance(files, list) or not files
+            or any(not isinstance(path, str) for path in files)
+            or len(files) != len(set(files))):
+        raise ValueError(f"{name}: provide the original unique parquet_files list")
+    info = api.dataset_info(name, revision=pinned)
     revision = info.sha
+    if revision != pinned:
+        raise ValueError(f"{name}: resolved revision differs from the pinned SHA")
 
     paths = sorted(
         path
@@ -76,6 +84,9 @@ def open_source(spec, seed, buffer_size):
             f"{name}: no Parquet files for {subset}/{source_split}. "
             f"Available subsets: {available}"
         )
+
+    if selected != sorted(files):
+        raise ValueError(f"{name}: pinned Parquet file list differs from repository contents")
 
     urls = [
         f"https://huggingface.co/datasets/{name}"

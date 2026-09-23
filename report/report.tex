@@ -51,6 +51,8 @@
 % -------------------------------------------------
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{4pt}
+\raggedbottom
+\setlength{\emergencystretch}{1em}
 
 \usepackage{titlesec}
 
@@ -134,7 +136,7 @@ We train Pythia-410M on a selected combination of 11 text datasets with LoRA and
 
 Pythia is an autoregressive GPT-NeoX model~\cite{pythia}. We use \texttt{EleutherAI/pythia-410m}. The model has 24 layers, hidden size 1,024, 16 attention heads, a 4,096-dimensional feed-forward neural network and a 2,048-token context capacity. The base has approximately 405.3 million parameters. Training makes use of 256-token chunks.
 
-Dataset includes WikiText-2 raw, TinyStories, AG News, IMDb, Yelp Review Full, Amazon Polarity, CNN/DailyMail 3.0.0, XSum, SQuAD contexts, Emotion, and Rotten Tomatoes. Only natural language fields are utilized: articles/docs for news, context for SQuAD, title+text for Amazon, and text everywhere else. No labels and Q\&A targets are utilized. These are samples drawn from Hugging Face datasets. ID's, subset, and version of sources are provided in the repository configuration and data manifest.
+Dataset includes WikiText-2 raw, TinyStories, AG News, IMDb, Yelp Review Full, Amazon Polarity, CNN/DailyMail 3.0.0, XSum, SQuAD contexts, Emotion, and Rotten Tomatoes. Only natural language fields are utilized: articles/docs for news, context for SQuAD, title plus content for Amazon, and text everywhere else. No labels and Q\&A targets are utilized. These are samples drawn from Hugging Face datasets. ID's, subset, and version of sources are provided in the repository configuration and data manifest.
 
 Normalization of Unicode and whitespaces, preservation of 40--20,000 character texts, and canonical text deduplication are required preprocessing steps. Allocation by seed hashing has the probability of 80/10/10 but preserved after source post-processing are 1,000/100/100 texts correspondingly. Thus, preserved ratios differ from 80/10/10. Bounded streaming shuffle is practical sampling and not uniform sampling of all the sources. Data sets for reasoning were not chosen, but contents are not filtered semantically for all incidental reasoning content.
 
@@ -157,13 +159,13 @@ Tokenization retains entire documents and adds EOS tokens. Length 256 chunking a
 % -------------------------------------------------
 \section{LoRA training and model selection}
 
-The LoRA learns the low-rank updates while the base model parameters remain fixed~\cite{lora}. The target of applying dropout 0.05 and non-trainable biases is the projection matrix of query, key,value from each layer.
+LoRA learns low-rank updates while base weights remain fixed~\cite{lora}. We target each layer's fused query/key/value projection, with LoRA dropout 0.05 and no trainable bias.
 
 For rank 8 $\alpha = 16$ and 786,432 trainable parameters, and for rank 16, $\alpha = 32$ and 1,572,864 trainable parameters. Hence, the ratio $\alpha/r=2$ is constant.
 
 In all main experiments, AdamW optimizer, weight decay 0.01, gradient clipping 1.0, seed 42, batch size 2 with accumulation 8 (16 chunks per step) were used. The auto-mix precision in FP16 was applied to FP32 weights with gradient checkpointing. Cosine learning rate scheduling with 154 warmup steps (ceiling of 0.05 * 3072). Common limitation is 3,072 steps that correspond to about three epochs. The evaluation and checkpoint saving occur after each 100th step and at the end.
 
-The early stopping allows up to five consecutive validations without improvements by 0.001 in validation token loss after the last meaningful best one..
+The early stopping allows up to five consecutive validations without improvements by 0.001 in validation token loss after the last meaningful best value.
 
 Absolute best-checkpoint selection is performed separately, so that the run could stop early and still make small improvements. Rank 16 at $10^{-4}$ stopped early at 3,000 steps, the other runs reached the limit. Colab interruptions have been restored using persistent checkpoints. Each execution has its own W\&B segment.
 
@@ -186,11 +188,11 @@ Rank 16 & $5\times10^{-4}$ & 3,072 & 3,072 & \textbf{19.0935}\\
     \includegraphics[width=\columnwidth]{validation_comparison.pdf}
 \end{figure}
 
-The improvement in validation perplexity of 0.98\% is observed at rank 16 as compared to ${10}^−-4$ and explains why such parameter can be chosen over others.
+At rank 16, increasing peak learning rate from $10^{-4}$ to $5\times10^{-4}$ improves validation perplexity by approximately 0.98\%. This supports selection among the tested settings, not a global optimum.
 
-Late plateaus were formed due to decayed learning rate without indicating any global convergence. The test at 300 steps with rank 8 is an independent schedule and is not included in budget calculations.
+The late plateau occurred under a decaying learning rate; this does not establish its cause or global convergence. The test at 300 steps with rank 8 is an independent schedule and is not included in budget calculations.
 
-Token loss is summed negative log-likelihood, using natural logarithms, divided by valid prediction targets. Perplexity is calculated as $\exp(\mathrm{loss})$, bits/token is calculated as $\mathrm{loss}/\ln 2$. Sequence loss is NLL summed over sequence length divided by the number of chunks . W\&B logs training loss, throughput, schedule, gradient norm, configuration, checkpoints, and validation metrics, length buckets, examples, rankings.
+Token loss is summed negative log-likelihood, using natural logarithms, divided by valid prediction targets. Perplexity is calculated as $\exp(\mathrm{loss})$, bits/token is calculated as $\mathrm{loss}/\ln 2$. Sequence loss is NLL summed over sequence length divided by the number of chunks. W\&B logs training loss, throughput, schedule, gradient norm, configuration, checkpoints, and validation metrics, length buckets, examples, rankings.
 
 Final numbers are recalculated from logged metrics instead of screenshots.
 
@@ -243,16 +245,16 @@ Rotten Tomatoes & 2,595 & 117.648 & 47.846 & 59.33\\
     \includegraphics[width=\columnwidth]{test_by_dataset.pdf}
 \end{figure}
 
-Perplexity is calculated using token-based loss rather than the mean of source perplexities. CNN/DailyMail and XSum make up 50.89\% of test targets even though both have an equal document limit per source. Short text datasets give better improvements due to differences in text and length.
+Perplexity is calculated using token-based loss rather than the mean of source perplexities. CNN/DailyMail and XSum make up 50.89\% of test targets even though both have an equal document limit per source. Some short-text datasets show larger relative improvements, but the experiment does not isolate the effects of text content and length.
 
 % -------------------------------------------------
 % Inference benchmark protocol and results
 % -------------------------------------------------
 \section{Inference benchmark protocol and results}
 
-It consists of four versions (base and three best adapters) with batches 1/2/4, prompt lengths 64/128/256, and autocast FP32/FP16 – 72 combinations. All 72 combinations are warmed up twice and repeated five times, yielding 360 runs. The sequences always produce 64 tokens using greedy decoding with EOS termination switched off. Prompts are not generated based on the tests but validation data. Four validation sources are used for different prompt lengths.
+It consists of four versions (base and three best adapters) with batches 1/2/4, prompt lengths 64/128/256, and FP32 computation versus FP16 autocast -- 72 combinations. All 72 combinations are warmed up twice and repeated five times, yielding 360 runs. The sequences always produce 64 tokens using greedy decoding with EOS termination switched off. Prompts are not generated based on the tests but validation data. Four validation documents are reused across prompt lengths.
 
-Weights continue to be FP32 in both precisions modes. Adapters are \emph{unmerged}; SDPA and KV caching are enabled while TF32 is disabled. Model loading, tokenization, transfer, warming up, and logging are not included. The throughput is computed as the number of tokens generated over the total timing seconds, and not the prompt tokens. The time to first token was not recorded.
+Weights continue to be FP32 in both precisions modes. Adapters are \emph{unmerged}; SDPA and KV caching are enabled while TF32 is disabled. GPU-synchronized wall-clock latency measures full batch generation, including prefill and decoding. Model loading, tokenization, transfer, warming up, and logging are not included. The throughput is computed as the number of tokens generated over the total timing seconds, and not the prompt tokens. The time to first token was not recorded.
 
 \begin{figure}[H]
     \centering
@@ -289,21 +291,21 @@ AutoCast FP16 performs worse in this case. Possible reasons include the casting 
     \includegraphics[width=\columnwidth]{latency_memory.pdf}
 \end{figure}
 
-When the batch size is 1 and prompt length is 128, the maximum amount of memory allocated by the selected adapter will be approximately 1,598.8 MiB in FP32 mode and 1,695.9 MiB in FP16 mode while applying autocast. Moreover, along with the retention of FP32 parameters, autocast will also retain additional temporary activations, and lowering the precision of computations does not necessarily mean lowered allocation.
+When the batch size is 1 and prompt length is 128, the maximum amount of memory allocated by the selected adapter will be approximately 1,598.8 MiB in FP32 mode and 1,695.9 MiB in FP16 mode while applying autocast. FP32 parameters and possible temporary casts can affect allocation, but this benchmark does not isolate the causes of the memory difference. Memory denotes peak PyTorch allocation, not total device memory. Error bars show sample standard deviation across five timing repetitions.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\columnwidth]{prompt_length.pdf}
 \end{figure}
 
-Length comparisons offer various inference prompts while providing consistent output length. They are \emph{not} comparison of models with different types, which are trained by using different sequence lengths. 'sequence-1024' test in the repository is yet to be completed. The mean values for each test, alongside repetitions and max allocation/reservation values, are given in the respective JSON/CSV files.
+Length comparisons offer various inference prompts while providing consistent output length. They are \emph{not} comparison of models with different types, which are trained by using different sequence lengths. No sequence-1024 training experiment was performed; the unused template was removed. The mean values for each test, alongside repetitions and max allocation/reservation values, are given in the respective JSON/CSV files.
 
 % -------------------------------------------------
 % Discussion and limitations
 % -------------------------------------------------
 \section{Discussion and limitations}
 
-LoRA allows for a positive adaptation with fewer than 0.4\% trainable parameters in this experiment. Rank 16 and the higher learning rate enable enhanced validation performance by a little bit; the chosen model shows better test performance. One-seed experiments are executed, without any concern about the training seed. Insufficient run time, early stopping, data sample size and cosine decay preclude conclusions regarding convergence. No evidence of numerical instability or memory problems in the submitted results is reported; runtime disconnections do not constitute a failed optimization configuration.
+LoRA allows for a positive adaptation with fewer than 0.4\% trainable parameters in this experiment. Rank 16 and the higher learning rate enable enhanced validation performance by a little bit; the chosen model shows better test performance. Experiments use one seed, without measuring variability across training seeds. Insufficient run time, early stopping, data sample size and cosine decay preclude conclusions regarding convergence. No evidence of numerical instability or memory problems in the submitted results is reported; runtime disconnections do not constitute a failed optimization configuration.
 
 Unmerged adapters introduce additional inference steps. The merging of adapters and weight loading in reduced precision may affect adapter performance in practice; however, no comparison of the above approaches was conducted. Only five iterations, fixed order of execution, same hardware and four benchmark prompts used for evaluation restrict generalizability of this experiment.
 
@@ -331,7 +333,7 @@ Final evaluation and benchmarking record Python 3.13.15, PyTorch 2.11.0+cu128, T
 \end{itemize}
 
 Run from the repository root:\\
-\texttt{python -m pip install -r requirements-analysis.txt}\\
+{\scriptsize\texttt{python -m pip install -r requirements-analysis.txt}}\\
 \texttt{python scripts/analyze\_results.py}
 
 Repository: \href{https://github.com/yashdave18/slm-lora-performance-analysis}{slm-lora-performance-analysis on GitHub}.

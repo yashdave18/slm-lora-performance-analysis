@@ -84,4 +84,6 @@ python scripts/export_results.py --project-dir /content/drive/MyDrive/slm-lora-p
 
 Use a fresh export destination so earlier result snapshots are preserved. The exporter includes the new final-stage artifacts and higher-LR training history; it omits model weights, optimizer states and raw datasets. W&B tracks evaluation metrics/tables and benchmark comparison tables. Baseline/adapter results are not fabricated in this update.
 
-After actual results are available: create figures, complete the analysis notebook/documentation and final LaTeX report, compile its PDF and supply the editable Overleaf link. These final reporting tasks are not completed by this code package.
+Final test evaluation, all 72 inference cases, figures, notebook, report/PDF and
+training-history export are complete. See documentation.md for results and links.
+Use the commands above only to reproduce experiments, with fresh output directories.

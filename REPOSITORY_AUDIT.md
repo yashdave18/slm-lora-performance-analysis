@@ -1,37 +1,33 @@
-# Repository audit — 20 September 2026
+# Final repository audit
 
-Reviewed GitHub main at e3b8358add0c4534404258a118892e5a0a0a4163 (Add resumable early stopping and longer rank-8 experiment).
+This document supersedes the interim audit dated 20 September 2026.
 
-## Already committed and current
+Completed: data preparation for 11 sources, pinned Pythia-410M, baseline evaluation,
+three main LoRA comparisons, recovery, W&B logging, held-out test evaluation,
+72 inference benchmark cases, analysis tables/figures, notebook, LaTeX/PDF report,
+editable Overleaf link and archived training histories.
 
-All four shared configs; data preparation/preprocessing/tokenization/batching; metrics; training CLI/trainer/checkpoints; logging/seeding/helpers; data/batching/metrics/training/early-stopping tests; dependency requirements; short r8/r16 configs; long r8 config; data_manifest.json. Training files match the tested longer-training update. They are not replaced by this package.
+## Integrity and reproducibility fixes
 
-## Changes in this package
+Two archived CSV files had been normalized by Git from CRLF to LF. The original
+205-file inventory was correct for the uploaded export. Original export bytes
+have been restored without changing the inventory or measured results.
+`.gitattributes` disables text conversion for this archive. Verify the working
+tree and staged Git bytes using `scripts/verify_export.py` and `--staged`.
 
-- New long rank-16 configuration (3072 steps, rank 16, alpha 32).
-- Baseline YAML filled in and actually supported by --experiment in the baseline evaluator.
-- Lightweight configuration validation and tests; unsupported baseline precision/split/adapters rejected.
-- Functional evaluate.sh wrapper.
-- Result export script and tests, with a whitelist excluding weights and raw datasets.
-- README, documentation and training guide updated with the reported completed runs, actual workflow and limitations.
-- Basic executable analysis notebook for exported results, without GPU dependencies.
-- Ignore top-level runs and transport ZIP archives.
+Dataset configuration now pins the original Parquet conversion SHAs and shard
+lists. The loader rejects mutable/missing revisions and mismatched shard lists.
+This changes future preparation; archived resolved training configs stay original.
+Dataset recreation still requires recorded library versions, accessible upstream
+files and comparison with original prepared-file checksums. Exact GPU bitwise
+reproducibility is not claimed.
 
-Eight targeted configuration/export tests passed. Changed Python files and notebook code cells compile; YAML parses. GPU baseline inference was not rerun. The trainer was not modified or retested by this package.
+Empty sequence-1024 and model-test templates are removed. Existing tiny-model
+training/recovery tests remain. No sequence-length training run is claimed;
+length comparisons concern inference prompts.
 
-## Real artifacts still to transfer from Drive
+## Validation scope
 
-Baseline metrics.json; short and long rank-8 summary/config/environment/history/validation results; best_checkpoint.json; tokenization manifest. Use scripts/export_results.py; do not substitute fabricated JSON for original artifacts. Export captures additional rank-16 artifacts if present and notes missing completion summaries. No original Drive artifact was accessible in this audit.
-
-## Remaining implementation, not missing uploads of completed code
-
-- src/inference/generate.py and scripts/benchmark.sh: placeholders.
-- experiments/experiment_04_seq1024.yaml: empty template; not runnable.
-- tests/test_model.py: placeholder; actual tiny-model training tests live in test_training.py.
-- Adapter/test evaluation and final multi-configuration benchmarks: not implemented yet.
-- report/report.tex and references.bib: templates; report.pdf absent; Overleaf link pending.
-- Final plots and inference tables: absent. Analysis notebook in this package is an initial results inspection notebook.
-
-Retain experiment_03_lora_r16.yaml as the short-budget configuration; its presence does not claim execution. Shared training defaults remain at 300 steps; the long experiment overrides them. Do not modify resolved settings of a run being resumed.
-
-The repository is ready for the next experiment after these updates and artifact export, but the full assignment is not yet complete.
+Final result analysis checks 72 cases, 360 timed batch generations and 244,760 test
+targets. The cleanup has offline tests for pinned data sources. It does not rerun
+GPU training or claim reviewer access to W&B/Overleaf. See `REPRODUCE.md` for commands.

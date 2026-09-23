@@ -1,0 +1,13 @@
+# Source files use LF on every platform.
+*.py text eol=lf
+*.md text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.sh text eol=lf
+*.tex text eol=lf
+*.bib text eol=lf
+# Export inventories hash exact original bytes, including CSV CRLF.
+results/exports-submission-20260923-050201/** -text
+*.pdf binary
+*.png binary
+*.zip binary
