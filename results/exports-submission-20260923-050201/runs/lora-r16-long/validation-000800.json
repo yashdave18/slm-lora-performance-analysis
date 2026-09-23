@@ -1,0 +1,53 @@
+{
+  "step": 800,
+  "metrics": {
+    "token_loss": 2.9854584731607003,
+    "sequence_loss": 449.72807581159157,
+    "ppl": 19.795575896445715,
+    "bpt": 4.307106134008879,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.8142746886855727,
+        "sequence_loss": 120.27457435370533,
+        "ppl": 45.34385604106814,
+        "bpt": 5.502835177954971,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.909447776326018,
+        "sequence_loss": 655.5523455412491,
+        "ppl": 18.34666430671746,
+        "bpt": 4.197445878630968,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1405884032853066,
+        "sequence_loss": 299.4600114226341,
+        "ppl": 23.117465250161906,
+        "bpt": 4.5309113148931,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in the early 1990s. It was a place for people to come and read books, and to get a taste of the local culture. The library was closed in the early 2000s, but the library was reopened in the early 2010s."
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to play. He was very curious and wanted to know what was going on. He looked up and saw a big bird flying over the tree. He was very excited and wanted to see what it was doing. He looked up and saw a big bird flying over"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " Monday that it will be spending $1.5 million to upgrade the city's water system. The city will also be spending $1.5 million to upgrade the city's sewer system. The city will also be spending $1.5 million to upgrade the city's sewer system. The city will also be spending $"
+    }
+  ],
+  "delta_ppl": -2.5151745925491156,
+  "smoke": false
+}

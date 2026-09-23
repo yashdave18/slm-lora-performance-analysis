@@ -1,0 +1,53 @@
+{
+  "step": 600,
+  "metrics": {
+    "token_loss": 3.0027758517778005,
+    "sequence_loss": 452.3367576718768,
+    "ppl": 20.14136885129203,
+    "bpt": 4.332089830260966,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.880134429087716,
+        "sequence_loss": 122.3513131547703,
+        "ppl": 48.43072513196153,
+        "bpt": 5.5978506988273775,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.9225110224528534,
+        "sequence_loss": 658.4957362796949,
+        "ppl": 18.587903551395723,
+        "bpt": 4.216292159036065,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1653127092848248,
+        "sequence_loss": 301.8175126314163,
+        "ppl": 23.696152881383487,
+        "bpt": 4.566580948548026,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in the early 1990s. It was a place for the homeless to gather and share their stories. The library was a place for the homeless to share their stories and to learn about the homeless community. The library was a place for the homeless to learn about the homeless community. The library was a place for"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": "ie was sitting on a tree. He was very happy and wanted to play. He was very happy and wanted to play. He was very happy and wanted to play. He was very happy and wanted to play. He was very happy and wanted to play. He was very happy and wanted to play. He was very"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " a $1.5 million budget for the city's parks and recreation department in the wake of the death of a park ranger who was killed in a car accident in the city's downtown. The city council also approved a $1.5 million budget for the city's parks and recreation department in the wake of the"
+    }
+  ],
+  "delta_ppl": -2.169381637702802,
+  "smoke": false
+}

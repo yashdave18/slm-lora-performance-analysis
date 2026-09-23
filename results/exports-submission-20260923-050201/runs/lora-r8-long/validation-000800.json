@@ -1,0 +1,53 @@
+{
+  "step": 800,
+  "metrics": {
+    "token_loss": 2.994297129598052,
+    "sequence_loss": 451.05952690631113,
+    "ppl": 19.97131770741357,
+    "bpt": 4.319857619819167,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.8472895348869423,
+        "sequence_loss": 121.31562328130397,
+        "ppl": 46.86586263739535,
+        "bpt": 5.550465532845398,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.916129329047414,
+        "sequence_loss": 657.0578228328538,
+        "ppl": 18.469658951574587,
+        "bpt": 4.207085321607565,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.153441806466596,
+        "sequence_loss": 300.68560349941254,
+        "ppl": 23.41652117751522,
+        "bpt": 4.549454855921293,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in the early 1990s. It was a place for people to learn about the history of the city and to get a glimpse of the city's past. The library was a place for people to learn about the history of the city and to get a glimpse of the city's past. The library was a"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to play. He was very shy and didn't want to be picked up. He was very scared and didn't know what to do. He was very sad and didn't know what to do. He was very sad and didn't know what to do."
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " Monday that it will be spending $1.5 million to upgrade the city's water system. The city will also be spending $1.5 million to upgrade the city's sewer system. The city will also be spending $1.5 million to upgrade the city's sewer system. The city will also be spending $"
+    }
+  ],
+  "delta_ppl": -2.3394327815812623,
+  "smoke": false
+}

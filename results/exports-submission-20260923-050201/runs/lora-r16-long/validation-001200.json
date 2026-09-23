@@ -1,0 +1,53 @@
+{
+  "step": 1200,
+  "metrics": {
+    "token_loss": 2.9745425591562475,
+    "sequence_loss": 448.0837076031301,
+    "ppl": 19.58066420508057,
+    "bpt": 4.291357799007884,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.7871879169343665,
+        "sequence_loss": 119.42045392219677,
+        "ppl": 44.132122423940096,
+        "bpt": 5.463757226675814,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.8999614448832784,
+        "sequence_loss": 653.4148997762928,
+        "ppl": 18.17344467665476,
+        "bpt": 4.183759995302299,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.127099653132281,
+        "sequence_loss": 298.17383801937103,
+        "ppl": 22.807733182672408,
+        "bpt": 4.511451161939539,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s and has since become a popular destination for local artists and collectors. The building is located in the heart of the city's historic district, and is a popular destination for local residents. The building is also a popular venue for concerts and other events."
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to play with the leaves. Suddenly, a big wind came and blew the leaves away. The little bird was very upset and cried. He said, \"I'm sorry, I didn't mean to do that. I'm sorry, I'm sorry.\" The"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " that the city would be moving forward with plans to build a new $1.5 billion stadium. The stadium would be built on the site of the old St. Louis Cardinals stadium, which was demolished in the 1960s. The stadium would be built on the site of the old St. Louis Browns stadium, which was"
+    }
+  ],
+  "delta_ppl": -2.730086283914261,
+  "smoke": false
+}

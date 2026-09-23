@@ -1,0 +1,53 @@
+{
+  "step": 1100,
+  "metrics": {
+    "token_loss": 2.977039011174348,
+    "sequence_loss": 448.4597719739963,
+    "ppl": 19.629607460576597,
+    "bpt": 4.294959417954216,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.791890465079079,
+        "sequence_loss": 119.56873820234074,
+        "ppl": 44.34014458813884,
+        "bpt": 5.470541569563732,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.9019965738116893,
+        "sequence_loss": 653.873451929507,
+        "ppl": 18.210467640118754,
+        "bpt": 4.186696065714887,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.132208501994732,
+        "sequence_loss": 298.66097474098206,
+        "ppl": 22.92455259667757,
+        "bpt": 4.518821672858048,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s and has since become a popular destination for local artists and writers. The library is open Monday to Friday from 10am to 5pm and Saturday from 10am to 4pm. The library is also open on Saturdays from 10am to 4pm. The library is located in the heart of"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to play with the leaves. He was very excited and wanted to see the leaves. He looked up and saw a big leaf. He was very happy and wanted to touch it. He was very curious and wanted to know what it was. He looked up and"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " a $1.5 million budget for the city's parks and recreation department in January. The city's parks and recreation department is responsible for maintaining and improving the city's parks and recreation facilities. The department also manages the city's parks and recreation facilities, including the city's golf course, tennis courts, and baseball diamonds"
+    }
+  ],
+  "delta_ppl": -2.6811430284182336,
+  "smoke": false
+}

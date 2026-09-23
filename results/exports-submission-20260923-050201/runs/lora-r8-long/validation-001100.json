@@ -1,0 +1,53 @@
+{
+  "step": 1100,
+  "metrics": {
+    "token_loss": 2.986528988123187,
+    "sequence_loss": 449.8893376876266,
+    "ppl": 19.81677870357017,
+    "bpt": 4.3086505606364565,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.8168409988005525,
+        "sequence_loss": 120.35549717178512,
+        "ppl": 45.46037188142108,
+        "bpt": 5.506537580831235,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.9099580879482128,
+        "sequence_loss": 655.6673281794009,
+        "ppl": 18.35602921204847,
+        "bpt": 4.198182102677617,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1455312639023134,
+        "sequence_loss": 299.9313209056854,
+        "ppl": 23.232014526043184,
+        "bpt": 4.538042355393061,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s and has been a popular place for students to study. The library has a large collection of books, including many of the classics. The library also has a large collection of periodicals, including the New York Times, the New York Post, the New York Herald Tribune, and the New York Times"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to play. He wanted to fly and fly away. He wanted to fly away and fly away. He wanted to fly away and fly away. He wanted to fly away and fly away. He wanted to fly away and fly away. He wanted to fly away"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be closing the city's only public park, the city's only public park in the city, for the next two years. The park, located on the west side of the city, is a popular spot for joggers and cyclists. The park was closed for the next two years because of the"
+    }
+  ],
+  "delta_ppl": -2.4939717854246624,
+  "smoke": false
+}

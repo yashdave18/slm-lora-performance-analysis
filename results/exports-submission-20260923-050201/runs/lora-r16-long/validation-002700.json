@@ -1,0 +1,53 @@
+{
+  "step": 2700,
+  "metrics": {
+    "token_loss": 2.959490968393145,
+    "sequence_loss": 445.81634297131615,
+    "ppl": 19.288150977686225,
+    "bpt": 4.269642943656466,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.747071651949511,
+        "sequence_loss": 118.15547772370051,
+        "ppl": 42.39674760851933,
+        "bpt": 5.405881690123175,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.886889009534182,
+        "sequence_loss": 650.4694385362708,
+        "ppl": 17.937419568687588,
+        "bpt": 4.164900457651815,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1100701419216157,
+        "sequence_loss": 296.5500475168228,
+        "ppl": 22.42261711104106,
+        "bpt": 4.48688277056715,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in 1869. It was the first public library in the United States to be built in a city. The library was located on the corner of Main and Main Streets in downtown Philadelphia. The library was built to serve the needs of the city's growing population. The library was designed by the Philadelphia architect"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to fly. He wanted to fly so much that he could see the sky. Suddenly, a big bird flew over the tree. The little bird was so excited that he flew away. He flew away and flew away. The little bird was so happy that he"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be closing the city's public library for the next two years. The library, which opened in 1872, is the oldest in the city and is the only public library in the city. The library is located on the second floor of the city hall, which is located on the second floor of"
+    }
+  ],
+  "delta_ppl": -3.0225995113086057,
+  "smoke": false
+}

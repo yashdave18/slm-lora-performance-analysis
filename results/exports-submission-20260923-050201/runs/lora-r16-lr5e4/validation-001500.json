@@ -1,0 +1,53 @@
+{
+  "step": 1500,
+  "metrics": {
+    "token_loss": 2.965101280790469,
+    "sequence_loss": 446.66147782140143,
+    "ppl": 19.396667651823392,
+    "bpt": 4.277736913529924,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.7101542763128257,
+        "sequence_loss": 116.99137130679001,
+        "ppl": 40.86010978783556,
+        "bpt": 5.352621175369495,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.8969009448806213,
+        "sequence_loss": 652.7253125729768,
+        "ppl": 18.11790987465237,
+        "bpt": 4.1793446271258246,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1034624799066566,
+        "sequence_loss": 295.91999661922455,
+        "ppl": 22.274944458465676,
+        "bpt": 4.477349929346298,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in 1869. It was the first public library in the United States. The library was located in the city of New York, and was the first public library in the United States."
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " named Timmy was playing in the forest. He saw a big tree with a big hole in it. He wanted to climb up and see what it was like. He went to the hole and tried to climb up. He was very careful and careful. He was very careful. He was very careful. He was very"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be closing the city's public library for the next two years. The library, which opened in 1872, is the oldest in the city and has been a public institution since 1872. The library was built in 1872 by the city's first mayor, John H. Hancock, and"
+    }
+  ],
+  "delta_ppl": -2.9140828371714385,
+  "smoke": false
+}

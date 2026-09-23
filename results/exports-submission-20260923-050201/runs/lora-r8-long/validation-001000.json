@@ -1,0 +1,53 @@
+{
+  "step": 1000,
+  "metrics": {
+    "token_loss": 2.9879205567781213,
+    "sequence_loss": 450.09896294256464,
+    "ppl": 19.844374307791593,
+    "bpt": 4.310658169833986,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.829534650558812,
+        "sequence_loss": 120.75576293312307,
+        "ppl": 46.04110804443762,
+        "bpt": 5.524850649273647,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.9108563927415836,
+        "sequence_loss": 655.8697328484577,
+        "ppl": 18.372525929507756,
+        "bpt": 4.19947808254822,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1444248998033273,
+        "sequence_loss": 299.8258273601532,
+        "ppl": 23.206325672457474,
+        "bpt": 4.536446209394036,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s and has since become a popular destination for students and visitors. The library is open Monday to Friday from 10am to 5pm and Saturday from 10am to 4pm. The library is also open on Saturdays from 10am to 4pm. The library is located in the heart of the"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. The little bird was very happy and wanted to fly away. But the tree was very big and the little bird was afraid. So the little bird said, \"I want to fly away from the tree.\" The little bird said, \"I can't fly away from the tree. It's"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be moving forward with plans to build a new $1.5 billion stadium. The stadium would be built on the site of the old Stadio Olimpico, which was demolished in the 1960s. The stadium would be built on the site of the old Stadio Olim"
+    }
+  ],
+  "delta_ppl": -2.4663761812032376,
+  "smoke": false
+}

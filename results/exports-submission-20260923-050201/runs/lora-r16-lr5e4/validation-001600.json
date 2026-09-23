@@ -1,0 +1,53 @@
+{
+  "step": 1600,
+  "metrics": {
+    "token_loss": 2.9621283078344285,
+    "sequence_loss": 446.2136305580816,
+    "ppl": 19.3390875179581,
+    "bpt": 4.2734478201895465,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.714815381821,
+        "sequence_loss": 117.13834878659144,
+        "ppl": 41.05100762248766,
+        "bpt": 5.3593457291711974,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.8933677317988704,
+        "sequence_loss": 651.9292143780252,
+        "ppl": 18.054008393720117,
+        "bpt": 4.174247278134379,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1007304940542104,
+        "sequence_loss": 295.65949749946594,
+        "ppl": 22.21417267696353,
+        "bpt": 4.473408506905195,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in 1869. The building was designed by the architect John Henry Harrison and built by the firm of Harrison & Co. The building was listed on the National Register of Historic Places in 1973."
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to fly. He looked up and saw a big tree. \"Look, I'm flying!\" he said. \"I'm flying!\" The little bird flew up and down the tree. He flew high and high. He flew so high that he could see the"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be closing the city's public library for the next two years. The library, which opened in 1878, is the oldest in the city and has been a public institution since 1878. The library was closed in the early 1990s after a fire destroyed the building. The library was closed for"
+    }
+  ],
+  "delta_ppl": -2.971662971036732,
+  "smoke": false
+}

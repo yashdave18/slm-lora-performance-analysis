@@ -1,0 +1,53 @@
+{
+  "step": 500,
+  "metrics": {
+    "token_loss": 3.001363322535735,
+    "sequence_loss": 452.1239749238424,
+    "ppl": 20.112938662777754,
+    "bpt": 4.330051981328327,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.8565366463951087,
+        "sequence_loss": 121.60721014680821,
+        "ppl": 47.30124641386056,
+        "bpt": 5.563806294760777,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.9226291149672505,
+        "sequence_loss": 658.5223447053329,
+        "ppl": 18.590098773280562,
+        "bpt": 4.216462530520952,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.16402767920582,
+        "sequence_loss": 301.6949830055237,
+        "ppl": 23.665722168552396,
+        "bpt": 4.564727042025653,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in the early hours of the morning on Saturday, April 9, and has been open for more than a year. The library is located in the heart of the city, in the heart of the city's historic district, and is a popular destination for visitors. The library is open from 9am to 5"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " named Bunny was very happy. He loved to fly and play. One day, Bunny saw a big bird flying high in the sky. He was very happy and wanted to fly higher. He wanted to fly higher so he could see the big bird. He thought, \"I can fly higher and see the big"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " Monday that it will spend $1.5 million to upgrade the city's water system. The city will spend $1.5 million to upgrade the city's water system. The city council announced Monday that it will spend $1.5 million to upgrade the city's water system. The city council announced Monday that it"
+    }
+  ],
+  "delta_ppl": -2.1978118262170767,
+  "smoke": false
+}

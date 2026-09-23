@@ -1,0 +1,53 @@
+{
+  "step": 100,
+  "metrics": {
+    "token_loss": 3.0571594019646535,
+    "sequence_loss": 460.52907037734985,
+    "ppl": 21.267060109636997,
+    "bpt": 4.410548708421475,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 4.072161990872151,
+        "sequence_loss": 128.4064704632655,
+        "ppl": 58.68369916280561,
+        "bpt": 5.87488790992778,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.966824749177846,
+        "sequence_loss": 668.4804377514383,
+        "ppl": 19.430126019279168,
+        "bpt": 4.280223352825521,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.2237744691966745,
+        "sequence_loss": 307.391932785511,
+        "ppl": 25.122766557562887,
+        "bpt": 4.650923439654493,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public on Saturday, and the first book was a book of poems by the poet John Keats. The library is open to the public from 9 a.m. to 5 p.m. Monday through Friday."
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and very content. He was very happy and very content. He was very happy and very content. He was very happy and very content. He was very happy and very content. He was very happy and very content. He was very happy and very content. He was"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " Monday that it will be holding a public hearing on the proposed $1.5 million project to replace the old city hall. The city council will hold a public hearing on the project at 6 p.m. Monday at the city hall. The city council will also hold a public hearing on the project at 6 p."
+    }
+  ],
+  "delta_ppl": -1.0436903793578338,
+  "smoke": false
+}

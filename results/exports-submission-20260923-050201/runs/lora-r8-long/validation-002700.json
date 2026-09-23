@@ -1,0 +1,53 @@
+{
+  "step": 2700,
+  "metrics": {
+    "token_loss": 2.9697564642163323,
+    "sequence_loss": 447.36273248747193,
+    "ppl": 19.487173194099928,
+    "bpt": 4.284452923572845,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.77580986483872,
+        "sequence_loss": 119.06167263755631,
+        "ppl": 43.63283070601455,
+        "bpt": 5.447342167342448,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.8952406362142415,
+        "sequence_loss": 652.3512143508248,
+        "ppl": 18.0878535101965,
+        "bpt": 4.176949308046494,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.125659222194573,
+        "sequence_loss": 298.03649067878723,
+        "ppl": 22.774903868033636,
+        "bpt": 4.509373059368966,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s and has been a popular destination for visitors ever since. The building is now used as a museum and the library is open to the public. The library is open Monday to Friday from 10am to 5pm and Saturday from 10am to 4pm. The library is also open on Saturdays"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to fly. He wanted to fly so much that he could see the sky. But he couldn't. He couldn't see the sky because it was dark. So he sat there and thought about it. He thought about it for a long time. Finally,"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be moving forward with plans to build a new library. The library, which will be located on the site of the former library building, will be built on the site of the former library building. The library will be built on the site of the former library building. The library will be built on"
+    }
+  ],
+  "delta_ppl": -2.8235772948949034,
+  "smoke": false
+}

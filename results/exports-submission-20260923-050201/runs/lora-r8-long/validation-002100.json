@@ -1,0 +1,53 @@
+{
+  "step": 2100,
+  "metrics": {
+    "token_loss": 2.971933710375328,
+    "sequence_loss": 447.69071183619036,
+    "ppl": 19.529647789132024,
+    "bpt": 4.287594025809223,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.7791539822039453,
+        "sequence_loss": 119.16712185805541,
+        "ppl": 43.778988260672655,
+        "bpt": 5.45216670888141,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.897270620114502,
+        "sequence_loss": 652.8086072341256,
+        "ppl": 18.124608855370056,
+        "bpt": 4.1798779557524846,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1283966683306104,
+        "sequence_loss": 298.29751044511795,
+        "ppl": 22.83733435168311,
+        "bpt": 4.513322359334127,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s and has been a popular destination for visitors ever since. The building is now used as a museum and the library is open to the public. The library is open Monday to Friday from 10am to 5pm and Saturday from 10am to 4pm. The library is also open on Saturdays"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to fly. He wanted to fly so much that he could see the sky. He was very excited and wanted to fly. He wanted to fly so much that he could see the sky. Suddenly, the little bird saw a big bird flying over the tree."
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be moving forward with plans to build a new $1.5 billion stadium. The stadium would be built on the site of the old Stadio Olimpico, which was demolished in the 1970s. The stadium would be built on the site of the old Stadio Olim"
+    }
+  ],
+  "delta_ppl": -2.7811026998628066,
+  "smoke": false
+}

@@ -1,0 +1,53 @@
+{
+  "step": 700,
+  "metrics": {
+    "token_loss": 2.9978384831635094,
+    "sequence_loss": 451.5929947602705,
+    "ppl": 20.042168584540622,
+    "bpt": 4.324966713046088,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.8597094249963066,
+        "sequence_loss": 121.70725658470887,
+        "ppl": 47.45156112785091,
+        "bpt": 5.568383646714564,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.919102127063344,
+        "sequence_loss": 657.7276491579802,
+        "ppl": 18.524647211058394,
+        "bpt": 4.211374162562711,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1565584882074376,
+        "sequence_loss": 300.982783973217,
+        "ppl": 23.48961687033963,
+        "bpt": 4.553951277212834,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s and has been a popular place for students and staff to meet and exchange ideas. The library is open Monday to Friday from 10am to 5pm and Saturday from 10am to 4pm. The library is located on the first floor of the building. The library is open for the public to use"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": "ie was sitting on a tree. He was very happy and wanted to play. He was very shy and didn't want to be picked up. He was very sad and didn't want to go home. He was very sad and didn't want to play anymore. He was very sad and didn't want to be picked"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " Monday that it will be spending $1.5 million to upgrade the city's water system. The city will also be spending $1.5 million to upgrade the city's sewer system. The city will also be spending $1.5 million to upgrade the city's sewer system. The city will also be spending $"
+    }
+  ],
+  "delta_ppl": -2.2685819044542086,
+  "smoke": false
+}

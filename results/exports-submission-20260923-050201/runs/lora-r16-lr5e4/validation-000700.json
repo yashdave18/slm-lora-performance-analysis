@@ -1,0 +1,53 @@
+{
+  "step": 700,
+  "metrics": {
+    "token_loss": 2.9847986948313614,
+    "sequence_loss": 449.6286871109336,
+    "ppl": 19.782519512085816,
+    "bpt": 4.306154275085055,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.7570900998936354,
+        "sequence_loss": 118.47138694904777,
+        "ppl": 42.823632006493746,
+        "bpt": 5.420335255289568,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.913479715073747,
+        "sequence_loss": 656.4608158443285,
+        "ppl": 18.42078626060247,
+        "bpt": 4.203262736667485,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.133528428505503,
+        "sequence_loss": 298.7868317961693,
+        "ppl": 22.95483129983302,
+        "bpt": 4.520725924289477,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in the early hours of the morning on Saturday. The library was opened by the Mayor of the City of London, Sir John Templeton, and the Mayor of the City of London, Sir John Aldridge, and the Mayor of the City of London, Sir John Harington, and the Mayor of"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " named Charlie was playing in the forest. He saw a big tree and a little tree. He wanted to climb up the tree and see the big tree. He went to the little tree and asked it to let him climb up. The little tree said, \"No, you must climb up first.\" Charlie said, \""
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be closing the park on Monday, after a fire broke out in the park on Saturday. The fire was reported at about 9:30 a.m. The fire was reported in the park on the south side of the city. The fire was reported in the park on the south side of the"
+    }
+  ],
+  "delta_ppl": -2.5282309769090148,
+  "smoke": false
+}

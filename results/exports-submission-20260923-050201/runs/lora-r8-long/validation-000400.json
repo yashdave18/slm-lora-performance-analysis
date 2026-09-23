@@ -1,0 +1,53 @@
+{
+  "step": 400,
+  "metrics": {
+    "token_loss": 3.015092190020665,
+    "sequence_loss": 454.1920851362525,
+    "ppl": 20.39097069791047,
+    "bpt": 4.349858550365858,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.9161245603010673,
+        "sequence_loss": 123.48618100407863,
+        "ppl": 50.20549888804088,
+        "bpt": 5.649773482649822,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.932652163400775,
+        "sequence_loss": 660.7807227259096,
+        "ppl": 18.777365155928273,
+        "bpt": 4.230922732790589,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1820946868058844,
+        "sequence_loss": 303.4177004098892,
+        "ppl": 24.09717676143317,
+        "bpt": 4.590792224293969,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s and has been a major source of information for the community. The library has a large collection of books, including many of the most popular titles in the field. The library also has a large collection of audio and video tapes, and a large collection of books on the history of the city. The"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": "ie was sitting on a tree. He was very happy and very happy. He was very happy because he was very happy. He was very happy because he was very happy. He was very happy because he was very happy. He was very happy because he was very happy. He was very happy because he was very happy"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " a $1.5 million budget for the city's parks and recreation department on Monday. The city's parks and recreation department is responsible for maintaining and improving the city's parks and recreation facilities. The budget includes $1.5 million for the city's parks and recreation department. The city's parks and recreation department is"
+    }
+  ],
+  "delta_ppl": -1.9197797910843626,
+  "smoke": false
+}

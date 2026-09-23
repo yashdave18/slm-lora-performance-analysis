@@ -1,0 +1,53 @@
+{
+  "step": 2200,
+  "metrics": {
+    "token_loss": 2.9619747475152547,
+    "sequence_loss": 446.1904983030247,
+    "ppl": 19.336118029509944,
+    "bpt": 4.273226279478598,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.753693963232966,
+        "sequence_loss": 118.36429741705349,
+        "ppl": 42.678443778971534,
+        "bpt": 5.415435665771039,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.8891501923585694,
+        "sequence_loss": 650.9789248093315,
+        "ppl": 17.978025244857676,
+        "bpt": 4.168162654899103,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1119957060854926,
+        "sequence_loss": 296.7336530685425,
+        "ppl": 22.465834894964832,
+        "bpt": 4.489660772437288,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s and has since become a popular destination for local artists and musicians. The building is also home to the local arts centre, the Arts Centre, which is open to the public and offers a range of exhibitions, workshops and events. The Arts Centre is also home to the local community centre, the Arts"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. The little bird was very happy and wanted to fly. He wanted to fly so much that he could see the sky. The little bird was very excited and wanted to fly. He wanted to fly so much that he could see the sky. The little bird was very happy and wanted to fly"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " a $1.5 million budget for the city's parks and recreation department on Monday. The budget includes $1.5 million for the city's parks and recreation department, $1.5 million for the city's parks and recreation department, $1.5 million for the city's parks and recreation department, $"
+    }
+  ],
+  "delta_ppl": -2.974632459484887,
+  "smoke": false
+}

@@ -1,0 +1,53 @@
+{
+  "step": 2700,
+  "metrics": {
+    "token_loss": 2.949800273058617,
+    "sequence_loss": 444.35654113342304,
+    "ppl": 19.102138135582308,
+    "bpt": 4.255662225554577,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.682445325971624,
+        "sequence_loss": 116.11763187266854,
+        "ppl": 39.7434610615254,
+        "bpt": 5.3126456101240045,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.8825453394667315,
+        "sequence_loss": 649.4907294066056,
+        "ppl": 17.859674308337905,
+        "bpt": 4.158633866386247,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.0874740581832816,
+        "sequence_loss": 294.3954756259918,
+        "ppl": 21.92163520757729,
+        "bpt": 4.454283512614343,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in 1869. The building was designed by the architect John Henry Harrison and built by the firm of Harrison & Co. The building was designed to be a \"public library\" and was intended to be used for the public. The building was built in a style that was similar to that of the nearby St"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. The little bird was very happy and wanted to fly. He wanted to fly so much that he started to sing. The little bird sang so loud that everyone in the forest heard it. The little bird was so happy that he wanted to fly so much that he started to sing again. The"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be closing the city's public library for the next two years. The library, which opened in 1872, is the oldest in the city and has been a public space since 1872. The library was closed in the wake of the closure of the city's public library in the 1980s."
+    }
+  ],
+  "delta_ppl": -3.208612353412523,
+  "smoke": false
+}

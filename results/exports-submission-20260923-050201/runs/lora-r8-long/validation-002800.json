@@ -1,0 +1,53 @@
+{
+  "step": 2800,
+  "metrics": {
+    "token_loss": 2.969541449654233,
+    "sequence_loss": 447.330342793844,
+    "ppl": 19.482983618515064,
+    "bpt": 4.284142723130385,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.775733701873397,
+        "sequence_loss": 119.05927100972838,
+        "ppl": 43.629507626791934,
+        "bpt": 5.447232287410078,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.8950128305530716,
+        "sequence_loss": 652.2998855259108,
+        "ppl": 18.083733464071198,
+        "bpt": 4.176620653948837,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1254706808212886,
+        "sequence_loss": 298.01851296424866,
+        "ppl": 22.770610261155923,
+        "bpt": 4.509101051664725,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s and has been a popular destination for visitors ever since. The building is now used as a museum and the library is open to the public. The library is open Monday to Friday from 10am to 5pm and Saturday from 10am to 4pm. The library is also open on Saturdays"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to fly. He wanted to fly so much that he could see the sky. But he couldn't. He couldn't see the sky because it was dark. So he sat there and thought about it. He thought about it for a long time. Finally,"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be moving forward with plans to build a new library in the area. The library, which will be located on the site of the former library building, will be built on the site of the former library building. The library will be built on the site of the former library building. The library will"
+    }
+  ],
+  "delta_ppl": -2.827766870479767,
+  "smoke": false
+}

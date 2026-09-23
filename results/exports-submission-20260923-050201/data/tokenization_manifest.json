@@ -1,0 +1,184 @@
+{
+  "status": "complete",
+  "model_name": "EleutherAI/pythia-410m",
+  "model_revision": "9879c9b5f8bea9051dcb0e68dff21493d67e9d4f",
+  "tokenizer_class": "GPTNeoXTokenizerFast",
+  "eos_token_id": 0,
+  "pad_token_id": 0,
+  "add_special_tokens": false,
+  "append_eos": true,
+  "truncation": false,
+  "padding": false,
+  "input_file_sha256": {
+    "train.jsonl": "9d1a66b49decbb7899bccebb42d4e9f62a7c83d8c8bf4e91d73cf4e15f12c5fb",
+    "validation.jsonl": "2471f70f4ab17c2c5aca6b2637206684d79c04b924a9ede90c84907234e1fe63",
+    "test.jsonl": "ee41ccaf81efe5aa35b711c2003b19a001dbabbc3353c67b8a459ab6ad40945a"
+  },
+  "versions": {
+    "transformers": "4.57.6",
+    "huggingface-hub": "0.36.2"
+  },
+  "splits": {
+    "train": {
+      "documents": 11000,
+      "tokens_including_eos": 2478818,
+      "max_document_tokens": 2702,
+      "by_source": {
+        "Salesforce/wikitext": {
+          "documents": 1000,
+          "tokens_including_eos": 145181
+        },
+        "roneneldan/TinyStories": {
+          "documents": 1000,
+          "tokens_including_eos": 236128
+        },
+        "fancyzhx/ag_news": {
+          "documents": 1000,
+          "tokens_including_eos": 57052
+        },
+        "stanfordnlp/imdb": {
+          "documents": 1000,
+          "tokens_including_eos": 289629
+        },
+        "Yelp/yelp_review_full": {
+          "documents": 1000,
+          "tokens_including_eos": 172005
+        },
+        "fancyzhx/amazon_polarity": {
+          "documents": 1000,
+          "tokens_including_eos": 96160
+        },
+        "abisee/cnn_dailymail": {
+          "documents": 1000,
+          "tokens_including_eos": 801675
+        },
+        "EdinburghNLP/xsum": {
+          "documents": 1000,
+          "tokens_including_eos": 475643
+        },
+        "rajpurkar/squad": {
+          "documents": 1000,
+          "tokens_including_eos": 153690
+        },
+        "dair-ai/emotion": {
+          "documents": 1000,
+          "tokens_including_eos": 23858
+        },
+        "cornell-movie-review-data/rotten_tomatoes": {
+          "documents": 1000,
+          "tokens_including_eos": 27797
+        }
+      },
+      "mean_document_tokens": 225.34709090909092
+    },
+    "validation": {
+      "documents": 1100,
+      "tokens_including_eos": 247245,
+      "max_document_tokens": 2081,
+      "by_source": {
+        "Salesforce/wikitext": {
+          "documents": 100,
+          "tokens_including_eos": 12867
+        },
+        "roneneldan/TinyStories": {
+          "documents": 100,
+          "tokens_including_eos": 24457
+        },
+        "fancyzhx/ag_news": {
+          "documents": 100,
+          "tokens_including_eos": 5860
+        },
+        "stanfordnlp/imdb": {
+          "documents": 100,
+          "tokens_including_eos": 27357
+        },
+        "Yelp/yelp_review_full": {
+          "documents": 100,
+          "tokens_including_eos": 19615
+        },
+        "fancyzhx/amazon_polarity": {
+          "documents": 100,
+          "tokens_including_eos": 9085
+        },
+        "abisee/cnn_dailymail": {
+          "documents": 100,
+          "tokens_including_eos": 80125
+        },
+        "EdinburghNLP/xsum": {
+          "documents": 100,
+          "tokens_including_eos": 46859
+        },
+        "rajpurkar/squad": {
+          "documents": 100,
+          "tokens_including_eos": 16049
+        },
+        "dair-ai/emotion": {
+          "documents": 100,
+          "tokens_including_eos": 2411
+        },
+        "cornell-movie-review-data/rotten_tomatoes": {
+          "documents": 100,
+          "tokens_including_eos": 2560
+        }
+      },
+      "mean_document_tokens": 224.76818181818183
+    },
+    "test": {
+      "documents": 1100,
+      "tokens_including_eos": 245860,
+      "max_document_tokens": 2238,
+      "by_source": {
+        "Salesforce/wikitext": {
+          "documents": 100,
+          "tokens_including_eos": 13948
+        },
+        "roneneldan/TinyStories": {
+          "documents": 100,
+          "tokens_including_eos": 23585
+        },
+        "fancyzhx/ag_news": {
+          "documents": 100,
+          "tokens_including_eos": 6276
+        },
+        "stanfordnlp/imdb": {
+          "documents": 100,
+          "tokens_including_eos": 28511
+        },
+        "Yelp/yelp_review_full": {
+          "documents": 100,
+          "tokens_including_eos": 18217
+        },
+        "fancyzhx/amazon_polarity": {
+          "documents": 100,
+          "tokens_including_eos": 10043
+        },
+        "abisee/cnn_dailymail": {
+          "documents": 100,
+          "tokens_including_eos": 77865
+        },
+        "EdinburghNLP/xsum": {
+          "documents": 100,
+          "tokens_including_eos": 46880
+        },
+        "rajpurkar/squad": {
+          "documents": 100,
+          "tokens_including_eos": 15417
+        },
+        "dair-ai/emotion": {
+          "documents": 100,
+          "tokens_including_eos": 2423
+        },
+        "cornell-movie-review-data/rotten_tomatoes": {
+          "documents": 100,
+          "tokens_including_eos": 2695
+        }
+      },
+      "mean_document_tokens": 223.5090909090909
+    }
+  },
+  "output_file_sha256": {
+    "train.jsonl": "e62bbd71270882b295b0061daf86a753cfea5e4e57d5dd960ead8961f76e5745",
+    "validation.jsonl": "62c76df91436fd6a184d68ded575a34e5f06a731afe00b36e09b37349b7ef4e6",
+    "test.jsonl": "6fa8de77fbe705a30afa025c817347867140c1cf367f1df0fa68c18a541fa4c1"
+  }
+}

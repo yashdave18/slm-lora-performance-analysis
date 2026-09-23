@@ -1,0 +1,53 @@
+{
+  "step": 1400,
+  "metrics": {
+    "token_loss": 2.980690075395196,
+    "sequence_loss": 449.0097665900554,
+    "ppl": 19.70140741140158,
+    "bpt": 4.300226790199599,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.8023560774192604,
+        "sequence_loss": 119.89874775128594,
+        "ppl": 44.806628112587546,
+        "bpt": 5.485640256586779,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.9050116465046654,
+        "sequence_loss": 654.5528035205343,
+        "ppl": 18.265456379693354,
+        "bpt": 4.191045896136964,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.137228713607944,
+        "sequence_loss": 299.1396597623825,
+        "ppl": 23.039928064169345,
+        "bpt": 4.526064307256643,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in 1872. It was the first public library in the United States to be built in a rural area. The library was built on the site of a former schoolhouse. The building was designed by the architect John L. R. Hancock and built in 1872. The library was dedicated on May"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to play. He was very curious and wanted to know what was in the tree. He looked up and saw a big tree. It was very big and very tall. He was very curious and wanted to see what was inside. He looked around and saw a"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " Monday that it will be spending $1.5 million to upgrade the city's water system. The city will also be spending $1.5 million to upgrade the city's sewer system. The city will also be spending $1.5 million to upgrade the city's water system. The city will also be spending $"
+    }
+  ],
+  "delta_ppl": -2.609343077593252,
+  "smoke": false
+}

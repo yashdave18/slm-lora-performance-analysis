@@ -1,0 +1,53 @@
+{
+  "step": 2100,
+  "metrics": {
+    "token_loss": 2.9521988184002765,
+    "sequence_loss": 444.7178568880882,
+    "ppl": 19.14801047146989,
+    "bpt": 4.259122595024337,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.685446859644219,
+        "sequence_loss": 116.21227848685984,
+        "ppl": 39.862931605903434,
+        "bpt": 5.316975907868518,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.8849221773653606,
+        "sequence_loss": 650.0262749049974,
+        "ppl": 17.90217434693419,
+        "bpt": 4.162062918635597,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.089700192362009,
+        "sequence_loss": 294.6077409982681,
+        "ppl": 21.970490067527514,
+        "bpt": 4.457495145354347,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in 1869. The building was designed by the architect John Henry Harrison and was built in the Italianate style. The building was listed on the National Register of Historic Places in 1979."
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. The little bird was very happy and wanted to fly. The tree was very tall and the little bird wanted to climb up it. The little bird was very brave and climbed up the tree. The tree was very tall and the little bird was very happy. The little bird flew up the tree"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be closing the city's public library for the next two years. The library, which opened in 1872, is the oldest in the city and has been a public space since 1872. The library was closed in the wake of the city's budget crisis in the early 1990s. The library"
+    }
+  ],
+  "delta_ppl": -3.162740017524939,
+  "smoke": false
+}

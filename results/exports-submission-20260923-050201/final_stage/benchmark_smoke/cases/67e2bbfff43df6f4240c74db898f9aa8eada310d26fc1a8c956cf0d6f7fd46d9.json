@@ -1,0 +1,33 @@
+{
+  "summary": {
+    "variant": "baseline",
+    "precision": "fp16",
+    "batch_size": 1,
+    "prompt_length": 64,
+    "new_tokens": 8,
+    "status": "ok",
+    "latency_mean_ms": 256.5142605001256,
+    "latency_median_ms": 256.5142605001256,
+    "latency_stdev_ms": 18.216901382427043,
+    "generated_tokens_per_sec": 31.18734991342161,
+    "sequences_per_sec": 3.898418739177701,
+    "per_sequence_tokens_per_sec": 31.18734991342161,
+    "peak_allocated_mib": 1667.40771484375,
+    "peak_reserved_mib": 1688.0
+  },
+  "measurements": [
+    {
+      "seconds": 0.26939555499984635,
+      "generated_tokens": 8,
+      "peak_allocated_mib": 1667.40771484375,
+      "peak_reserved_mib": 1688.0
+    },
+    {
+      "seconds": 0.24363296600040485,
+      "generated_tokens": 8,
+      "peak_allocated_mib": 1667.40771484375,
+      "peak_reserved_mib": 1688.0
+    }
+  ],
+  "execution_id": "ulcb65ip"
+}

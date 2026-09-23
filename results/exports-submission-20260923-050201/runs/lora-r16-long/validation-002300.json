@@ -1,0 +1,53 @@
+{
+  "step": 2300,
+  "metrics": {
+    "token_loss": 2.9613433684617734,
+    "sequence_loss": 446.09538765607294,
+    "ppl": 19.323913462869772,
+    "bpt": 4.272315392049219,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.7519260293442596,
+        "sequence_loss": 118.30854959779431,
+        "ppl": 42.60305777027268,
+        "bpt": 5.412885076317183,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.888551418139944,
+        "sequence_loss": 650.8440099135689,
+        "ppl": 17.967263689031878,
+        "bpt": 4.16729880630328,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.111759876843507,
+        "sequence_loss": 296.71116638183594,
+        "ppl": 22.460537418825417,
+        "bpt": 4.489320542759379,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s and has since become a popular destination for local artists and musicians. The building is also home to the local arts centre, the Arts Centre, which is open to the public and offers a range of exhibitions, performances and workshops. The Arts Centre is also home to the local community centre, the Arts"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. The little bird was very happy and wanted to fly. He wanted to fly so much that he could see the sky. The little bird was very excited and wanted to fly. He flew over the tree and saw a big blue sky. The little bird was very happy and wanted to fly again"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be closing the city's public library for a year. The library, which opened in 1872, is located in the city's downtown area. The library is open Monday through Friday from 9:30 a.m. to 5 p.m. and Saturday from 9:30 a.m"
+    }
+  ],
+  "delta_ppl": -2.986837026125059,
+  "smoke": false
+}

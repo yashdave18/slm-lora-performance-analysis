@@ -1,0 +1,53 @@
+{
+  "step": 1600,
+  "metrics": {
+    "token_loss": 2.9676047233484373,
+    "sequence_loss": 447.0385952439419,
+    "ppl": 19.44528692749534,
+    "bpt": 4.281348617693455,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.7671521726596917,
+        "sequence_loss": 118.78867178504645,
+        "ppl": 43.256701643098474,
+        "bpt": 5.434851757770222,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.8940872103535824,
+        "sequence_loss": 652.0913261911144,
+        "ppl": 18.06700253953008,
+        "bpt": 4.175285266277288,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.118878855191504,
+        "sequence_loss": 297.38997209072113,
+        "ppl": 22.621003999750688,
+        "bpt": 4.49959105751823,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in 1878. The building was designed by the architect John Ruskin and built by the firm of John and Charles Hocking. The building was designed to be a \"modern\" building, with a \"modern\" facade and a \"modern\" interior. The building was designed to be a \""
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to fly. He looked up and saw a big tree. \"Hey, bird, can you fly?\" the tree asked. \"Yes, I can fly,\" the little bird said. \"Good, because I want to fly too.\" The little bird flew up"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " that the city would be moving forward with a plan to build a new $1.5 billion parking garage. The garage would be located at the intersection of the two main streets in the city, and would be connected to the existing parking garage at the intersection of the two main streets. The garage would be located at the"
+    }
+  ],
+  "delta_ppl": -2.8654635614994923,
+  "smoke": false
+}

@@ -1,0 +1,53 @@
+{
+  "step": 1900,
+  "metrics": {
+    "token_loss": 2.97337898895692,
+    "sequence_loss": 447.9084279294989,
+    "ppl": 19.557893977676564,
+    "bpt": 4.289679122051589,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.7831611114267396,
+        "sequence_loss": 119.29347766643008,
+        "ppl": 43.95476827528355,
+        "bpt": 5.4579477743393365,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.8986065546895445,
+        "sequence_loss": 653.1096179796302,
+        "ppl": 18.14883832789053,
+        "bpt": 4.18180530193885,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.129254810500467,
+        "sequence_loss": 298.37933564186096,
+        "ppl": 22.856940442540914,
+        "bpt": 4.514560396786957,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s and has since become a popular destination for local artists and collectors. The collection is now housed in the National Museum of Wales, Cardiff."
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to play. He wanted to fly and jump. But he couldn't. He had to sit on the ground and wait. The little bird was very sad and sad. He wanted to play again. He wanted to fly and jump again. But he couldn't"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be moving forward with plans to build a new $1.5 billion stadium. The stadium would be built on the site of the old Stadio Olimpico, which was demolished in the 1960s. The city council said it would be moving forward with plans to build a new $"
+    }
+  ],
+  "delta_ppl": -2.7528565113182673,
+  "smoke": false
+}

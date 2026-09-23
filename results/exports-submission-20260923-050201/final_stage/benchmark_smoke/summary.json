@@ -1,0 +1,159 @@
+{
+  "specification": {
+    "stage": "inference-benchmark",
+    "settings": {
+      "variants": [
+        "baseline",
+        "lora-r16-lr5e4"
+      ],
+      "precisions": [
+        "fp16"
+      ],
+      "batch_sizes": [
+        1
+      ],
+      "prompt_lengths": [
+        64
+      ],
+      "max_new_tokens": 8,
+      "warmup_runs": 1,
+      "measured_runs": 2,
+      "seed": 42
+    },
+    "variants": {
+      "baseline": {
+        "lora_rank": 0
+      },
+      "lora-r16-lr5e4": {
+        "run": "lora-r16-lr5e4",
+        "checkpoint": "step-003072",
+        "validation_selection": {
+          "checkpoint": "step-003072",
+          "step": 3072,
+          "token_loss": 2.9493465856223455,
+          "ppl": 19.093473701125422
+        },
+        "lora_rank": 16,
+        "learning_rate": 0.0005,
+        "adapter_sha256": "3ced130d0582eb884ec7a0a1c4151b63511d5735abb525673783366570f91008",
+        "adapter_config_sha256": "d337a1bb96dc0b92fd6997b412adc60fa23a2b08b798ba3115faef4004eb7ff4",
+        "resolved_config_sha256": "494e46badfb3f16d9e29771df3ca2bb0b66322c6883959c3bb7fc362c164d154"
+      }
+    },
+    "model_name": "EleutherAI/pythia-410m",
+    "model_revision": "9879c9b5f8bea9051dcb0e68dff21493d67e9d4f",
+    "validation_sha256": "62c76df91436fd6a184d68ded575a34e5f06a731afe00b36e09b37349b7ef4e6",
+    "prompts": [
+      {
+        "id": "893f695e4306f9962a86aeec57cd5b6caa5ffebc1d7aac2811daccc5bdbb40b3",
+        "source": "EdinburghNLP/xsum",
+        "input_ids": [
+          510,
+          1659,
+          273,
+          17246,
+          275,
+          427,
+          485,
+          13,
+          3729,
+          23528,
+          13,
+          369,
+          4102,
+          9716,
+          407,
+          20577,
+          43342,
+          13,
+          665,
+          3597,
+          281,
+          873,
+          598,
+          247,
+          19991,
+          14,
+          7483,
+          30084,
+          1123,
+          275,
+          1529,
+          629,
+          273,
+          253,
+          1375,
+          15,
+          380,
+          787,
+          8879,
+          369,
+          2361,
+          327,
+          8330,
+          9055,
+          285,
+          253,
+          2605,
+          369,
+          1218,
+          4337,
+          407,
+          253,
+          673,
+          3289,
+          32173,
+          7244,
+          846,
+          4829,
+          271,
+          4964,
+          15,
+          43342,
+          753,
+          253
+        ]
+      }
+    ],
+    "weight_dtype": "float32",
+    "attention": "sdpa",
+    "adapter_mode": "unmerged",
+    "fp16_mode": "autocast",
+    "eos_stopping": false
+  },
+  "rows": [
+    {
+      "variant": "baseline",
+      "precision": "fp16",
+      "batch_size": 1,
+      "prompt_length": 64,
+      "new_tokens": 8,
+      "status": "ok",
+      "latency_mean_ms": 256.5142605001256,
+      "latency_median_ms": 256.5142605001256,
+      "latency_stdev_ms": 18.216901382427043,
+      "generated_tokens_per_sec": 31.18734991342161,
+      "sequences_per_sec": 3.898418739177701,
+      "per_sequence_tokens_per_sec": 31.18734991342161,
+      "peak_allocated_mib": 1667.40771484375,
+      "peak_reserved_mib": 1688.0
+    },
+    {
+      "variant": "lora-r16-lr5e4",
+      "precision": "fp16",
+      "batch_size": 1,
+      "prompt_length": 64,
+      "new_tokens": 8,
+      "status": "ok",
+      "latency_mean_ms": 221.61345099993923,
+      "latency_median_ms": 221.61345099993923,
+      "latency_stdev_ms": 9.290956012325326,
+      "generated_tokens_per_sec": 36.09889184931376,
+      "sequences_per_sec": 4.51236148116422,
+      "per_sequence_tokens_per_sec": 36.09889184931376,
+      "peak_allocated_mib": 1673.40771484375,
+      "peak_reserved_mib": 1706.0
+    }
+  ],
+  "wandb_url": "https://wandb.ai/daveyash1218-dwarkadas-j-sanghvi-college-of-engineering/slm-lora-performance-analysis/runs/ulcb65ip"
+}

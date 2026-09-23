@@ -1,0 +1,53 @@
+{
+  "step": 2100,
+  "metrics": {
+    "token_loss": 2.961927313013175,
+    "sequence_loss": 446.183352791694,
+    "ppl": 19.33520085213216,
+    "bpt": 4.27315784595768,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.7554994714737204,
+        "sequence_loss": 118.42123005900321,
+        "ppl": 42.75556966567742,
+        "bpt": 5.41804046355626,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.888897058239674,
+        "sequence_loss": 650.921889014866,
+        "ppl": 17.973474969217143,
+        "bpt": 4.1677974595610925,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1125988201936803,
+        "sequence_loss": 296.79116094112396,
+        "ppl": 22.47938844369959,
+        "bpt": 4.490530882170261,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s and has since become a popular destination for local artists and musicians. The building is also home to the local arts centre, the Arts Centre, which is open to the public and offers a range of exhibitions and events. The Arts Centre is also home to the local community centre, the Arts Centre,"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. The little bird was very happy and wanted to fly. He wanted to fly so much that he could see the sky. The little bird was very excited and wanted to fly. He wanted to fly so much that he could see the sky. The little bird was very happy and wanted to fly"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be closing the city's only public library, the City Hall Library, for a year. The library, which opened in 1872, is located in the city's downtown area. The library was closed in the wake of the city's budget crisis in the wake of the Great Depression. The library"
+    }
+  ],
+  "delta_ppl": -2.97554963686267,
+  "smoke": false
+}

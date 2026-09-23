@@ -1,0 +1,53 @@
+{
+  "step": 1700,
+  "metrics": {
+    "token_loss": 2.9588256462712583,
+    "sequence_loss": 445.71611915632735,
+    "ppl": 19.275322412187908,
+    "bpt": 4.2686830867306265,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.7032280458900146,
+        "sequence_loss": 116.77296820686374,
+        "ppl": 40.57808107773124,
+        "bpt": 5.342628737086451,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.890635528699159,
+        "sequence_loss": 651.3135985332987,
+        "ppl": 18.00474850068429,
+        "bpt": 4.170305542271724,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.097484990252378,
+        "sequence_loss": 295.3500336408615,
+        "ppl": 22.14219336283631,
+        "bpt": 4.468726234665105,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in 1872. It was the first public library in the United States. The library was located in the old city hall building, which was demolished in the 1930s. The library was built to serve the needs of the city's poor and the poor of the city. It was built to serve the needs"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. The little bird was very happy and wanted to fly. He wanted to fly far away from home. He looked up and saw a big tree. The little bird was very happy and wanted to fly. He wanted to fly far away from home. He looked up and saw a big tree."
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be closing the city's public library for the next two years. The library, which opened in 1878, is the oldest in the city and is the only public library in the city. The library was closed in 2013 after a fire destroyed the building. The city council said it would be closing"
+    }
+  ],
+  "delta_ppl": -3.035428076806923,
+  "smoke": false
+}

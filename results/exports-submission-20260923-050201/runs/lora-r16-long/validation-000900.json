@@ -1,0 +1,53 @@
+{
+  "step": 900,
+  "metrics": {
+    "token_loss": 2.9824369152860797,
+    "sequence_loss": 449.2729097387344,
+    "ppl": 19.73585269221065,
+    "bpt": 4.302746947447405,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.811310822672171,
+        "sequence_loss": 120.18111550443558,
+        "ppl": 45.20966189220566,
+        "bpt": 5.498559223155577,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.906097346228635,
+        "sequence_loss": 654.7974317301874,
+        "ppl": 18.28529794968749,
+        "bpt": 4.192612229744629,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.14032553954478,
+        "sequence_loss": 299.43494695425034,
+        "ppl": 23.11138930538253,
+        "bpt": 4.530532082678213,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s and has since become a popular destination for local artists and collectors. The collection includes works by artists such as John Cage, John Cage, John Cage, John Cage, John Cage, John Cage, John Cage, John Cage, John Cage, John C"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to play. He wanted to fly and fly away. But he couldn't. He had to stay on the ground. So he sat on the ground and waited. He waited for the sun to come up. But it didn't. The sun didn't come"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " a $1.5 million budget for the city's parks and recreation department in February. The budget includes $1.5 million for the city's parks and recreation department, $1.5 million for the city's parks and recreation department, $1.5 million for the city's parks and recreation department, $"
+    }
+  ],
+  "delta_ppl": -2.5748977967841817,
+  "smoke": false
+}

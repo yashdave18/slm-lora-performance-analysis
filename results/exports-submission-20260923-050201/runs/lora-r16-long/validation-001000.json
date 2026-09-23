@@ -1,0 +1,53 @@
+{
+  "step": 1000,
+  "metrics": {
+    "token_loss": 2.978580486255996,
+    "sequence_loss": 448.69197906333056,
+    "ppl": 19.659889344728345,
+    "bpt": 4.297183296410163,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.7989361728926543,
+        "sequence_loss": 119.79090875309107,
+        "ppl": 44.653655447332625,
+        "bpt": 5.48070637728593,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.903389946896243,
+        "sequence_loss": 654.1874046325684,
+        "ppl": 18.235859301506274,
+        "bpt": 4.188706278154081,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1317511396396362,
+        "sequence_loss": 298.617364525795,
+        "ppl": 22.914070166629614,
+        "bpt": 4.518161838456463,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s and has since become a popular destination for students and visitors. The library is open Monday to Friday from 10am to 5pm and Saturday from 10am to 4pm. The library is also open on Saturdays and Sundays from 10am to 4pm."
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to fly away. But he couldn't. He had to stay here and wait for the sun to come up. The little bird was very sad and wanted to fly away. He was very happy and wanted to fly away. But he couldn't. He had"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be closing the city's only public library, the City Hall Library, on Tuesday. The library, which opened in 1872, is located in the city's downtown area. The library was closed for a year in 2011 after a fire destroyed the building. The library was closed for a year in"
+    }
+  ],
+  "delta_ppl": -2.650861144266486,
+  "smoke": false
+}

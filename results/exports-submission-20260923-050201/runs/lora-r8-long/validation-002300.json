@@ -1,0 +1,53 @@
+{
+  "step": 2300,
+  "metrics": {
+    "token_loss": 2.9712961448447506,
+    "sequence_loss": 447.5946692612063,
+    "ppl": 19.517200327335296,
+    "bpt": 4.286674213180017,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.7759473075531242,
+        "sequence_loss": 119.066006584459,
+        "ppl": 43.638828132845795,
+        "bpt": 5.447540455264926,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.8968122694047493,
+        "sequence_loss": 652.7053323496943,
+        "ppl": 18.116303331603966,
+        "bpt": 4.179216695456536,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1277571812949674,
+        "sequence_loss": 298.2365343570709,
+        "ppl": 22.822734841032993,
+        "bpt": 4.512399774559092,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in 1869. It was the first public library in the United States to be built in a city. The library was located on the corner of Main and Main Streets in downtown Chicago. The library was built in a style similar to that of the Chicago Public Library. The library was designed by Chicago architect"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to fly. He wanted to fly so much that he could see the sky. But he couldn't. He couldn't see the sky because it was dark. So he sat there and thought about it. He thought about it for a long time. Finally,"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be moving forward with plans to build a new $1.5 billion stadium. The stadium would be built on the site of the old Stadio Olimpico, which was demolished in the 1970s. The stadium would be built on the site of the old Stadio Olim"
+    }
+  ],
+  "delta_ppl": -2.7935501616595353,
+  "smoke": false
+}

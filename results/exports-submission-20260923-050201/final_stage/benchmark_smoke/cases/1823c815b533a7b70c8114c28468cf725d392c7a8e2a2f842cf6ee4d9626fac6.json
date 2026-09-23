@@ -1,0 +1,33 @@
+{
+  "summary": {
+    "variant": "lora-r16-lr5e4",
+    "precision": "fp16",
+    "batch_size": 1,
+    "prompt_length": 64,
+    "new_tokens": 8,
+    "status": "ok",
+    "latency_mean_ms": 221.61345099993923,
+    "latency_median_ms": 221.61345099993923,
+    "latency_stdev_ms": 9.290956012325326,
+    "generated_tokens_per_sec": 36.09889184931376,
+    "sequences_per_sec": 4.51236148116422,
+    "per_sequence_tokens_per_sec": 36.09889184931376,
+    "peak_allocated_mib": 1673.40771484375,
+    "peak_reserved_mib": 1706.0
+  },
+  "measurements": [
+    {
+      "seconds": 0.2281831489999604,
+      "generated_tokens": 8,
+      "peak_allocated_mib": 1673.40771484375,
+      "peak_reserved_mib": 1706.0
+    },
+    {
+      "seconds": 0.21504375299991807,
+      "generated_tokens": 8,
+      "peak_allocated_mib": 1673.40771484375,
+      "peak_reserved_mib": 1706.0
+    }
+  ],
+  "execution_id": "ulcb65ip"
+}

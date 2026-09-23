@@ -1,0 +1,53 @@
+{
+  "step": 900,
+  "metrics": {
+    "token_loss": 2.9768963836311615,
+    "sequence_loss": 448.438286627229,
+    "ppl": 19.626807937540068,
+    "bpt": 4.294753649904966,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.7505144369666588,
+        "sequence_loss": 118.26403820670848,
+        "ppl": 42.542962043975116,
+        "bpt": 5.410848578994261,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.9052452223617213,
+        "sequence_loss": 654.6054324772047,
+        "ppl": 18.269723247621027,
+        "bpt": 4.191382874867609,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.127662145481008,
+        "sequence_loss": 298.22747254371643,
+        "ppl": 22.82056596691259,
+        "bpt": 4.512262666861586,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in 1869 and was the first public library in the United States to be built in a city. The library was built on the site of the former city hall, which was demolished in 1869. The library was designed by architect John W. Hancock and built by the firm of Hancock & Co"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. The little bird was very happy and wanted to play. He wanted to be the best bird in the world. He wanted to be the best bird in the world. He wanted to be the best bird in the world. He wanted to be the best bird in the world. He wanted to"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be closing the city's main bus station, which is located in the heart of the city, and will be closing the city's main train station, which is located in the heart of the city. The city council also announced that it would be closing the city's main bus station, which is"
+    }
+  ],
+  "delta_ppl": -2.683942551454763,
+  "smoke": false
+}

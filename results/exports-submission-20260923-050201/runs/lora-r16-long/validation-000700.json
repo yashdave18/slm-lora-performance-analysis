@@ -1,0 +1,53 @@
+{
+  "step": 700,
+  "metrics": {
+    "token_loss": 2.990653366131951,
+    "sequence_loss": 450.51063207255146,
+    "ppl": 19.898679368412672,
+    "bpt": 4.314600780336451,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.8316061753940094,
+        "sequence_loss": 120.82108381013163,
+        "ppl": 46.136582197589696,
+        "bpt": 5.527839227880465,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.9135042182923945,
+        "sequence_loss": 656.4663368722667,
+        "ppl": 18.42123763468591,
+        "bpt": 4.203298087339514,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1482706472357,
+        "sequence_loss": 300.1925253868103,
+        "ppl": 23.295743168174063,
+        "bpt": 4.541994450143231,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s and has since become a popular destination for local artists. The collection includes works by artists such as John Cage, John Cage, John Cage, John Cage, John Cage, John Cage, John Cage, John Cage, John Cage, John Cage,"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " named Bubba was very happy. He loved to fly and play in the sky. One day, Bubba saw a big bird flying overhead. He wanted to fly with it. So, he climbed up on the bird and flew away. But, he was very sad when he saw the bird fly away."
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " a $1.5 million budget for the city's parks and recreation department in February. The city's parks and recreation department is responsible for maintaining and improving the city's parks and recreation facilities. The budget includes $1.5 million for the city's parks and recreation department. The budget also includes $1.5"
+    }
+  ],
+  "delta_ppl": -2.4120711205821586,
+  "smoke": false
+}

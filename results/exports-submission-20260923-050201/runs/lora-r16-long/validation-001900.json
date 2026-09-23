@@ -1,0 +1,53 @@
+{
+  "step": 1900,
+  "metrics": {
+    "token_loss": 2.964335550042712,
+    "sequence_loss": 446.5461284977132,
+    "ppl": 19.381820712102947,
+    "bpt": 4.276632197577478,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.759597589394802,
+        "sequence_loss": 118.55045499135313,
+        "ppl": 42.93114655361776,
+        "bpt": 5.423952797957982,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.891251873715963,
+        "sequence_loss": 651.4524724545686,
+        "ppl": 18.015849058236753,
+        "bpt": 4.171194740170944,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1144609144211595,
+        "sequence_loss": 296.96871453523636,
+        "ppl": 22.521286179817817,
+        "bpt": 4.493217316277913,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s and has since become a popular destination for local artists and collectors. The library is open Monday to Friday from 10am to 5pm and Saturday from 10am to 4pm. The library is also open on Saturdays and Sundays from 10am to 4pm."
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. The little bird was very happy and wanted to fly. He wanted to fly far away from the tree. The little bird wanted to fly far away from the tree. The little bird was very happy and wanted to fly. He wanted to fly far away from the tree. The little bird was"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " a $1.5 million budget for the city's parks and recreation department in June. The city's parks and recreation department is responsible for maintaining and improving the city's parks and recreation facilities."
+    }
+  ],
+  "delta_ppl": -2.9289297768918843,
+  "smoke": false
+}

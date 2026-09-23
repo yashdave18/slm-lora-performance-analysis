@@ -1,0 +1,35 @@
+{
+  "completed_steps": 300,
+  "tokens_seen": 719331,
+  "fractional_epoch": 0.2930224040046395,
+  "baseline_ppl": 22.31075048899483,
+  "rankings": [
+    {
+      "checkpoint": "step-000100",
+      "step": 100,
+      "token_loss": 3.0485767147300784,
+      "ppl": 21.085312640820682
+    },
+    {
+      "checkpoint": "step-000200",
+      "step": 200,
+      "token_loss": 3.0336609274685915,
+      "ppl": 20.773142522297896
+    },
+    {
+      "checkpoint": "step-000300",
+      "step": 300,
+      "token_loss": 3.0308341858168037,
+      "ppl": 20.71450513051546
+    }
+  ],
+  "best_trained_checkpoint": {
+    "checkpoint": "step-000300",
+    "step": 300,
+    "token_loss": 3.0308341858168037,
+    "ppl": 20.71450513051546
+  },
+  "smoke": false,
+  "wandb_url": "https://wandb.ai/daveyash1218-dwarkadas-j-sanghvi-college-of-engineering/slm-lora-performance-analysis/runs/r6ja3elz",
+  "latest_checkpoint": "/content/drive/MyDrive/slm-lora-performance-analysis/runs/lora-r8/checkpoints/step-000300"
+}

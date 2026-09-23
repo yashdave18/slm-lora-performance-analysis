@@ -1,0 +1,53 @@
+{
+  "step": 600,
+  "metrics": {
+    "token_loss": 2.9887713333455648,
+    "sequence_loss": 450.2271235289743,
+    "ppl": 19.861264620370523,
+    "bpt": 4.311885580968742,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.7714586829795778,
+        "sequence_loss": 118.92446790303725,
+        "ppl": 43.443388771626154,
+        "bpt": 5.441064738852258,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.9164700944876616,
+        "sequence_loss": 657.1346035832944,
+        "ppl": 18.475953845518685,
+        "bpt": 4.207576942218316,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1396918578501465,
+        "sequence_loss": 299.37452441453934,
+        "ppl": 23.096748680280136,
+        "bpt": 4.529617873239863,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in 1878. It was the first public library in the United States. The library was located in the city of New York, and was named after the city's first mayor, William J. Tilden."
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " named Bubba was playing in the yard. He was very happy and wanted to go home. But he couldn't find his way home. He was very sad and wanted to go home. Bubba's mom said, \"Bubba, you have to go home. You have to go home. You"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " a $1.5 million budget for the city's parks and recreation department, which includes $1.5 million for the city's parks and recreation department, $1.5 million for the city's parks and recreation department, $1.5 million for the city's parks and recreation department, $1.5"
+    }
+  ],
+  "delta_ppl": -2.4494858686243077,
+  "smoke": false
+}

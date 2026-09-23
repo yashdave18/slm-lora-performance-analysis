@@ -1,0 +1,53 @@
+{
+  "step": 2200,
+  "metrics": {
+    "token_loss": 2.9717369389893835,
+    "sequence_loss": 447.6610702861333,
+    "ppl": 19.52580529132876,
+    "bpt": 4.287310144706532,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.7776967152187555,
+        "sequence_loss": 119.12117022093727,
+        "ppl": 43.71523704898538,
+        "bpt": 5.450064317028626,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.8971901785533585,
+        "sequence_loss": 652.7904822639797,
+        "ppl": 18.1231509421778,
+        "bpt": 4.179761903111141,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1279577715481857,
+        "sequence_loss": 298.25566095113754,
+        "ppl": 22.827313318377502,
+        "bpt": 4.51268916512266,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in 1869. It was the first public library in the United States to be built in a city. The library was located on the corner of Main and Main Streets in downtown Chicago. The library was built in a style similar to that of the Chicago Public Library. The library was designed by Chicago architect"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. The little bird was very happy and wanted to fly. But the tree was very high and the little bird couldn't fly. So the little bird decided to climb up the tree. The tree was very high and the little bird couldn't climb. So the little bird decided to climb up the"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be closing the city's only public library, which is located in the city's downtown. The library, which opened in 1872, is located on the second floor of the city hall. The library was closed for renovations in September. The library was closed for renovations in September. The"
+    }
+  ],
+  "delta_ppl": -2.7849451976660724,
+  "smoke": false
+}

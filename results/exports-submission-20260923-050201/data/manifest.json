@@ -1,0 +1,413 @@
+{
+  "status": "complete",
+  "smoke_test": false,
+  "data_config": {
+    "seed": 42,
+    "output_dir": "data/processed",
+    "preprocessing": {
+      "normalize_whitespace": true,
+      "deduplicate": true,
+      "min_characters": 40,
+      "max_characters": 20000
+    },
+    "splitting": {
+      "train_fraction": 0.8,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.1
+    },
+    "limits_per_dataset": {
+      "train": 1000,
+      "validation": 100,
+      "test": 100
+    },
+    "datasets": [
+      {
+        "name": "Salesforce/wikitext",
+        "subset": "wikitext-2-raw-v1",
+        "source_split": "train",
+        "text_fields": [
+          "text"
+        ]
+      },
+      {
+        "name": "roneneldan/TinyStories",
+        "subset": null,
+        "source_split": "train",
+        "text_fields": [
+          "text"
+        ]
+      },
+      {
+        "name": "fancyzhx/ag_news",
+        "subset": null,
+        "source_split": "train",
+        "text_fields": [
+          "text"
+        ]
+      },
+      {
+        "name": "stanfordnlp/imdb",
+        "subset": null,
+        "source_split": "train",
+        "text_fields": [
+          "text"
+        ]
+      },
+      {
+        "name": "Yelp/yelp_review_full",
+        "subset": null,
+        "source_split": "train",
+        "text_fields": [
+          "text"
+        ]
+      },
+      {
+        "name": "fancyzhx/amazon_polarity",
+        "subset": null,
+        "source_split": "train",
+        "text_fields": [
+          "title",
+          "content"
+        ]
+      },
+      {
+        "name": "abisee/cnn_dailymail",
+        "subset": "3.0.0",
+        "source_split": "train",
+        "text_fields": [
+          "article"
+        ]
+      },
+      {
+        "name": "EdinburghNLP/xsum",
+        "subset": null,
+        "source_split": "train",
+        "text_fields": [
+          "document"
+        ]
+      },
+      {
+        "name": "rajpurkar/squad",
+        "subset": null,
+        "source_split": "train",
+        "text_fields": [
+          "context"
+        ]
+      },
+      {
+        "name": "dair-ai/emotion",
+        "subset": "split",
+        "source_split": "train",
+        "text_fields": [
+          "text"
+        ]
+      },
+      {
+        "name": "cornell-movie-review-data/rotten_tomatoes",
+        "subset": null,
+        "source_split": "train",
+        "text_fields": [
+          "text"
+        ]
+      }
+    ]
+  },
+  "effective_limits_per_dataset": {
+    "train": 1000,
+    "validation": 100,
+    "test": 100
+  },
+  "max_rows_scanned_per_dataset": 50000,
+  "shuffle_buffer_size": 1000,
+  "sampling": "bounded buffered shuffle; not a uniform full-corpus sample",
+  "versions": {
+    "datasets": "4.8.5",
+    "huggingface-hub": "0.36.2",
+    "PyYAML": "6.0.2"
+  },
+  "sources": [
+    {
+      "name": "Salesforce/wikitext",
+      "subset": "wikitext-2-raw-v1",
+      "source_split": "train",
+      "text_fields": [
+        "text"
+      ],
+      "parquet_revision": "3f68cd45302c7b4b532d933e71d9e6e54b1c7d5e",
+      "parquet_files": [
+        "wikitext-2-raw-v1/train/0000.parquet"
+      ],
+      "counts": {
+        "train": 1000,
+        "validation": 100,
+        "test": 100
+      },
+      "filtering": {
+        "scanned": 2715,
+        "rejected_by_length": 1462,
+        "duplicate_of_retained_document": 0,
+        "skipped_full_split": 53
+      },
+      "targets_met": true
+    },
+    {
+      "name": "roneneldan/TinyStories",
+      "subset": "default",
+      "source_split": "train",
+      "text_fields": [
+        "text"
+      ],
+      "parquet_revision": "37346026e81060382814d5a773f3c34799e118e7",
+      "parquet_files": [
+        "default/train/0000.parquet",
+        "default/train/0001.parquet",
+        "default/train/0002.parquet",
+        "default/train/0003.parquet"
+      ],
+      "counts": {
+        "train": 1000,
+        "validation": 100,
+        "test": 100
+      },
+      "filtering": {
+        "scanned": 1271,
+        "rejected_by_length": 0,
+        "duplicate_of_retained_document": 0,
+        "skipped_full_split": 71
+      },
+      "targets_met": true
+    },
+    {
+      "name": "fancyzhx/ag_news",
+      "subset": "default",
+      "source_split": "train",
+      "text_fields": [
+        "text"
+      ],
+      "parquet_revision": "530b2bfac25aff07a9a89ac6ffffff42cb837ef9",
+      "parquet_files": [
+        "default/train/0000.parquet"
+      ],
+      "counts": {
+        "train": 1000,
+        "validation": 100,
+        "test": 100
+      },
+      "filtering": {
+        "scanned": 1258,
+        "rejected_by_length": 0,
+        "duplicate_of_retained_document": 3,
+        "skipped_full_split": 55
+      },
+      "targets_met": true
+    },
+    {
+      "name": "stanfordnlp/imdb",
+      "subset": "plain_text",
+      "source_split": "train",
+      "text_fields": [
+        "text"
+      ],
+      "parquet_revision": "0b525c3ee2447b87002590030af0cdeaf509422a",
+      "parquet_files": [
+        "plain_text/train/0000.parquet"
+      ],
+      "counts": {
+        "train": 1000,
+        "validation": 100,
+        "test": 100
+      },
+      "filtering": {
+        "scanned": 1294,
+        "rejected_by_length": 0,
+        "duplicate_of_retained_document": 1,
+        "skipped_full_split": 93
+      },
+      "targets_met": true
+    },
+    {
+      "name": "Yelp/yelp_review_full",
+      "subset": "yelp_review_full",
+      "source_split": "train",
+      "text_fields": [
+        "text"
+      ],
+      "parquet_revision": "460f2212884f0b7f6410e559d46df5b7c2f6fb14",
+      "parquet_files": [
+        "yelp_review_full/train/0000.parquet"
+      ],
+      "counts": {
+        "train": 1000,
+        "validation": 100,
+        "test": 100
+      },
+      "filtering": {
+        "scanned": 1273,
+        "rejected_by_length": 14,
+        "duplicate_of_retained_document": 0,
+        "skipped_full_split": 59
+      },
+      "targets_met": true
+    },
+    {
+      "name": "fancyzhx/amazon_polarity",
+      "subset": "amazon_polarity",
+      "source_split": "train",
+      "text_fields": [
+        "title",
+        "content"
+      ],
+      "parquet_revision": "957fcd8dc017a2600a583ccf52c1aa64e1b7ae62",
+      "parquet_files": [
+        "amazon_polarity/train/0000.parquet",
+        "amazon_polarity/train/0001.parquet",
+        "amazon_polarity/train/0002.parquet",
+        "amazon_polarity/train/0003.parquet"
+      ],
+      "counts": {
+        "train": 1000,
+        "validation": 100,
+        "test": 100
+      },
+      "filtering": {
+        "scanned": 1235,
+        "rejected_by_length": 0,
+        "duplicate_of_retained_document": 0,
+        "skipped_full_split": 35
+      },
+      "targets_met": true
+    },
+    {
+      "name": "abisee/cnn_dailymail",
+      "subset": "3.0.0",
+      "source_split": "train",
+      "text_fields": [
+        "article"
+      ],
+      "parquet_revision": "690bb95a2ac2c5a99d7bde63ac1401539ddd3967",
+      "parquet_files": [
+        "3.0.0/train/0000.parquet",
+        "3.0.0/train/0001.parquet",
+        "3.0.0/train/0002.parquet"
+      ],
+      "counts": {
+        "train": 1000,
+        "validation": 100,
+        "test": 100
+      },
+      "filtering": {
+        "scanned": 1236,
+        "rejected_by_length": 0,
+        "duplicate_of_retained_document": 0,
+        "skipped_full_split": 36
+      },
+      "targets_met": true
+    },
+    {
+      "name": "EdinburghNLP/xsum",
+      "subset": "default",
+      "source_split": "train",
+      "text_fields": [
+        "document"
+      ],
+      "parquet_revision": "03339c27cd655c3369346bacb533293f222a9d42",
+      "parquet_files": [
+        "default/train/0000.parquet"
+      ],
+      "counts": {
+        "train": 1000,
+        "validation": 100,
+        "test": 100
+      },
+      "filtering": {
+        "scanned": 1240,
+        "rejected_by_length": 0,
+        "duplicate_of_retained_document": 1,
+        "skipped_full_split": 39
+      },
+      "targets_met": true
+    },
+    {
+      "name": "rajpurkar/squad",
+      "subset": "plain_text",
+      "source_split": "train",
+      "text_fields": [
+        "context"
+      ],
+      "parquet_revision": "00279cb629a5422d5ebdfbd19f0cedf7fed4b918",
+      "parquet_files": [
+        "plain_text/train/0000.parquet"
+      ],
+      "counts": {
+        "train": 1000,
+        "validation": 100,
+        "test": 100
+      },
+      "filtering": {
+        "scanned": 6327,
+        "rejected_by_length": 0,
+        "duplicate_of_retained_document": 4974,
+        "skipped_full_split": 153
+      },
+      "targets_met": true
+    },
+    {
+      "name": "dair-ai/emotion",
+      "subset": "split",
+      "source_split": "train",
+      "text_fields": [
+        "text"
+      ],
+      "parquet_revision": "ea18bb96cb411aaaeffa7e9a27ee2cfcd22b892c",
+      "parquet_files": [
+        "split/train/0000.parquet"
+      ],
+      "counts": {
+        "train": 1000,
+        "validation": 100,
+        "test": 100
+      },
+      "filtering": {
+        "scanned": 1434,
+        "rejected_by_length": 170,
+        "duplicate_of_retained_document": 0,
+        "skipped_full_split": 64
+      },
+      "targets_met": true
+    },
+    {
+      "name": "cornell-movie-review-data/rotten_tomatoes",
+      "subset": "default",
+      "source_split": "train",
+      "text_fields": [
+        "text"
+      ],
+      "parquet_revision": "a2b32381b51e711ccca777c4b295adf3212c4a2f",
+      "parquet_files": [
+        "default/train/0000.parquet"
+      ],
+      "counts": {
+        "train": 1000,
+        "validation": 100,
+        "test": 100
+      },
+      "filtering": {
+        "scanned": 1331,
+        "rejected_by_length": 76,
+        "duplicate_of_retained_document": 0,
+        "skipped_full_split": 55
+      },
+      "targets_met": true
+    }
+  ],
+  "totals": {
+    "train": 11000,
+    "validation": 1100,
+    "test": 1100
+  },
+  "file_sha256": {
+    "train.jsonl": "9d1a66b49decbb7899bccebb42d4e9f62a7c83d8c8bf4e91d73cf4e15f12c5fb",
+    "validation.jsonl": "2471f70f4ab17c2c5aca6b2637206684d79c04b924a9ede90c84907234e1fe63",
+    "test.jsonl": "ee41ccaf81efe5aa35b711c2003b19a001dbabbc3353c67b8a459ab6ad40945a"
+  }
+}

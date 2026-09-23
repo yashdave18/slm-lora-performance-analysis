@@ -1,0 +1,53 @@
+{
+  "step": 200,
+  "metrics": {
+    "token_loss": 3.024681218103555,
+    "sequence_loss": 455.63657186664597,
+    "ppl": 20.58744076160853,
+    "bpt": 4.363692593627988,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.8883520879667564,
+        "sequence_loss": 122.6104385467596,
+        "ppl": 48.8303520603535,
+        "bpt": 5.609706274539886,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.945609024940812,
+        "sequence_loss": 663.7001430511475,
+        "ppl": 19.022243880354495,
+        "bpt": 4.249615532679885,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.185188282205159,
+        "sequence_loss": 303.71267956495285,
+        "ppl": 24.171839104593214,
+        "bpt": 4.595255339035019,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s to the public. It was founded by a group of students who wanted to create a place where they could share their knowledge and experience. The library was designed to be a place where people could learn and share their knowledge. The library was built on the site of a former school, and was designed"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " named Benny was very happy. He loved to fly around the house and play with his toys. One day, Benny saw a big bird flying in the sky. He wanted to fly with the bird, but he couldn't. He was so sad. He thought, \"I can't fly with this bird."
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " a $1.5 million budget for the city's parks and recreation department in January. The city's parks and recreation department is responsible for maintaining and improving the city's parks and recreation facilities. The city's parks and recreation department is responsible for maintaining and improving the city's parks and recreation facilities. The city's parks"
+    }
+  ],
+  "delta_ppl": -1.723309727386301,
+  "smoke": false
+}

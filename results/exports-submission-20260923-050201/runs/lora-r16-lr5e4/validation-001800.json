@@ -1,0 +1,53 @@
+{
+  "step": 1800,
+  "metrics": {
+    "token_loss": 2.956215083958687,
+    "sequence_loss": 445.32286526377663,
+    "ppl": 19.22506860582259,
+    "bpt": 4.264916841428349,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.699226417232461,
+        "sequence_loss": 116.64678584644368,
+        "ppl": 40.41602712174709,
+        "bpt": 5.336855607266719,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.887720842059604,
+        "sequence_loss": 650.6568657750669,
+        "ppl": 17.952346705285102,
+        "bpt": 4.166100538311093,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.098280106934794,
+        "sequence_loss": 295.4258492588997,
+        "ppl": 22.159805991283818,
+        "bpt": 4.469873345559755,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in 1869. It was the first public library in the United States. The library was located in the city of New York, and was the first public library in the United States. The library was built by the New York City Board of Education and was designed by architect John W. Hancock. The"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. The little bird was very happy and wanted to fly. He wanted to fly so much that he could see the sky. The little bird was very happy and decided to fly. He flew over the tree and saw a big blue sky. He was very happy and wanted to fly again. The"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be moving ahead with plans to build a new library in the city centre. The council said it would be moving ahead with the plans to build a new library in the city centre . The council said it would be moving ahead with plans to build a new library in the city centre . The council said"
+    }
+  ],
+  "delta_ppl": -3.085681883172242,
+  "smoke": false
+}

@@ -1,0 +1,53 @@
+{
+  "step": 1700,
+  "metrics": {
+    "token_loss": 2.9665361290471632,
+    "sequence_loss": 446.8776226954186,
+    "ppl": 19.424518902970547,
+    "bpt": 4.279806961994285,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.769453858820756,
+        "sequence_loss": 118.86125028185448,
+        "ppl": 43.35637966439892,
+        "bpt": 5.438172388980472,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.8927458968185564,
+        "sequence_loss": 651.7891034665315,
+        "ppl": 18.042785269593253,
+        "bpt": 4.173350159892029,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1181322272026066,
+        "sequence_loss": 297.31877994537354,
+        "ppl": 22.6041208285359,
+        "bpt": 4.498513901021259,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s and has since become a popular destination for local artists and collectors. The collection is now housed in the National Museum of Australia."
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. The little bird was very happy and wanted to fly. He wanted to fly far away from his home and his family. The tree was very tall and the little bird was very small. The little bird wanted to fly away from the tree and the tree wanted to fly away from him. The"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be closing the city's public library for a year. The library, which opened in 1872, is located in the city's downtown area. The library is open Monday through Friday from 9:30 a.m. to 5 p.m. and Saturday from 9:30 a.m"
+    }
+  ],
+  "delta_ppl": -2.8862315860242838,
+  "smoke": false
+}

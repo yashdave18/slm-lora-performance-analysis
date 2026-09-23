@@ -1,0 +1,53 @@
+{
+  "step": 2600,
+  "metrics": {
+    "token_loss": 2.959732314335314,
+    "sequence_loss": 445.85269921179065,
+    "ppl": 19.292806656448626,
+    "bpt": 4.2699911322503725,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.7477467777887186,
+        "sequence_loss": 118.17676629874383,
+        "ppl": 42.4253804126136,
+        "bpt": 5.4068556908233765,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.8870882814740093,
+        "sequence_loss": 650.5143381865129,
+        "ppl": 17.940994349245436,
+        "bpt": 4.165187946291193,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1104121432056293,
+        "sequence_loss": 296.5826578736305,
+        "ppl": 22.430286986362827,
+        "bpt": 4.487376174123574,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s and has since become a popular destination for local artists and musicians. The library is also home to the National Museum of the American Indian, the National Museum of the American Indian, the National Museum of the American Indian, the National Museum of the American Indian, the National Museum of the American Indian,"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to fly. He wanted to fly so much that he could see the sky. He was very excited and wanted to fly. Suddenly, a big bird flew over the tree. The little bird was very happy and flew away. He was very happy and wanted to"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be closing the city's public library for the next two years. The library, which opened in 1872, is the oldest in the city and is the only public library in the city. The library is located on the second floor of the city hall, which is located on the second floor of"
+    }
+  ],
+  "delta_ppl": -3.017943832546205,
+  "smoke": false
+}

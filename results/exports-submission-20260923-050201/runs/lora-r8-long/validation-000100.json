@@ -1,0 +1,53 @@
+{
+  "step": 100,
+  "metrics": {
+    "token_loss": 3.0617454104692894,
+    "sequence_loss": 461.219904565461,
+    "ppl": 21.36481500924146,
+    "bpt": 4.417164920148588,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 4.099151485168675,
+        "sequence_loss": 129.25752346900873,
+        "ppl": 60.28910968408899,
+        "bpt": 5.913825519505477,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.969334116526906,
+        "sequence_loss": 669.0458445839259,
+        "ppl": 19.478944569320593,
+        "bpt": 4.283843604655779,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.2327407330579807,
+        "sequence_loss": 308.2468800544739,
+        "ppl": 25.349036794876547,
+        "bpt": 4.663859024062501,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public on Saturday, and the first book was a book of poems by the poet John Keats. The library is open to the public from 9 a.m. to 5 p.m. Monday through Friday."
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": "ie was sitting on a tree. He was a little birdie, and he was a little birdie. He was a little birdie. He was a little birdie. He was a little birdie. He was a little birdie. He was a little birdie. He was a little birdie."
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " that the city would be moving forward with a plan to build a new park on the site of the former site of the former city hall. The city council voted to approve the plan, which would create a park on the site of the former city hall. The city council also approved a plan to build a new park on"
+    }
+  ],
+  "delta_ppl": -0.9459354797533699,
+  "smoke": false
+}

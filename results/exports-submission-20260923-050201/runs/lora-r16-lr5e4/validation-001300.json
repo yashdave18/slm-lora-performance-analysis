@@ -1,0 +1,53 @@
+{
+  "step": 1300,
+  "metrics": {
+    "token_loss": 2.970965781071695,
+    "sequence_loss": 447.5449034160908,
+    "ppl": 19.510753616334195,
+    "bpt": 4.28619759900294,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.7309903944649703,
+        "sequence_loss": 117.6483914341989,
+        "ppl": 41.72040736993651,
+        "bpt": 5.38268133969897,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.901627231588386,
+        "sequence_loss": 653.790232301795,
+        "ppl": 18.203742987438694,
+        "bpt": 4.186163217520937,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1101349933378915,
+        "sequence_loss": 296.55623120069504,
+        "ppl": 22.42407129666981,
+        "bpt": 4.486976331383805,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in 1869 and was the first public library in the United States to be built in a city. The library was located on the corner of Main and Main Streets in the city of Chicago. The library was built to serve the needs of the city's growing population. The library was designed by Chicago architect"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to fly. He asked his mom for a toy. She said, \"I have a big bird, but I don't have a toy.\" The little bird was so happy and wanted to fly. He asked his mom again, \"Can I have a toy"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be closing the city's public library for a year. The library, which opened in 1872, is the oldest in the city and the oldest in the state. The library was built in 1872 by the city's first library director, William H. H. Hicklin. The library"
+    }
+  ],
+  "delta_ppl": -2.7999968726606355,
+  "smoke": false
+}

@@ -1,0 +1,53 @@
+{
+  "step": 1800,
+  "metrics": {
+    "token_loss": 2.974570186155249,
+    "sequence_loss": 448.0878693214099,
+    "ppl": 19.581205167543562,
+    "bpt": 4.291397656342339,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.787396295267762,
+        "sequence_loss": 119.42702466431663,
+        "ppl": 44.1413195602687,
+        "bpt": 5.464057853064032,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.899570195510528,
+        "sequence_loss": 653.3267440630042,
+        "ppl": 18.166335718602678,
+        "bpt": 4.183195541772481,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.130577494345059,
+        "sequence_loss": 298.5054556131363,
+        "ppl": 22.88719295124277,
+        "bpt": 4.516468626210213,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s and has since become a popular destination for students and visitors. The library is open Monday to Friday from 10am to 5pm and Saturday from 10am to 4pm. The library is also open on Saturdays and Sundays from 10am to 4pm. The library is located in the centre"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to fly. He wanted to fly so much that he could see the sky. He was very excited and wanted to fly. He wanted to fly so much that he could see the sky. Suddenly, the little bird heard a loud noise. He looked up and"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be moving forward with plans to build a new library in the area. The library, which will be located on the site of the former library building, will be built on the site of the former library building. The library will be built on the site of the former library building. The library will"
+    }
+  ],
+  "delta_ppl": -2.729545321451269,
+  "smoke": false
+}

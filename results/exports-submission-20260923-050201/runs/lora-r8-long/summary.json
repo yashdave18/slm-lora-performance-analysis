@@ -1,0 +1,208 @@
+{
+  "stop_reason": "max_steps",
+  "early_stopping": {
+    "best": 2.969541449654233,
+    "bad_evaluations": 3
+  },
+  "completed_steps": 3072,
+  "tokens_seen": 7404186,
+  "fractional_epoch": 3.0003662780050058,
+  "baseline_ppl": 22.31075048899483,
+  "rankings": [
+    {
+      "checkpoint": "step-000100",
+      "step": 100,
+      "token_loss": 3.0617454104692894,
+      "ppl": 21.36481500924146
+    },
+    {
+      "checkpoint": "step-000200",
+      "step": 200,
+      "token_loss": 3.037612076117944,
+      "ppl": 20.855382660832348
+    },
+    {
+      "checkpoint": "step-000300",
+      "step": 300,
+      "token_loss": 3.0238672506235575,
+      "ppl": 20.57069007251514
+    },
+    {
+      "checkpoint": "step-000400",
+      "step": 400,
+      "token_loss": 3.015092190020665,
+      "ppl": 20.39097069791047
+    },
+    {
+      "checkpoint": "step-000500",
+      "step": 500,
+      "token_loss": 3.009357819003823,
+      "ppl": 20.27437592487745
+    },
+    {
+      "checkpoint": "step-000600",
+      "step": 600,
+      "token_loss": 3.0027758517778005,
+      "ppl": 20.14136885129203
+    },
+    {
+      "checkpoint": "step-000700",
+      "step": 700,
+      "token_loss": 2.9978384831635094,
+      "ppl": 20.042168584540622
+    },
+    {
+      "checkpoint": "step-000800",
+      "step": 800,
+      "token_loss": 2.994297129598052,
+      "ppl": 19.97131770741357
+    },
+    {
+      "checkpoint": "step-000900",
+      "step": 900,
+      "token_loss": 2.991306039726144,
+      "ppl": 19.911670950165743
+    },
+    {
+      "checkpoint": "step-001000",
+      "step": 1000,
+      "token_loss": 2.9879205567781213,
+      "ppl": 19.844374307791593
+    },
+    {
+      "checkpoint": "step-001100",
+      "step": 1100,
+      "token_loss": 2.986528988123187,
+      "ppl": 19.81677870357017
+    },
+    {
+      "checkpoint": "step-001200",
+      "step": 1200,
+      "token_loss": 2.9831238163016622,
+      "ppl": 19.749413926547916
+    },
+    {
+      "checkpoint": "step-001300",
+      "step": 1300,
+      "token_loss": 2.982213464901331,
+      "ppl": 19.731443201002833
+    },
+    {
+      "checkpoint": "step-001400",
+      "step": 1400,
+      "token_loss": 2.980690075395196,
+      "ppl": 19.70140741140158
+    },
+    {
+      "checkpoint": "step-001500",
+      "step": 1500,
+      "token_loss": 2.979480485283248,
+      "ppl": 19.677591190641664
+    },
+    {
+      "checkpoint": "step-001600",
+      "step": 1600,
+      "token_loss": 2.9773656062688127,
+      "ppl": 19.63601944108318
+    },
+    {
+      "checkpoint": "step-001700",
+      "step": 1700,
+      "token_loss": 2.976235395598623,
+      "ppl": 19.613839138958934
+    },
+    {
+      "checkpoint": "step-001800",
+      "step": 1800,
+      "token_loss": 2.974570186155249,
+      "ppl": 19.581205167543562
+    },
+    {
+      "checkpoint": "step-001900",
+      "step": 1900,
+      "token_loss": 2.97337898895692,
+      "ppl": 19.557893977676564
+    },
+    {
+      "checkpoint": "step-002000",
+      "step": 2000,
+      "token_loss": 2.9728391260630898,
+      "ppl": 19.547338246016842
+    },
+    {
+      "checkpoint": "step-002100",
+      "step": 2100,
+      "token_loss": 2.971933710375328,
+      "ppl": 19.529647789132024
+    },
+    {
+      "checkpoint": "step-002200",
+      "step": 2200,
+      "token_loss": 2.9717369389893835,
+      "ppl": 19.52580529132876
+    },
+    {
+      "checkpoint": "step-002300",
+      "step": 2300,
+      "token_loss": 2.9712961448447506,
+      "ppl": 19.517200327335296
+    },
+    {
+      "checkpoint": "step-002400",
+      "step": 2400,
+      "token_loss": 2.970743718645434,
+      "ppl": 19.506421492066785
+    },
+    {
+      "checkpoint": "step-002500",
+      "step": 2500,
+      "token_loss": 2.9702844090153615,
+      "ppl": 19.497464062101624
+    },
+    {
+      "checkpoint": "step-002600",
+      "step": 2600,
+      "token_loss": 2.970023730615343,
+      "ppl": 19.492382156765753
+    },
+    {
+      "checkpoint": "step-002700",
+      "step": 2700,
+      "token_loss": 2.9697564642163323,
+      "ppl": 19.487173194099928
+    },
+    {
+      "checkpoint": "step-002800",
+      "step": 2800,
+      "token_loss": 2.969541449654233,
+      "ppl": 19.482983618515064
+    },
+    {
+      "checkpoint": "step-002900",
+      "step": 2900,
+      "token_loss": 2.9696584906147323,
+      "ppl": 19.485264059081043
+    },
+    {
+      "checkpoint": "step-003000",
+      "step": 3000,
+      "token_loss": 2.9695695824285933,
+      "ppl": 19.483531736607073
+    },
+    {
+      "checkpoint": "step-003072",
+      "step": 3072,
+      "token_loss": 2.969592765724495,
+      "ppl": 19.483983434324433
+    }
+  ],
+  "best_trained_checkpoint": {
+    "checkpoint": "step-002800",
+    "step": 2800,
+    "token_loss": 2.969541449654233,
+    "ppl": 19.482983618515064
+  },
+  "smoke": false,
+  "wandb_url": "https://wandb.ai/daveyash1218-dwarkadas-j-sanghvi-college-of-engineering/slm-lora-performance-analysis/runs/e8dob4x9",
+  "latest_checkpoint": "/content/drive/MyDrive/slm-lora-performance-analysis/runs/lora-r8-long/checkpoints/step-003072"
+}

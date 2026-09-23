@@ -1,0 +1,53 @@
+{
+  "step": 600,
+  "metrics": {
+    "token_loss": 2.9952353917905126,
+    "sequence_loss": 451.2008662865824,
+    "ppl": 19.99006483323643,
+    "bpt": 4.321211246031284,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.848461949153383,
+        "sequence_loss": 121.35259272854401,
+        "ppl": 46.920841065809824,
+        "bpt": 5.55215696909346,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.917470730178061,
+        "sequence_loss": 657.3600652943487,
+        "ppl": 18.494450797162298,
+        "bpt": 4.2090205543665915,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1508180242442343,
+        "sequence_loss": 300.4354217648506,
+        "ppl": 23.355161857487616,
+        "bpt": 4.545669538320719,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in the early hours of the morning on Saturday, April 14, and has been open for more than a year. The library is located in the heart of the city, in the heart of the city's historic district, and is a popular destination for visitors. The library is open every day of the week"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " named Bunny was very happy. He loved to fly around and play with his friends. One day, Bunny saw a big bird flying around. He wanted to catch it, so he jumped up and grabbed the bird. The bird flew away and Bunny was very happy. He was so happy that he caught the"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " a $1.5 million budget for the city's parks and recreation department in February. The city's parks and recreation department is responsible for maintaining and improving the city's parks and recreation facilities. The city's parks and recreation department is responsible for maintaining and improving the city's parks and recreation facilities. The city's parks"
+    }
+  ],
+  "delta_ppl": -2.3206856557583997,
+  "smoke": false
+}

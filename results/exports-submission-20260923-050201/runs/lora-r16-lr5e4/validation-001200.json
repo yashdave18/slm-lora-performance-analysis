@@ -1,0 +1,53 @@
+{
+  "step": 1200,
+  "metrics": {
+    "token_loss": 2.971162701720485,
+    "sequence_loss": 447.5745674510335,
+    "ppl": 19.51459606491102,
+    "bpt": 4.2864816954463985,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.7260861493200332,
+        "sequence_loss": 117.49374709275092,
+        "ppl": 41.51630116716495,
+        "bpt": 5.375606009549066,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.9014501506372614,
+        "sequence_loss": 653.7503326913585,
+        "ppl": 18.200519736713023,
+        "bpt": 4.185907743710913,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1165260536853334,
+        "sequence_loss": 297.1656287908554,
+        "ppl": 22.567843829656237,
+        "bpt": 4.496196682453082,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in 1869. The building was built by the firm of John and John Smith, who were also the owners of the nearby St. James's Hall. The building was designed by the architect John Nash, who was also the architect of the nearby St. James's Hall. The building was built in the"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. The little bird was very happy and wanted to play. The little bird wanted to play with the tree. The little bird wanted to play with the tree. The little bird wanted to play with the tree. The little bird wanted to play with the tree. The little bird wanted to play with"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be moving forward with plans to build a new library in the city centre. The move comes after a long-running debate over the city's plans to build a new library. The council has been in talks with the city's mayor, Mark Farrell, about the idea for the new library."
+    }
+  ],
+  "delta_ppl": -2.7961544240838094,
+  "smoke": false
+}

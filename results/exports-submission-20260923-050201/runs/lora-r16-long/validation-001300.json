@@ -1,0 +1,53 @@
+{
+  "step": 1300,
+  "metrics": {
+    "token_loss": 2.97295015011141,
+    "sequence_loss": 447.8438278452711,
+    "ppl": 19.54950859112082,
+    "bpt": 4.289060438375831,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.7816471871932182,
+        "sequence_loss": 119.24573947040275,
+        "ppl": 43.88827443243296,
+        "bpt": 5.455763643355354,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.8988080621579417,
+        "sequence_loss": 653.1550213357676,
+        "ppl": 18.15249582285023,
+        "bpt": 4.182096015764209,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1241149689808383,
+        "sequence_loss": 297.889243721962,
+        "ppl": 22.739760791431276,
+        "bpt": 4.507145172915633,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in 1869. The building was designed by the architect John Nash and built by the firm of John Nash & Co. The building was designed to be a \"modern\" building, with a \"modern\" facade. The building was designed to be a \"modern\" building, with a \"modern\""
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to play with his toys. Suddenly, a big bird came and sat on the tree. The little bird was very surprised and asked, \"What are you doing here?\" The big bird said, \"I am playing with my toys. I want to see what"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " a $1.5 million budget for the city's parks and recreation department on Monday. The city's parks and recreation department is responsible for maintaining and improving the city's parks and recreation facilities. The budget includes $1.5 million for the city's parks and recreation department. The city's parks and recreation department is"
+    }
+  ],
+  "delta_ppl": -2.7612418978740116,
+  "smoke": false
+}

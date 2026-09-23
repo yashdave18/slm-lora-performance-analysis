@@ -1,0 +1,53 @@
+{
+  "step": 1900,
+  "metrics": {
+    "token_loss": 2.9547274788064937,
+    "sequence_loss": 445.09877311555965,
+    "ppl": 19.196490556410264,
+    "bpt": 4.262770680852478,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.6940331204481325,
+        "sequence_loss": 116.4830269115981,
+        "ppl": 40.20667877263052,
+        "bpt": 5.329363263750103,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.8870350220853087,
+        "sequence_loss": 650.5023378620976,
+        "ppl": 17.940038848298638,
+        "bpt": 4.165111109235234,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.092176079974708,
+        "sequence_loss": 294.84382075071335,
+        "ppl": 22.024953927106225,
+        "bpt": 4.461067096134986,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in 1869. The building was designed by the architect John Henry Halkett and built by the firm of Halkett & Co. The building was designed to be a \"small, simple, and inexpensive building\" and was built in a \"plain, unadorned style\". The building was designed"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting in a tree. The little bird was very happy and wanted to fly. The tree was very big and the little bird was very small. The little bird wanted to fly and so the little bird flew away. The little bird was very happy and flew away. The little bird was very happy and flew away."
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be closing the city's main bus station, which is located in the heart of the city, and closing the city's main train station, which is located in the city's downtown area. The closure of the bus station and train station will be temporary, and the city will be working to find"
+    }
+  ],
+  "delta_ppl": -3.1142599325845666,
+  "smoke": false
+}

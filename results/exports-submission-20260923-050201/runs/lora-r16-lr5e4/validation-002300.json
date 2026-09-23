@@ -1,0 +1,53 @@
+{
+  "step": 2300,
+  "metrics": {
+    "token_loss": 2.9530017948636877,
+    "sequence_loss": 444.838816889059,
+    "ppl": 19.163392047895087,
+    "bpt": 4.26028104518605,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.685144959584347,
+        "sequence_loss": 116.20275874741733,
+        "ppl": 39.85089880090859,
+        "bpt": 5.316540358149297,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.8857042678711036,
+        "sequence_loss": 650.2024943476138,
+        "ppl": 17.916180944022432,
+        "bpt": 4.163191236729758,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.091334227390438,
+        "sequence_loss": 294.76354879140854,
+        "ppl": 22.00641996525071,
+        "bpt": 4.4598525595865,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in 1869. The building was designed by the architect John R. Hancock and was built in the Italianate style. The building was listed on the National Register of Historic Places in 1979."
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was flying high in the sky. He saw a big tree and decided to climb up it. He was so excited! He flew up and down the tree, and he was so happy! He flew up and down for a long time, and he was so happy! The little bird was so happy too. He flew"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be closing the city's public library for the next two years. The library, which opened in 1872, is the oldest in the city and has been a public space since 1872. The library was closed in the wake of the closure of the city's public library in the 1980s."
+    }
+  ],
+  "delta_ppl": -3.147358441099744,
+  "smoke": false
+}

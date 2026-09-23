@@ -1,0 +1,53 @@
+{
+  "step": 2000,
+  "metrics": {
+    "token_loss": 2.9728391260630898,
+    "sequence_loss": 447.82710323427125,
+    "ppl": 19.547338246016842,
+    "bpt": 4.288900264531899,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.782130539871256,
+        "sequence_loss": 119.26098091008882,
+        "ppl": 43.90949307504509,
+        "bpt": 5.456460973866959,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.898020793867703,
+        "sequence_loss": 652.977635242628,
+        "ppl": 18.138210562404318,
+        "bpt": 4.1809602277060325,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1293950432101902,
+        "sequence_loss": 298.39270704984665,
+        "ppl": 22.860145957988955,
+        "bpt": 4.514762709821845,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s and has since become a popular destination for local artists and collectors. The collection includes works by artists such as John Cage, John Cage, John Cage, John Cage, John Cage, John Cage, John Cage, John Cage, John Cage, John C"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to play. He wanted to fly and jump. He wanted to be the first to see the sunrise. The little bird was very happy and wanted to fly. He flew up and saw the sun. He was very happy and wanted to fly. He flew"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be moving forward with plans to build a new $1.5 billion stadium. The stadium would be built on the site of the old Stadio Olimpico, which was demolished in the 1970s. The city council said it would be moving forward with plans to build a new $"
+    }
+  ],
+  "delta_ppl": -2.7634122429779886,
+  "smoke": false
+}

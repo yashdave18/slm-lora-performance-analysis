@@ -1,0 +1,53 @@
+{
+  "step": 300,
+  "metrics": {
+    "token_loss": 3.0108183437341136,
+    "sequence_loss": 453.54827491948186,
+    "ppl": 20.30400878680321,
+    "bpt": 4.343692693522728,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.839576879179621,
+        "sequence_loss": 121.07242202862902,
+        "ppl": 46.505792707044826,
+        "bpt": 5.539338522704362,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.9348546858671587,
+        "sequence_loss": 661.2769917363706,
+        "ppl": 18.818768303487445,
+        "bpt": 4.234100301030287,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1655829386259873,
+        "sequence_loss": 301.8432794213295,
+        "ppl": 23.70255714243536,
+        "bpt": 4.566970807078424,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in the early hours of the morning on Wednesday, with a number of books being donated to the charity. The library, which is run by the charity, has been open for more than a year and has been visited by more than 1,000 people. The library has been open for more than a year"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was playing in the grass. He was very happy and wanted to fly. He wanted to fly so much that he could see the sky. He was very excited and wanted to fly so much that he could see the sky. He was very happy and wanted to fly. He flew very fast and very far. He flew"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " Monday that it will be closing the city's public library for the next two years. The library, which opened in 1878, is the oldest in the city and has been a public library since 1878. The library will close on Jan. 1, 2020, and the city will be looking for a new library director"
+    }
+  ],
+  "delta_ppl": -2.006741702191622,
+  "smoke": false
+}

@@ -1,0 +1,53 @@
+{
+  "step": 2400,
+  "metrics": {
+    "token_loss": 2.970743718645434,
+    "sequence_loss": 447.5114520354837,
+    "ppl": 19.506421492066785,
+    "bpt": 4.285877230641805,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.77545007178863,
+        "sequence_loss": 119.05032737286331,
+        "ppl": 43.61713474058973,
+        "bpt": 5.446823095693337,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.8962348230267194,
+        "sequence_loss": 652.5752230105193,
+        "ppl": 18.105845157669773,
+        "bpt": 4.1783836164305725,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1273845767935784,
+        "sequence_loss": 298.20100593566895,
+        "ppl": 22.814232571387553,
+        "bpt": 4.511862219892725,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in 1869. It was the first public library in the United States to be built in a city. The library was located on the corner of Main and Main Streets in downtown Chicago. The library was built on the site of a former bank building. The building was designed by Chicago architect Henry J."
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to fly. He wanted to fly so much that he could see the sky. But he couldn't fly. He couldn't see the sky. So he sat there and thought. \"What if I could fly?\" he thought. \"I could fly so much"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be closing the city's only public library, which is located in the city's downtown. The library, which opened in 1872, is located in the city's downtown. The library was closed in the early hours of Monday morning, and the city's mayor, Bill de Blasio, said"
+    }
+  ],
+  "delta_ppl": -2.804328996928046,
+  "smoke": false
+}

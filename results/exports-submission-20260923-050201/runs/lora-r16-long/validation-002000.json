@@ -1,0 +1,53 @@
+{
+  "step": 2000,
+  "metrics": {
+    "token_loss": 2.962757529209697,
+    "sequence_loss": 446.308416173391,
+    "ppl": 19.35125991436698,
+    "bpt": 4.274355594747268,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.7589549768038726,
+        "sequence_loss": 118.53019164847495,
+        "ppl": 42.90356732062962,
+        "bpt": 5.423025703959835,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.8895153059952996,
+        "sequence_loss": 651.0611916583517,
+        "ppl": 17.98459046548891,
+        "bpt": 4.168689402532174,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1136758675393588,
+        "sequence_loss": 296.89385908842087,
+        "ppl": 22.50361285243116,
+        "bpt": 4.492084733034674,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " in the early 1990s and has since become a popular destination for visitors to the city. The library is open Monday to Friday from 9am to 5pm and Saturday from 9am to 4pm. The library is also open on Saturdays and Sundays from 9am to 4pm. The library is located in the"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to fly. He wanted to fly so much that he could see the sky. He was very excited and wanted to fly so much that he could see the sky. Suddenly, a big bird flew over the tree and landed on the little bird's head. The"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be closing the city's only public library, the City Hall Library, for the next two years. The library, which opened in 1872, is located in the city's downtown area. The library was closed in the early 1990s after a fire destroyed the building. The library was closed for"
+    }
+  ],
+  "delta_ppl": -2.95949057462785,
+  "smoke": false
+}

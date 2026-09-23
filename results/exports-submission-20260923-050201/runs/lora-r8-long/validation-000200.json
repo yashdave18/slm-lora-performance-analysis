@@ -1,0 +1,53 @@
+{
+  "step": 200,
+  "metrics": {
+    "token_loss": 3.037612076117944,
+    "sequence_loss": 457.584470303581,
+    "ppl": 20.855382660832348,
+    "bpt": 4.382347878359787,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.9909921215439317,
+        "sequence_loss": 125.84696117759272,
+        "ppl": 54.10854499567206,
+        "bpt": 5.757784541978354,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.951495146343445,
+        "sequence_loss": 665.0263949684474,
+        "ppl": 19.134541291055918,
+        "bpt": 4.258107410837534,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.2048682050693236,
+        "sequence_loss": 305.5891909599304,
+        "ppl": 24.652250760663208,
+        "bpt": 4.623647466156227,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in the early hours of the morning on Saturday, April 18, 2018, and has been open for more than a year. The library is located in the heart of the city, in the heart of the city's downtown area, and is a short walk from the city's main shopping and entertainment district."
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": "ie was sitting on a tree. The little birdie was very happy and wanted to play with the tree. The little birdie was very happy and wanted to play with the tree. The little birdie was very happy and wanted to play with the tree. The little birdie was very happy and wanted to play with"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " a $1.5 million budget for the city's parks and recreation department in February. The city's parks and recreation department is responsible for maintaining and improving the city's parks and recreation facilities. The city's parks and recreation department is responsible for maintaining and improving the city's parks and recreation facilities. The city's parks"
+    }
+  ],
+  "delta_ppl": -1.4553678281624833,
+  "smoke": false
+}

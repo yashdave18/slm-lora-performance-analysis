@@ -1,0 +1,210 @@
+{
+  "data": {
+    "seed": 42,
+    "output_dir": "data/processed",
+    "preprocessing": {
+      "normalize_whitespace": true,
+      "deduplicate": true,
+      "min_characters": 40,
+      "max_characters": 20000
+    },
+    "splitting": {
+      "train_fraction": 0.8,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.1
+    },
+    "limits_per_dataset": {
+      "train": 1000,
+      "validation": 100,
+      "test": 100
+    },
+    "datasets": [
+      {
+        "name": "Salesforce/wikitext",
+        "subset": "wikitext-2-raw-v1",
+        "source_split": "train",
+        "text_fields": [
+          "text"
+        ]
+      },
+      {
+        "name": "roneneldan/TinyStories",
+        "subset": null,
+        "source_split": "train",
+        "text_fields": [
+          "text"
+        ]
+      },
+      {
+        "name": "fancyzhx/ag_news",
+        "subset": null,
+        "source_split": "train",
+        "text_fields": [
+          "text"
+        ]
+      },
+      {
+        "name": "stanfordnlp/imdb",
+        "subset": null,
+        "source_split": "train",
+        "text_fields": [
+          "text"
+        ]
+      },
+      {
+        "name": "Yelp/yelp_review_full",
+        "subset": null,
+        "source_split": "train",
+        "text_fields": [
+          "text"
+        ]
+      },
+      {
+        "name": "fancyzhx/amazon_polarity",
+        "subset": null,
+        "source_split": "train",
+        "text_fields": [
+          "title",
+          "content"
+        ]
+      },
+      {
+        "name": "abisee/cnn_dailymail",
+        "subset": "3.0.0",
+        "source_split": "train",
+        "text_fields": [
+          "article"
+        ]
+      },
+      {
+        "name": "EdinburghNLP/xsum",
+        "subset": null,
+        "source_split": "train",
+        "text_fields": [
+          "document"
+        ]
+      },
+      {
+        "name": "rajpurkar/squad",
+        "subset": null,
+        "source_split": "train",
+        "text_fields": [
+          "context"
+        ]
+      },
+      {
+        "name": "dair-ai/emotion",
+        "subset": "split",
+        "source_split": "train",
+        "text_fields": [
+          "text"
+        ]
+      },
+      {
+        "name": "cornell-movie-review-data/rotten_tomatoes",
+        "subset": null,
+        "source_split": "train",
+        "text_fields": [
+          "text"
+        ]
+      }
+    ]
+  },
+  "model": {
+    "name": "EleutherAI/pythia-410m",
+    "revision": "9879c9b5f8bea9051dcb0e68dff21493d67e9d4f",
+    "trust_remote_code": false,
+    "lora": {
+      "enabled": true,
+      "rank": 8,
+      "alpha": 16,
+      "dropout": 0.05,
+      "target_modules": [
+        "query_key_value"
+      ],
+      "bias": "none",
+      "task_type": "CAUSAL_LM"
+    }
+  },
+  "training": {
+    "seed": 42,
+    "max_steps": 3072,
+    "max_sequence_length": 256,
+    "batch_size": 2,
+    "gradient_accumulation_steps": 8,
+    "optimizer": "adamw",
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "scheduler": "cosine",
+    "warmup_ratio": 0.05,
+    "max_grad_norm": 1.0,
+    "precision": "fp16",
+    "gradient_checkpointing": true,
+    "log_every_steps": 10,
+    "evaluate_every_steps": 100,
+    "save_every_steps": 100,
+    "ema_decay": 0.9,
+    "checkpoint_dir": "/content/drive/MyDrive/slm-lora-performance-analysis/runs/lora-r8-long/checkpoints",
+    "wandb": {
+      "enabled": true,
+      "project": "slm-lora-performance-analysis",
+      "entity": "daveyash1218-dwarkadas-j-sanghvi-college-of-engineering",
+      "mode": "online"
+    },
+    "early_stopping": {
+      "enabled": true,
+      "patience": 5,
+      "min_delta": 0.001
+    }
+  },
+  "evaluation": {
+    "split": "validation",
+    "batch_size": 2,
+    "max_sequence_length": 256,
+    "compare_with_base_model": true,
+    "checkpoint_selection_metric": "token_loss",
+    "lower_is_better": true,
+    "length_bucket_upper_bounds": [
+      64,
+      128,
+      256,
+      512,
+      1024
+    ],
+    "output_dir": "results",
+    "generation": {
+      "max_new_tokens": 64,
+      "do_sample": false,
+      "prompts": [
+        "The small library opened its doors",
+        "Once upon a time, a little bird",
+        "The city council announced"
+      ]
+    },
+    "benchmark": {
+      "warmup_runs": 2,
+      "measured_runs": 5,
+      "batch_sizes": [
+        1,
+        2,
+        4
+      ],
+      "precisions": [
+        "fp32",
+        "fp16"
+      ],
+      "prompt_lengths": [
+        64,
+        128,
+        256
+      ],
+      "max_new_tokens": 64
+    }
+  },
+  "experiment_name": "lora-r8-long",
+  "smoke": false,
+  "data_fingerprint": {
+    "train.jsonl": "e62bbd71270882b295b0061daf86a753cfea5e4e57d5dd960ead8961f76e5745",
+    "validation.jsonl": "62c76df91436fd6a184d68ded575a34e5f06a731afe00b36e09b37349b7ef4e6"
+  }
+}

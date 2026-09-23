@@ -1,0 +1,53 @@
+{
+  "step": 3072,
+  "metrics": {
+    "token_loss": 2.969592765724495,
+    "sequence_loss": 447.33807302280036,
+    "ppl": 19.483983434324433,
+    "bpt": 4.28421675657047,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.7750620826461807,
+        "sequence_loss": 119.03809300780817,
+        "ppl": 43.600215048426314,
+        "bpt": 5.446263345681607,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.89511464095545,
+        "sequence_loss": 652.3228252908458,
+        "ppl": 18.085574669977046,
+        "bpt": 4.17676753531146,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.1255209116797036,
+        "sequence_loss": 298.02330255508423,
+        "ppl": 22.77175407718316,
+        "bpt": 4.50917351947506,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in 1869. It was the first public library in the United States to be built in a city. The library was located on the corner of Main and Main Streets in downtown Philadelphia. The library was built on the site of a former tavern, which had been destroyed by fire in 1869."
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to fly. He wanted to fly so much that he could see the sky. But he couldn't. He couldn't see the sky because it was dark. So he sat there and thought about it. He thought about it for a long time. Finally,"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be moving forward with plans to build a new $1.5 billion stadium. The stadium would be built on the site of the old Stadio Olimpico, which was demolished in the 1970s. The stadium would be built on the site of the old Stadio Olim"
+    }
+  ],
+  "delta_ppl": -2.8267670546703982,
+  "smoke": false
+}

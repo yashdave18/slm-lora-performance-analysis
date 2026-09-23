@@ -1,0 +1,53 @@
+{
+  "step": 100,
+  "metrics": {
+    "token_loss": 3.044343496929873,
+    "sequence_loss": 458.5984884037966,
+    "ppl": 20.996242579523372,
+    "bpt": 4.392059265783293,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.9850716942846733,
+        "sequence_loss": 125.66027381846999,
+        "ppl": 53.7891457139782,
+        "bpt": 5.749243170931478,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.959499325877648,
+        "sequence_loss": 666.829884520821,
+        "ppl": 19.288312178782732,
+        "bpt": 4.269655000957913,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.2082765622199534,
+        "sequence_loss": 305.914183139801,
+        "ppl": 24.73641778999059,
+        "bpt": 4.628564686115019,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in the early hours of the morning on the first day of the new year. The library was opened by the Prime Minister of the United Kingdom, David Cameron, and the Prime Minister of the United States, Barack Obama. The library was opened by the President of the United States, Barack Obama, and the"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " named Bunny was very happy. He loved to fly and play with his friends. One day, Bunny was very sad. He was sad because he had to go to the park to play with his friends. He was sad because he had to go to the park to play with his friends. He was sad because"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " a $1.5 million budget for the city's parks and recreation department in February. The city's parks and recreation department is responsible for maintaining and improving the city's parks and recreation facilities. The department is responsible for the maintenance of the city's parks and recreation facilities, including the city's parks and recreation facilities,"
+    }
+  ],
+  "delta_ppl": -1.314507909471459,
+  "smoke": false
+}

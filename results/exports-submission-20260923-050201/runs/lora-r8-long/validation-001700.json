@@ -1,0 +1,53 @@
+{
+  "step": 1700,
+  "metrics": {
+    "token_loss": 2.976235395598623,
+    "sequence_loss": 448.3387156974438,
+    "ppl": 19.613839138958934,
+    "bpt": 4.293800045748336,
+    "n_tokens": 246145,
+    "n_sequences": 1634,
+    "ppl_by_length_bucket": {
+      "1-64": {
+        "token_loss": 3.7927815530822144,
+        "sequence_loss": 119.59683665854442,
+        "ppl": 44.37967316814475,
+        "bpt": 5.4718271378068515,
+        "n_tokens": 14442,
+        "n_sequences": 458
+      },
+      "129-256": {
+        "token_loss": 2.9008222608120993,
+        "sequence_loss": 653.6088575114375,
+        "ppl": 18.189095402544602,
+        "bpt": 4.185001890173927,
+        "n_tokens": 207293,
+        "n_sequences": 920
+      },
+      "65-128": {
+        "token_loss": 3.133550239634875,
+        "sequence_loss": 298.7889115214348,
+        "ppl": 22.95533197608835,
+        "bpt": 4.520757391097657,
+        "n_tokens": 24410,
+        "n_sequences": 256
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "The small library opened its doors",
+      "continuation": " to the public in 1869. It was the first public library in the United States to be built in a rural area. The library was located on the grounds of the old town hall, which was demolished in the early 20th century. The library was closed in the early 20th century, but was reopened in"
+    },
+    {
+      "prompt": "Once upon a time, a little bird",
+      "continuation": " was sitting on a tree. He was very happy and wanted to fly. He wanted to fly far away from his home. The little bird was very happy and wanted to fly. He flew away and flew far away. The little bird was very happy and wanted to fly. He flew away and flew far away. The"
+    },
+    {
+      "prompt": "The city council announced",
+      "continuation": " on Monday that it would be closing the city's only public library, which is located in the city's downtown. The library, which opened in 1872, is located in the city's downtown. The library was closed in the early hours of Monday morning, and the city's mayor, Bill de Blasio, said"
+    }
+  ],
+  "delta_ppl": -2.696911350035897,
+  "smoke": false
+}
