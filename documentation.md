@@ -32,18 +32,19 @@ The committed `results/tables/data_manifest.json` records source revisions, proc
 
 Exact document/token duplicate checks do not establish absence of near-duplicates or pretraining contamination. Record this limitation. Dataset redistribution rights must be reviewed before distributing source text; this repository stores metadata and small experimental artifacts.
 
-## Experiment status
+## Experiment status (21 September 2026)
 
-| File | Status |
-|---|---|
-| experiment_01_baseline.yaml | Baseline completed; evaluator now accepts this YAML with --experiment |
-| experiment_02_lora_r8.yaml | Short rank-8 run completed, 300 steps |
-| experiment_03_lora_r16.yaml | Short-budget configuration retained; no completed result reported |
-| experiment_04_seq1024.yaml | Placeholder; not runnable yet |
-| experiment_05_lora_r8_long.yaml | Completed 3072 steps, best checkpoint step 2800 |
-| experiment_06_lora_r16_long.yaml | Long comparison configured; completion not yet reported |
+| Configuration | Status | Best validation perplexity |
+|---|---|---:|
+| Baseline | Completed | 22.310750 |
+| Rank 8, 300-step preliminary schedule | Completed, excluded from main comparison | 20.7145 |
+| Rank 8, LR 1e-4, long | Completed 3072 steps; best 2800 | 19.482984 |
+| Rank 16, LR 1e-4, long | Early stopping at 3000; best 3000 | 19.282668 |
+| Rank 16, LR 5e-4, long | Completed 3072 steps; best 3072 | 19.093474 |
+| Short rank-16 configuration | Not reported as executed | — |
+| Sequence-1024 training placeholder | Not executed | — |
 
-An experiment file describes a configuration, not evidence that it was executed. Existing completed runs must retain their original resolved configurations. The short and long rank-8 schedules differ throughout; the long run was a fresh experiment, not an extension of the short run.
+The selected higher-LR adapter was frozen before test evaluation. Test perplexity is 19.658658 versus baseline 23.113408: a 14.95% reduction over 244,760 targets. All 11 source datasets improve. All 72 inference cases completed successfully. Original artifacts are in `results/final_test/` and `results/inference_benchmarks/`.
 
 ## Baseline command
 
@@ -53,11 +54,11 @@ The completed baseline does not need to be rerun. For reproduction in a new outp
 python -m src.evaluation.evaluate --experiment experiments/experiment_01_baseline.yaml --data-dir DATA_TOKENIZED --output-dir NEW_BASELINE_OUTPUT
 ```
 
-This evaluator currently supports the base model, validation split and FP16 autocast on CUDA. It does not yet evaluate a saved adapter or the test split. The baseline experiment override is applied and validated; unsupported settings are rejected.
+This evaluator currently supports the base model, validation split and FP16 autocast on CUDA. For saved-adapter test evaluation use the separate `src.evaluation.final_evaluate` module described in `FINAL_STAGE_GUIDE.md`. The baseline experiment override is applied and validated; unsupported settings are rejected.
 
 ## Training and checkpoint selection
 
-Long experiments: rank 8/alpha 16 or rank 16/alpha 32; dropout 0.05; AdamW; peak learning rate 1e-4; weight decay 0.01; FP16 autocast with FP32 stored weights; batch 2; accumulation 8; sequence length 256; seed 42. Gradient checkpointing is enabled. Cosine scheduling follows 154 warmup steps (ceil(0.05 * 3072)). Learning rate and warmup are initial choices, not optimized settings.
+Long experiments: rank 8/alpha 16 or rank 16/alpha 32; dropout 0.05; AdamW; peak learning rate 1e-4 or 5e-4; weight decay 0.01; FP16 autocast with FP32 stored weights; batch 2; accumulation 8; sequence length 256; seed 42. Gradient checkpointing is enabled. Cosine scheduling follows 154 warmup steps (ceil(0.05 * 3072)). The learning rate comparison favors 5e-4 among tested settings; the warmup ratio was held fixed, not tuned.
 
 Validation and checkpointing occur every 100 steps and at the final step. Early stopping allows five successive evaluations without a decrease of at least 0.001 from the last significant best token loss. Small decreases can accumulate to a significant improvement. This counter survives recovery. Checkpoint selection separately uses the absolute lowest validation loss, regardless of min_delta.
 
@@ -90,6 +91,29 @@ Use a new destination for each export. The script copies original manifests, bas
 - [Rank 8, 300 steps](https://wandb.ai/daveyash1218-dwarkadas-j-sanghvi-college-of-engineering/slm-lora-performance-analysis/runs/r6ja3elz)
 - [Rank 8 long, resumed segment](https://wandb.ai/daveyash1218-dwarkadas-j-sanghvi-college-of-engineering/slm-lora-performance-analysis/runs/e8dob4x9)
 
-## Outstanding deliverables
+## Final analysis and report
 
-Inference generation CLI and benchmark implementation; adapter/test evaluation; comparisons of ranks, batch sizes, precision and sequence lengths; final plots and discussion; completed LaTeX bibliography/report and compiled PDF; editable Overleaf link. `tests/test_model.py`, inference generation, benchmark launcher and sequence-1024 experiment still contain placeholders. The analysis notebook currently inspects exported validation data; it is not the final analysis report.
+```bash
+python -m pip install -r requirements-analysis.txt
+python scripts/analyze_results.py
+```
+
+This verifies all 72 case identities, 360 measured generations, derived timing/throughput metrics, test counts and aggregate scores. It writes reproducible CSV tables, PNG/PDF figures and a checksum inventory. `notebooks/analysis.ipynb` runs the same workflow without a GPU.
+
+Read `report/report.pdf` for methods, results and limitations. Rebuild from `report/` using `pdflatex report.tex`, `bibtex report`, then `pdflatex report.tex` twice. `report_overleaf.zip` contains a self-contained Overleaf project.
+
+Editable Overleaf link: **PENDING — add your project's editable sharing link after import.**
+
+### Benchmark interpretation
+
+All variants use FP32 stored weights. FP16 is autocast, adapters are unmerged, output length is fixed at 64 tokens, and full-generation latency includes prefill and decoding. Two warmups and five measurements are used for each combination of four variants, two precisions, three batch sizes and three prompt lengths. Results show greater aggregate throughput with batching and slower FP16 autocast in this workload. Do not generalize to fully FP16-loaded or merged models. Prompt lengths vary at inference; no sequence-length training comparison was performed. Error bars are repeat standard deviations, not training-seed confidence intervals.
+
+Final runs recorded Python 3.13.15, PyTorch 2.11.0+cu128, Transformers 4.57.6, PEFT 0.18.1 and W&B 0.28.1 on a T4. Exact environments and source commit are in the original JSON artifacts.
+
+### Submission items still requiring user action
+
+1. Import `report_overleaf.zip`, enable editable sharing and paste the link above.
+2. Export and commit small original training histories/resolved configurations from Drive with `scripts/export_results.py`, using a fresh output directory. Final evaluation/benchmark artifacts do not replace training histories.
+3. Confirm repository and W&B result visibility for the reviewer; commit this report and analysis update.
+
+Final W&B runs: [test evaluation](https://wandb.ai/daveyash1218-dwarkadas-j-sanghvi-college-of-engineering/slm-lora-performance-analysis/runs/xtodi84b), [inference benchmark](https://wandb.ai/daveyash1218-dwarkadas-j-sanghvi-college-of-engineering/slm-lora-performance-analysis/runs/b5fiqzmr).

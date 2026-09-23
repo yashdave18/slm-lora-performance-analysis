@@ -1,61 +1,49 @@
 # Pythia-410M LoRA: fine-tuning, evaluation and performance analysis
 
-Reproducible next-token training with PEFT/LoRA on a curated mixture of 11 Hugging Face datasets. Training runs use a Colab Tesla T4 and persistent Google Drive checkpoints.
+A reproducible Colab/T4 workflow for next-token adaptation on 11 curated Hugging Face text datasets, with PEFT/LoRA, W&B tracking, checkpoint recovery and inference benchmarking.
 
-## Current status
+## Results
 
-Implemented: dataset preparation, tokenization, document-preserving chunking, baseline validation, LoRA training, W&B logging, checkpoint recovery, and resumable early stopping.
+| Configuration | Best validation PPL |
+|---|---:|
+| Base | 22.310750 |
+| Rank 8, LR 1e-4 | 19.482984 |
+| Rank 16, LR 1e-4 | 19.282668 |
+| Rank 16, LR 5e-4 (selected) | **19.093474** |
 
-Completed runs reported on 20 September 2026:
+The validation-selected adapter reduces **test perplexity from 23.113408 to 19.658658 (14.95%)**, improving all 11 sources. Test results cover 244,760 targets. All 72 benchmark combinations completed. Batch size increases aggregate throughput; FP16 autocast was slower than FP32 in this implementation, which retains FP32 weights and unmerged adapters.
 
-| Experiment | Optimizer steps | Validation perplexity |
-|---|---:|---:|
-| Pretrained baseline | 0 | 22.310750 |
-| Rank 8, short schedule | 300 | 20.7145 |
-| Rank 8, long schedule, best checkpoint | 2800 | 19.482983618515064 |
-| Rank 8, long schedule, final checkpoint | 3072 | 19.4840 |
+[Research report (PDF)](report/report.pdf) · [Methodology and reproducibility](documentation.md) · [Analysis notebook](notebooks/analysis.ipynb) · [W&B project](https://wandb.ai/daveyash1218-dwarkadas-j-sanghvi-college-of-engineering/slm-lora-performance-analysis)
 
-The long run completed approximately three epochs, stopped at its maximum budget, and selected step 2800 by minimum validation token loss (2.969541449654233). Best validation perplexity is 12.67% below baseline. The curve plateaued under a decaying learning rate; this does not prove an optimal learning rate or global convergence. These values are transcribed from execution output; use exported JSON artifacts for full precision and provenance.
+![Test improvement](results/figures/test_by_dataset.png)
 
-Rank-16 long-run configuration is provided; completion has not yet been reported. Test-set evaluation, inference benchmarks, additional batch/precision/length comparisons, final figures and the LaTeX report/PDF remain outstanding.
+## Reproduce analysis (no GPU)
 
-## Setup
+```bash
+python -m pip install -r requirements-analysis.txt
+python scripts/analyze_results.py
+```
 
-Use a virtual environment locally. In Colab, retain its CUDA-enabled PyTorch installation. Install a suitable PyTorch build first if it is absent; it is intentionally not replaced by requirements.txt.
+Original JSON artifacts are preserved under `results/final_test/` and `results/inference_benchmarks/`. The script validates counts, case coverage, repeat measurements and derived metrics, then regenerates figures/tables and checksums. One training seed and four benchmark prompt documents limit generalization; see the report.
+
+## Training and evaluation
+
+Install a suitable PyTorch build first; retain Colab's CUDA installation. Then:
 
 ```bash
 python -m pip install -r requirements.txt
 python -m pytest -q
 ```
 
-Authenticate W&B interactively (`wandb.login()` in Colab). Never commit API keys.
+Authenticate W&B interactively. Follow [TRAINING_GUIDE.md](TRAINING_GUIDE.md) for training/recovery and [FINAL_STAGE_GUIDE.md](FINAL_STAGE_GUIDE.md) for test evaluation and benchmark commands. Store data/checkpoints in Drive. Do not commit credentials, raw datasets or weights. Completed experiments need not be rerun for analysis.
 
-## Run training
+## Organization
 
-Run from the repository root after mounting Drive and preparing the verified data. The existing data need not be regenerated.
+- `configs/`, `experiments/`: shared settings and experiment overrides.
+- `src/data/`, `src/training/`, `src/evaluation/`, `src/inference/`, `src/utils/`: modular implementation.
+- `tests/`: data, metric, checkpoint/recovery and final-stage checks.
+- `scripts/`, `notebooks/`: execution, export and reproducible analysis.
+- `results/`: original small artifacts, derived tables and figures.
+- `report/`: LaTeX source, bibliography, figure assets and compiled PDF.
 
-```bash
-python -m src.training.train \
-  --experiment experiments/experiment_06_lora_r16_long.yaml \
-  --data-dir /content/drive/MyDrive/slm-lora-performance-analysis/data/tokenized \
-  --output-dir /content/drive/MyDrive/slm-lora-performance-analysis/runs/lora-r16-long \
-  --baseline /content/drive/MyDrive/slm-lora-performance-analysis/results/baseline/metrics.json
-```
-
-To recover an interrupted run, repeat its exact command with `--resume`. Do not change the configuration, reuse a completed output directory for fresh training, or resume rank 16 from rank 8.
-
-[Training guide](TRAINING_GUIDE.md) covers the schedule, stopping rule and checkpoint format. [Documentation](documentation.md) records the data, metric definitions, experiment status and remaining work.
-
-## Repository
-
-- `configs/`: shared defaults; experiment YAMLs override them.
-- `src/data/`: preparation, tokenization and batching.
-- `src/training/`: LoRA updates and resumable checkpoints.
-- `src/evaluation/`: validation metrics and base-model evaluator.
-- `src/utils/`: configuration, seeds and logging.
-- `scripts/export_results.py`: copies small real artifacts for version control.
-- `notebooks/analysis.ipynb`: inspects exported validation results without a GPU.
-- `results/`: public metadata and exported metrics; no weights or full datasets.
-- `src/inference/`, `scripts/benchmark.sh`, `report/`: remaining implementation/report work.
-
-[W&B project](https://wandb.ai/daveyash1218-dwarkadas-j-sanghvi-college-of-engineering/slm-lora-performance-analysis)
+The short rank-16 and sequence-1024 configurations are not completed experiments. Length comparisons in the final results concern inference prompts. The editable Overleaf link and archival training-history export are tracked in [documentation.md](documentation.md).

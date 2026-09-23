@@ -1,0 +1,51 @@
+{
+  "summary": {
+    "variant": "baseline",
+    "precision": "fp32",
+    "batch_size": 2,
+    "prompt_length": 256,
+    "new_tokens": 64,
+    "status": "ok",
+    "latency_mean_ms": 1322.521735800001,
+    "latency_median_ms": 1180.0180150003143,
+    "latency_stdev_ms": 223.70964259728328,
+    "generated_tokens_per_sec": 96.78479871831526,
+    "sequences_per_sec": 1.512262479973676,
+    "per_sequence_tokens_per_sec": 48.39239935915763,
+    "peak_allocated_mib": 1678.791015625,
+    "peak_reserved_mib": 1694.0
+  },
+  "measurements": [
+    {
+      "seconds": 1.5216525249998085,
+      "generated_tokens": 128,
+      "peak_allocated_mib": 1678.791015625,
+      "peak_reserved_mib": 1694.0
+    },
+    {
+      "seconds": 1.608220299000095,
+      "generated_tokens": 128,
+      "peak_allocated_mib": 1678.791015625,
+      "peak_reserved_mib": 1694.0
+    },
+    {
+      "seconds": 1.1800180150003143,
+      "generated_tokens": 128,
+      "peak_allocated_mib": 1678.791015625,
+      "peak_reserved_mib": 1694.0
+    },
+    {
+      "seconds": 1.1495496279999315,
+      "generated_tokens": 128,
+      "peak_allocated_mib": 1678.791015625,
+      "peak_reserved_mib": 1694.0
+    },
+    {
+      "seconds": 1.153168211999855,
+      "generated_tokens": 128,
+      "peak_allocated_mib": 1678.791015625,
+      "peak_reserved_mib": 1694.0
+    }
+  ],
+  "execution_id": "b5fiqzmr"
+}

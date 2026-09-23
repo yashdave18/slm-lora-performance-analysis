@@ -1,0 +1,380 @@
+{
+  "metrics": {
+    "token_loss": 3.140412893991179,
+    "sequence_loss": 471.85233881723815,
+    "ppl": 23.11340827618256,
+    "bpt": 4.530658108504832,
+    "n_tokens": 244760,
+    "n_sequences": 1629,
+    "ppl_by_length_bucket": {
+      "65-128": {
+        "token_loss": 3.349918394578486,
+        "sequence_loss": 323.48080299911186,
+        "ppl": 28.50040776107759,
+        "bpt": 4.8329106552411,
+        "n_tokens": 23465,
+        "n_sequences": 243
+      },
+      "129-256": {
+        "token_loss": 3.0461762888295754,
+        "sequence_loss": 684.1745055323062,
+        "ppl": 21.034759608915085,
+        "bpt": 4.394703425567975,
+        "n_tokens": 206633,
+        "n_sequences": 920
+      },
+      "1-64": {
+        "token_loss": 4.133206910024218,
+        "sequence_loss": 130.0452354394315,
+        "ppl": 62.37764200849139,
+        "bpt": 5.962957112059936,
+        "n_tokens": 14662,
+        "n_sequences": 466
+      }
+    }
+  },
+  "by_dataset": {
+    "Salesforce/wikitext": {
+      "token_loss": 3.4208487874851414,
+      "sequence_loss": 430.6537637190385,
+      "ppl": 30.595372972782027,
+      "bpt": 4.935241581335837,
+      "n_tokens": 13848,
+      "n_sequences": 110,
+      "ppl_by_length_bucket": {
+        "65-128": {
+          "token_loss": 3.53881449016209,
+          "sequence_loss": 344.9080265590123,
+          "ppl": 34.42608252998855,
+          "bpt": 5.105430115582853,
+          "n_tokens": 2729,
+          "n_sequences": 28
+        },
+        "129-256": {
+          "token_loss": 3.327528193169166,
+          "sequence_loss": 663.6499017568735,
+          "ppl": 27.869368798338723,
+          "bpt": 4.800608422703369,
+          "n_tokens": 10371,
+          "n_sequences": 52
+        },
+        "1-64": {
+          "token_loss": 4.284350767492611,
+          "sequence_loss": 106.82314580281576,
+          "ppl": 72.55542608408402,
+          "bpt": 6.181011605690414,
+          "n_tokens": 748,
+          "n_sequences": 30
+        }
+      }
+    },
+    "roneneldan/TinyStories": {
+      "token_loss": 2.11966473825287,
+      "sequence_loss": 366.0318116019754,
+      "ppl": 8.328344844137426,
+      "bpt": 3.0580298062246185,
+      "n_tokens": 23485,
+      "n_sequences": 136,
+      "ppl_by_length_bucket": {
+        "129-256": {
+          "token_loss": 2.076255187018041,
+          "sequence_loss": 425.10345588540133,
+          "ppl": 7.974549731029967,
+          "bpt": 2.9954030619309147,
+          "n_tokens": 21703,
+          "n_sequences": 106
+        },
+        "1-64": {
+          "token_loss": 3.2298573842124334,
+          "sequence_loss": 95.75577186135685,
+          "ppl": 25.27605194984714,
+          "bpt": 4.659699230981877,
+          "n_tokens": 504,
+          "n_sequences": 17
+        },
+        "65-128": {
+          "token_loss": 2.419023421262165,
+          "sequence_loss": 237.80861018254205,
+          "ppl": 11.234882208662926,
+          "bpt": 3.489913093649179,
+          "n_tokens": 1278,
+          "n_sequences": 13
+        }
+      }
+    },
+    "fancyzhx/ag_news": {
+      "token_loss": 3.5860052417597004,
+      "sequence_loss": 221.4716837310791,
+      "ppl": 36.089618281878266,
+      "bpt": 5.173511978888548,
+      "n_tokens": 6176,
+      "n_sequences": 100,
+      "ppl_by_length_bucket": {
+        "1-64": {
+          "token_loss": 3.774235957014028,
+          "sequence_loss": 167.7000066273248,
+          "ppl": 43.564210667326186,
+          "bpt": 5.445071498328949,
+          "n_tokens": 2977,
+          "n_sequences": 67
+        },
+        "129-256": {
+          "token_loss": 3.3751115680038186,
+          "sequence_loss": 541.3678955078125,
+          "ppl": 29.227544458129664,
+          "bpt": 4.8692567216060825,
+          "n_tokens": 802,
+          "n_sequences": 5
+        },
+        "65-128": {
+          "token_loss": 3.4227903427359556,
+          "sequence_loss": 293.0153018406459,
+          "ppl": 30.654833283888927,
+          "bpt": 4.938042653467798,
+          "n_tokens": 2397,
+          "n_sequences": 28
+        }
+      }
+    },
+    "stanfordnlp/imdb": {
+      "token_loss": 3.5657098113636647,
+      "sequence_loss": 641.1733003205891,
+      "ppl": 35.364546654575285,
+      "bpt": 5.144231862103481,
+      "n_tokens": 28411,
+      "n_sequences": 158,
+      "ppl_by_length_bucket": {
+        "65-128": {
+          "token_loss": 3.696442858937605,
+          "sequence_loss": 362.7554605657404,
+          "ppl": 40.30368318469473,
+          "bpt": 5.332839781518705,
+          "n_tokens": 2159,
+          "n_sequences": 22
+        },
+        "129-256": {
+          "token_loss": 3.5443493425249564,
+          "sequence_loss": 785.2737121582031,
+          "ppl": 34.61715410291429,
+          "bpt": 5.113415219638813,
+          "n_tokens": 25479,
+          "n_sequences": 115
+        },
+        "1-64": {
+          "token_loss": 3.9046370245969313,
+          "sequence_loss": 143.72782952444894,
+          "ppl": 49.63206142474033,
+          "bpt": 5.63320047185743,
+          "n_tokens": 773,
+          "n_sequences": 21
+        }
+      }
+    },
+    "Yelp/yelp_review_full": {
+      "token_loss": 3.3770472062320356,
+      "sequence_loss": 474.2787925217503,
+      "ppl": 29.284173199196857,
+      "bpt": 4.872049257278887,
+      "n_tokens": 18117,
+      "n_sequences": 129,
+      "ppl_by_length_bucket": {
+        "65-128": {
+          "token_loss": 3.5371879486777815,
+          "sequence_loss": 326.71826019287107,
+          "ppl": 34.37013259339302,
+          "bpt": 5.103083512249641,
+          "n_tokens": 2771,
+          "n_sequences": 30
+        },
+        "1-64": {
+          "token_loss": 3.987746735209042,
+          "sequence_loss": 140.65870302373713,
+          "ppl": 53.933226505138016,
+          "bpt": 5.75310243920724,
+          "n_tokens": 1164,
+          "n_sequences": 33
+        },
+        "129-256": {
+          "token_loss": 3.295633847816692,
+          "sequence_loss": 708.1618065111564,
+          "ppl": 26.994519065317338,
+          "bpt": 4.7545946088309545,
+          "n_tokens": 14182,
+          "n_sequences": 66
+        }
+      }
+    },
+    "fancyzhx/amazon_polarity": {
+      "token_loss": 3.6247276360631577,
+      "sequence_loss": 360.40666885375975,
+      "ppl": 37.51450416997763,
+      "bpt": 5.229376585121493,
+      "n_tokens": 9943,
+      "n_sequences": 100,
+      "ppl_by_length_bucket": {
+        "1-64": {
+          "token_loss": 4.113004336062618,
+          "sequence_loss": 169.18898917533255,
+          "ppl": 61.13009732038134,
+          "bpt": 5.933810958792343,
+          "n_tokens": 1522,
+          "n_sequences": 37
+        },
+        "129-256": {
+          "token_loss": 3.468531077493451,
+          "sequence_loss": 598.5528462727865,
+          "ppl": 32.089570714778795,
+          "bpt": 5.004032584669054,
+          "n_tokens": 5177,
+          "n_sequences": 30
+        },
+        "65-128": {
+          "token_loss": 3.644910264397373,
+          "sequence_loss": 358.3057241728811,
+          "ppl": 38.27933767799691,
+          "bpt": 5.258493962931371,
+          "n_tokens": 3244,
+          "n_sequences": 33
+        }
+      }
+    },
+    "abisee/cnn_dailymail": {
+      "token_loss": 3.1015233871508032,
+      "sequence_loss": 687.1509008597784,
+      "ppl": 22.231793125768586,
+      "bpt": 4.4745524098436045,
+      "n_tokens": 77765,
+      "n_sequences": 351,
+      "ppl_by_length_bucket": {
+        "129-256": {
+          "token_loss": 3.090594058195053,
+          "sequence_loss": 748.3125787550404,
+          "ppl": 21.99013751771814,
+          "bpt": 4.458784721158899,
+          "n_tokens": 75059,
+          "n_sequences": 310
+        },
+        "1-64": {
+          "token_loss": 3.848253728244504,
+          "sequence_loss": 135.9716317313058,
+          "ppl": 46.911072182715884,
+          "bpt": 5.551856569820811,
+          "n_tokens": 742,
+          "n_sequences": 21
+        },
+        "65-128": {
+          "token_loss": 3.237099043463495,
+          "sequence_loss": 317.88312606811525,
+          "ppl": 25.45975686667054,
+          "bpt": 4.6701467368711915,
+          "n_tokens": 1964,
+          "n_sequences": 20
+        }
+      }
+    },
+    "EdinburghNLP/xsum": {
+      "token_loss": 2.9916426255999595,
+      "sequence_loss": 590.502287027705,
+      "ppl": 19.91837406535529,
+      "bpt": 4.316027980065099,
+      "n_tokens": 46780,
+      "n_sequences": 237,
+      "ppl_by_length_bucket": {
+        "129-256": {
+          "token_loss": 2.9668883920688325,
+          "sequence_loss": 713.1032925723644,
+          "ppl": 19.431362648022166,
+          "bpt": 4.280315170108735,
+          "n_tokens": 42783,
+          "n_sequences": 178
+        },
+        "65-128": {
+          "token_loss": 3.1908524992438476,
+          "sequence_loss": 312.3947527485509,
+          "ppl": 24.309142137500157,
+          "bpt": 4.603427076867254,
+          "n_tokens": 3035,
+          "n_sequences": 31
+        },
+        "1-64": {
+          "token_loss": 3.4640526117257417,
+          "sequence_loss": 119.01495044572013,
+          "ppl": 31.94617999570701,
+          "bpt": 4.997571524315189,
+          "n_tokens": 962,
+          "n_sequences": 28
+        }
+      }
+    },
+    "rajpurkar/squad": {
+      "token_loss": 3.0383232941303424,
+      "sequence_loss": 430.90738792772646,
+      "ppl": 20.870220660537058,
+      "bpt": 4.383373949059265,
+      "n_tokens": 15317,
+      "n_sequences": 108,
+      "ppl_by_length_bucket": {
+        "129-256": {
+          "token_loss": 3.0018883622746246,
+          "sequence_loss": 573.308920498552,
+          "ppl": 20.123501527560794,
+          "bpt": 4.330809453555893,
+          "n_tokens": 11077,
+          "n_sequences": 58
+        },
+        "65-128": {
+          "token_loss": 3.0875291431882252,
+          "sequence_loss": 315.90298180831104,
+          "ppl": 21.922842794220728,
+          "bpt": 4.454362983477803,
+          "n_tokens": 3888,
+          "n_sequences": 38
+        },
+        "1-64": {
+          "token_loss": 3.641384086825631,
+          "sequence_loss": 106.81393321355183,
+          "ppl": 38.14459563781003,
+          "bpt": 5.253406764035325,
+          "n_tokens": 352,
+          "n_sequences": 12
+        }
+      }
+    },
+    "dair-ai/emotion": {
+      "token_loss": 4.636611404780217,
+      "sequence_loss": 107.70848293304444,
+      "ppl": 103.19407150911265,
+      "bpt": 6.689216280205629,
+      "n_tokens": 2323,
+      "n_sequences": 100,
+      "ppl_by_length_bucket": {
+        "1-64": {
+          "token_loss": 4.636611404780217,
+          "sequence_loss": 107.70848293304444,
+          "ppl": 103.19407150911265,
+          "bpt": 6.689216280205629,
+          "n_tokens": 2323,
+          "n_sequences": 100
+        }
+      }
+    },
+    "cornell-movie-review-data/rotten_tomatoes": {
+      "token_loss": 4.7677010346929,
+      "sequence_loss": 123.72184185028077,
+      "ppl": 117.64846109153737,
+      "bpt": 6.878338639192626,
+      "n_tokens": 2595,
+      "n_sequences": 100,
+      "ppl_by_length_bucket": {
+        "1-64": {
+          "token_loss": 4.7677010346929,
+          "sequence_loss": 123.72184185028077,
+          "ppl": 117.64846109153737,
+          "bpt": 6.878338639192626,
+          "n_tokens": 2595,
+          "n_sequences": 100
+        }
+      }
+    }
+  }
+}
