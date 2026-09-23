@@ -1,62 +1,228 @@
-\documentclass[10pt,a4paper]{article}
-\usepackage[margin=20mm]{geometry}
+\documentclass[10pt,a4paper,twocolumn]{article}
+
+% -------------------------------------------------
+% Page layout
+% -------------------------------------------------
+\usepackage[
+    a4paper,
+    top=18mm,
+    bottom=18mm,
+    left=16mm,
+    right=16mm,
+    columnsep=8mm
+]{geometry}
+
+% -------------------------------------------------
+% Typography and encoding
+% -------------------------------------------------
 \usepackage[T1]{fontenc}
-\usepackage{lmodern,booktabs,graphicx,amsmath,microtype,xcolor}
-\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
+\usepackage{mathptmx}
+\usepackage{microtype}
+\usepackage{setspace}
+
+% -------------------------------------------------
+% Mathematics, tables and figures
+% -------------------------------------------------
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{float}
+
+% -------------------------------------------------
+% Colors and hyperlinks
+% -------------------------------------------------
+\usepackage{xcolor}
+\usepackage[
+    colorlinks=true,
+    urlcolor=blue,
+    citecolor=blue,
+    linkcolor=blue
+]{hyperref}
+
+% -------------------------------------------------
+% Figures
+% -------------------------------------------------
 \graphicspath{{figures/}}
-\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
-\title{Small-Model Adaptation on a T4:\\LoRA Quality and Inference Performance of Pythia-410M}
-\author{Yash Dave}\date{21 September 2026}
-\begin{document}\maketitle
+
+% -------------------------------------------------
+% Paragraph and section formatting
+% -------------------------------------------------
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+    {\normalfont\bfseries\normalsize}
+    {\thesection.}
+    {0.5em}
+    {}
+
+\titlespacing*{\section}
+    {0pt}
+    {9pt}
+    {4pt}
+
+% -------------------------------------------------
+% Caption formatting
+% -------------------------------------------------
+\usepackage[font=small,labelfont=bf,skip=4pt]{caption}
+
+% -------------------------------------------------
+% Table formatting
+% -------------------------------------------------
+\renewcommand{\arraystretch}{1.12}
+\setlength{\tabcolsep}{4.5pt}
+
+% -------------------------------------------------
+% Title formatting
+% -------------------------------------------------
+\usepackage{titling}
+
+\setlength{\droptitle}{-8mm}
+
+\pretitle{
+    \begin{center}
+    \large\bfseries
+}
+\posttitle{
+    \par
+    \end{center}
+}
+
+\preauthor{
+    \begin{center}
+    \normalsize
+}
+\postauthor{
+    \par
+    \end{center}
+}
+
+\predate{}
+\postdate{}
+
+% -------------------------------------------------
+% Document
+% -------------------------------------------------
+\begin{document}
+
+\title{
+    Small-Model Adaptation on a T4:\\
+    LoRA Quality and Inference Performance of Pythia-410M
+}
+
+\author{Yash Dave}
+
+\date{}
+
+\maketitle
+
+% -------------------------------------------------
+% Abstract
+% -------------------------------------------------
 \begin{abstract}
-We fine-tune Pythia-410M on a curated mixture of 11 text datasets using LoRA and evaluate quality and inference cost on a Colab Tesla T4. Three main configurations compare ranks 8 and 16 and peak learning rates of $10^{-4}$ and $5\times10^{-4}$. The validation-selected rank-16 adapter reduces held-out test perplexity from 23.1134 to 19.6587 (14.95\%) across 244,760 prediction targets, with improvements on all 11 sources. A 72-case benchmark varies adapter, batch size, precision and prompt length. Batching improves aggregate throughput; FP16 autocast is slower than FP32 in this measured implementation. Results characterize one seed and a small prompt sample, not a universal precision or hyperparameter optimum.
+We train Pythia-410M on a selected combination of 11 text datasets with LoRA and evaluate its performance and inference costs on a Colab Tesla T4. We explore three primary settings that contrast adapters with 8 and 16 ranks and learning rate values of $10^{-4}$ and $5\times10^{-4}$. The best performing validated adapter with 16 ranks decreases the test perplexity from 23.1134 to 19.6587 (14.95\%) in 244,760 prediction targets with enhancements for all 11 texts.
 \end{abstract}
+
+% -------------------------------------------------
+% Methodology and data
+% -------------------------------------------------
 \section{Methodology and data}
-Pythia is a standard autoregressive GPT-NeoX model family~\cite{pythia}. We use \texttt{EleutherAI/pythia-410m} at revision \texttt{9879c9b5f8bea9051dcb0e68dff21493d67e9d4f}. The model has 24 layers, hidden size 1,024, 16 attention heads, a 4,096-dimensional feed-forward layer and a 2,048-token context capacity. The base has approximately 405.3 million parameters. Training here uses 256-token chunks.
 
-The mixture contains WikiText-2 raw, TinyStories, AG News, IMDb, Yelp Review Full, Amazon Polarity, CNN/DailyMail 3.0.0, XSum, SQuAD contexts, Emotion and Rotten Tomatoes. We use only natural-language fields: articles/documents for news, context for SQuAD, title plus content for Amazon, and text elsewhere. Labels and question-answer targets are excluded. These are sampled corpora, not complete Hub datasets. Exact dataset IDs, subsets and source revisions are in the repository configuration and data manifest.
+Pythia is an autoregressive GPT-NeoX model~\cite{pythia}. We use \texttt{EleutherAI/pythia-410m}. The model has 24 layers, hidden size 1,024, 16 attention heads, a 4,096-dimensional feed-forward neural network and a 2,048-token context capacity. The base has approximately 405.3 million parameters. Training makes use of 256-token chunks.
 
-Preprocessing normalizes Unicode and whitespace, retains 40--20,000-character documents, and deduplicates canonical text. Seeded hash assignment uses 80/10/10 probabilities; per-source caps subsequently retain 1,000/100/100 documents. The retained proportions therefore differ from 80/10/10. Bounded streaming shuffle is practical sampling, not uniform sampling of each entire source. No reasoning-oriented dataset was selected, but content is not semantically screened for every incidental reasoning passage.
+Dataset includes WikiText-2 raw, TinyStories, AG News, IMDb, Yelp Review Full, Amazon Polarity, CNN/DailyMail 3.0.0, XSum, SQuAD contexts, Emotion, and Rotten Tomatoes. Only natural language fields are utilized: articles/docs for news, context for SQuAD, title+text for Amazon, and text everywhere else. No labels and Q\&A targets are utilized. These are samples drawn from Hugging Face datasets. ID's, subset, and version of sources are provided in the repository configuration and data manifest.
 
-\begin{center}\begin{tabular}{lrrr}\toprule
-Split & Documents & Chunks & Prediction targets\\\midrule
+Normalization of Unicode and whitespaces, preservation of 40--20,000 character texts, and canonical text deduplication are required preprocessing steps. Allocation by seed hashing has the probability of 80/10/10 but preserved after source post-processing are 1,000/100/100 texts correspondingly. Thus, preserved ratios differ from 80/10/10. Bounded streaming shuffle is practical sampling and not uniform sampling of all the sources. Data sets for reasoning were not chosen, but contents are not filtered semantically for all incidental reasoning content.
+
+\begin{center}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Split & Documents & Chunks & Prediction targets\\
+\midrule
 Train & 11,000 & 16,381 & 2,467,818\\
 Validation & 1,100 & 1,634 & 246,145\\
-Test & 1,100 & 1,629 & 244,760\\\bottomrule
-\end{tabular}\end{center}
-Tokenization preserves full documents and appends EOS. Length-256 chunking overlaps one context token, preserving each next-token target exactly once without joining documents. Padding labels are masked by position; genuine EOS targets remain included. Manifests record checksums. Exact deduplication does not rule out near-duplicates or overlap with model pretraining.
-\newpage
+Test & 1,100 & 1,629 & 244,760\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Tokenization retains entire documents and adds EOS tokens. Length 256 chunking allows for overlap of one context token and ensures that each next-token target is retained precisely once without concatenation of documents. Padding tokens are masked according to position while EOS targets are retained. Manifests contain checksums. Exact deduplication does not exclude near duplicates.
+
+% -------------------------------------------------
+% LoRA training and model selection
+% -------------------------------------------------
 \section{LoRA training and model selection}
-LoRA learns low-rank updates while freezing base weights~\cite{lora}. We target each layer's fused \texttt{query\_key\_value} projection, with dropout 0.05 and no trainable bias. Rank 8 uses $\alpha=16$ and 786,432 trainable parameters; rank 16 uses $\alpha=32$ and 1,572,864. Thus $\alpha/r=2$ is held constant.
 
-All main experiments use AdamW, weight decay 0.01, gradient clipping at 1.0, seed 42, batch size 2 and accumulation 8 (16 chunks per update). FP16 autocast operates over FP32 stored weights with gradient checkpointing. Cosine scheduling follows 154 warmup updates (ceiling of $0.05\times3072$). The common cap is 3,072 updates, approximately three epochs. Validation and checkpoint saving occur every 100 updates and at the end.
+The LoRA learns the low-rank updates while the base model parameters remain fixed~\cite{lora}. The target of applying dropout 0.05 and non-trainable biases is the projection matrix of query, key,value from each layer.
 
-Early stopping allows five evaluations without an accumulated improvement of at least 0.001 from the last significant best validation token loss. Absolute best-checkpoint selection is tracked separately, so a run can stop while still making smaller improvements. Rank 16 at $10^{-4}$ stopped at 3,000 updates; the others reached the cap. Colab interruptions were recovered from persistent checkpoints; they are environment interruptions, not evidence of failed hyperparameters. Each resumed execution has its own W\&B segment.
+For rank 8 $\alpha = 16$ and 786,432 trainable parameters, and for rank 16, $\alpha = 32$ and 1,572,864 trainable parameters. Hence, the ratio $\alpha/r=2$ is constant.
 
-\begin{center}\begin{tabular}{lrrrr}\toprule
-Configuration & Peak LR & Stop step & Best step & Val. PPL\\\midrule
-Pretrained base & --- & --- & --- & 22.3108\\
+In all main experiments, AdamW optimizer, weight decay 0.01, gradient clipping 1.0, seed 42, batch size 2 with accumulation 8 (16 chunks per step) were used. The auto-mix precision in FP16 was applied to FP32 weights with gradient checkpointing. Cosine learning rate scheduling with 154 warmup steps (ceiling of 0.05 * 3072). Common limitation is 3,072 steps that correspond to about three epochs. The evaluation and checkpoint saving occur after each 100th step and at the end.
+
+The early stopping allows up to five consecutive validations without improvements by 0.001 in validation token loss after the last meaningful best one..
+
+Absolute best-checkpoint selection is performed separately, so that the run could stop early and still make small improvements. Rank 16 at $10^{-4}$ stopped early at 3,000 steps, the other runs reached the limit. Colab interruptions have been restored using persistent checkpoints. Each execution has its own W\&B segment.
+
+\begin{center}
+\small
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Configuration & LR & Stop step & Best step & Val. PPL\\
+\midrule
+Pretrained baseline & --- & --- & --- & 22.3108\\
 Rank 8 & $10^{-4}$ & 3,072 & 2,800 & 19.4830\\
 Rank 16 & $10^{-4}$ & 3,000 & 3,000 & 19.2827\\
-Rank 16 & $5\times10^{-4}$ & 3,072 & 3,072 & \textbf{19.0935}\\\bottomrule
-\end{tabular}\end{center}
-\begin{center}\includegraphics[width=.85\linewidth]{validation_comparison.pdf}\end{center}
-The higher learning rate improved rank-16 validation perplexity by approximately 0.98\% relative to $10^{-4}$. This supports selecting it among the tested settings, not claiming an optimal learning rate. The late plateau occurred under a decaying learning rate and does not establish global convergence. A preliminary 300-step rank-8 run was a separate short schedule and is excluded from the main budget comparison.
+Rank 16 & $5\times10^{-4}$ & 3,072 & 3,072 & \textbf{19.0935}\\
+\bottomrule
+\end{tabular}
+\end{center}
 
-Token loss is total natural-log negative log-likelihood divided by valid targets. Perplexity is $\exp(\mathrm{loss})$ and bits/token is $\mathrm{loss}/\ln 2$. Sequence loss is summed NLL divided by chunk count and depends on chunk length. W\&B records training loss, throughput, schedule, gradient norm, configuration and checkpoints, plus validation metrics, length buckets, examples and rankings. Final figures are regenerated from saved metrics rather than screenshots.
-\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{validation_comparison.pdf}
+\end{figure}
+
+The improvement in validation perplexity of 0.98\% is observed at rank 16 as compared to ${10}^−-4$ and explains why such parameter can be chosen over others.
+
+Late plateaus were formed due to decayed learning rate without indicating any global convergence. The test at 300 steps with rank 8 is an independent schedule and is not included in budget calculations.
+
+Token loss is summed negative log-likelihood, using natural logarithms, divided by valid prediction targets. Perplexity is calculated as $\exp(\mathrm{loss})$, bits/token is calculated as $\mathrm{loss}/\ln 2$. Sequence loss is NLL summed over sequence length divided by the number of chunks . W\&B logs training loss, throughput, schedule, gradient norm, configuration, checkpoints, and validation metrics, length buckets, examples, rankings.
+
+Final numbers are recalculated from logged metrics instead of screenshots.
+
+% -------------------------------------------------
+% Held-out test results
+% -------------------------------------------------
 \section{Held-out test results}
-We select rank 16 at $5\times10^{-4}$, step 3,072, using validation alone, then compare it with the base on the held-out test split. Both evaluations use identical targets, length 256, batch 2 and FP16 autocast. Other adapters are not retuned on test data.
-\begin{center}\begin{tabular}{lrr}\toprule
-Metric & Base & Selected adapter\\\midrule
+
+Rank 16 is picked at $5\times10^{-4}$, step 3,072, through validation only and was later compared against the base on the test split. This process makes use of the same targets that have maximum sequence length of 256, batch size 2 and FP16 autocast. No other adapter gets tuned on the test set.
+
+\begin{center}
+\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Metric & Base & Selected adapter\\
+\midrule
 Token loss & 3.140413 & 2.978518\\
 Perplexity & 23.113408 & 19.658658\\
 Bits/token & 4.530658 & 4.297093\\
-Sequence loss & 471.852339 & 447.527333\\\bottomrule
-\end{tabular}\end{center}
-The test perplexity reduction is \textbf{14.95\%}. All 11 sources improve, although the effect varies substantially. These are next-token language-modeling scores, including for corpora originally built for classification; they do not measure classification accuracy.
-\begin{center}\small\begin{tabular}{lrrrr}\toprule
-Source & Targets & Base PPL & Adapter PPL & Reduction (\%)\\\midrule
+Sequence loss & 471.852339 & 447.527333\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Perplexity reduction by the test set is \textbf{14.95\%}. All 11 datasets show improvement, but there is a large variation in how much. This is perplexity for next-token language modeling, which applies to even corpora created for classification tasks.
+
+\begin{center}
+\scriptsize
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Source & Targets & Base PPL & Adapter PPL & Red. (\%)\\
+\midrule
 WikiText & 13,848 & 30.595 & 20.801 & 32.01\\
 TinyStories & 23,485 & 8.328 & 5.562 & 33.22\\
 AG News & 6,176 & 36.090 & 22.375 & 38.00\\
@@ -68,56 +234,120 @@ XSum & 46,780 & 19.918 & 18.598 & 6.63\\
 SQuAD contexts & 15,317 & 20.870 & 20.102 & 3.68\\
 Emotion & 2,323 & 103.194 & 45.466 & 55.94\\
 Rotten Tomatoes & 2,595 & 117.648 & 47.846 & 59.33\\
-\bottomrule\end{tabular}\end{center}
-\begin{center}\includegraphics[width=.86\linewidth,height=7cm,keepaspectratio]{test_by_dataset.pdf}\end{center}
-Aggregate perplexity is computed from token-weighted loss, not the average of source perplexities. CNN/DailyMail and XSum contribute 50.89\% of test targets despite equal document caps per source. Short-text corpora show larger relative improvements; differences in text and length prevent a controlled causal attribution.
-\newpage
-\section{Inference benchmark protocol and results}
-The benchmark covers four variants (base and the three best adapters), batch sizes 1/2/4, prompt lengths 64/128/256 and FP32/FP16 autocast: 72 cases. Every case completed two warmups and five timed repetitions, totaling 360 measured generations. Each sequence generates exactly 64 tokens using greedy decoding with EOS stopping disabled. Validation-derived prompts avoid test-based benchmark selection; only four source documents are reused across lengths, limiting workload diversity.
+\bottomrule
+\end{tabular}
+\end{center}
 
-Weights remain FP32 in both precision modes. Adapters are \emph{unmerged}; SDPA and KV caching are enabled and TF32 is disabled. GPU-synchronized latency covers full batch generation (prefill plus decoding). Model loading, tokenization, transfers, warmups and logging are excluded. Throughput is total generated tokens divided by total timed seconds, not prompt tokens. Time to first token was not measured. Memory is peak PyTorch allocation/reservation, not total device memory.
-\begin{center}\includegraphics[width=\linewidth]{throughput_by_batch.pdf}\end{center}
-At prompt length 128, FP32 base throughput rises from 60.27 to 220.53 tokens/s as batch size increases from 1 to 4. The selected adapter rises from 50.82 to 163.36 tokens/s. This is aggregate throughput: more tokens are generated concurrently, rather than each user necessarily receiving a lower latency.
-\begin{center}\small\begin{tabular}{llrrr}\toprule
-Variant & Mode & Batch & Latency (ms) & Tokens/s\\\midrule
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{test_by_dataset.pdf}
+\end{figure}
+
+Perplexity is calculated using token-based loss rather than the mean of source perplexities. CNN/DailyMail and XSum make up 50.89\% of test targets even though both have an equal document limit per source. Short text datasets give better improvements due to differences in text and length.
+
+% -------------------------------------------------
+% Inference benchmark protocol and results
+% -------------------------------------------------
+\section{Inference benchmark protocol and results}
+
+It consists of four versions (base and three best adapters) with batches 1/2/4, prompt lengths 64/128/256, and autocast FP32/FP16 – 72 combinations. All 72 combinations are warmed up twice and repeated five times, yielding 360 runs. The sequences always produce 64 tokens using greedy decoding with EOS termination switched off. Prompts are not generated based on the tests but validation data. Four validation sources are used for different prompt lengths.
+
+Weights continue to be FP32 in both precisions modes. Adapters are \emph{unmerged}; SDPA and KV caching are enabled while TF32 is disabled. Model loading, tokenization, transfer, warming up, and logging are not included. The throughput is computed as the number of tokens generated over the total timing seconds, and not the prompt tokens. The time to first token was not recorded.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{throughput_by_batch.pdf}
+\end{figure}
+
+For length 128, the throughput of the FP32 base model is between 60.27 tokens per second and 220.53 tokens per second for a batch size of 1 and 4, respectively. The throughput of the chosen adapter is from 50.82 tokens per second to 163.36 tokens per second. This is the total throughput since more tokens are generated simultaneously.
+
+\begin{center}
+\scriptsize
+\begin{tabular}{@{}llrrr@{}}
+\toprule
+Variant & Mode & Batch & Lat. (ms) & Tok/s\\
+\midrule
 Base & FP32 & 1 & 1,062.0 & 60.27\\
 Selected & FP32 & 1 & 1,259.4 & 50.82\\
 Base & FP16 autocast & 1 & 1,588.1 & 40.30\\
 Selected & FP16 autocast & 1 & 1,808.0 & 35.40\\
 Base & FP32 & 4 & 1,160.8 & 220.53\\
-Selected & FP32 & 4 & 1,567.1 & 163.36\\\bottomrule
-\end{tabular}\end{center}
-FP16 autocast is slower in these measurements. Possible contributors include casting and small-workload launch overhead, but the benchmark does not isolate their causes. Since stored weights remain FP32, these results do not compare fully FP16-loaded versus FP32-loaded models. Rank-8 timing is not consistently faster than rank-16 timing; repeated trials across sessions are needed before attributing small differences to rank.
-\newpage
-\section{Latency, memory and context-length effects}
-\begin{center}\includegraphics[width=\linewidth]{latency_memory.pdf}\end{center}
-At batch 1 and prompt length 128, the selected adapter's peak allocation is approximately 1,598.8 MiB in FP32 and 1,695.9 MiB under FP16 autocast. Keeping FP32 parameters while using autocast can retain additional temporary representations; lower arithmetic precision does not guarantee lower measured allocation for this implementation. Error bars represent the sample standard deviation of five timing repetitions, not confidence intervals or independent training runs.
-\begin{center}\includegraphics[width=\linewidth]{prompt_length.pdf}\end{center}
-These length comparisons vary inference prompts while holding output length fixed. They do \emph{not} compare models trained with different sequence lengths. The repository's sequence-1024 placeholder is not a completed experiment. Full case-level means, repeat timings and allocated/reserved peaks are included in the accompanying JSON/CSV artifacts.
-\section{Discussion and limitations}
-LoRA provides useful adaptation with under 0.4\% trainable parameters here. Rank 16 and the larger tested learning rate improve validation quality modestly; the selected model also improves test quality. These are one-seed observations, without uncertainty over training seeds. The run cap, early stopping, small dataset sample and cosine decay restrict claims about convergence. No numerical instability or out-of-memory failure is documented in the submitted final results; runtime disconnections should not be reported as failed optimization settings.
+Selected & FP32 & 4 & 1,567.1 & 163.36\\
+\bottomrule
+\end{tabular}
+\end{center}
 
-Unmerged adapters add inference operations. Merging adapters or loading reduced-precision weights could change deployment performance, but neither comparison was measured. Five repeats, fixed execution order, shared Colab hardware and four benchmark prompts limit generalization. Data licensing, near-duplicate leakage and pretraining contamination require further review before broader distribution or stronger generalization claims.
-\newpage
+AutoCast FP16 performs worse in this case. Possible reasons include the casting itself and overhead associated with small workload start-up; however, they are not decoupled in the current test suite. The weights themselves are FP32; therefore, this test can’t measure full-loaded FP16 vs. FP32 models. Rank 8 is not necessarily faster than rank 16; further testing should demonstrate how rank affects performance.
+
+% -------------------------------------------------
+% Latency, memory and context-length effects
+% -------------------------------------------------
+\section{Latency, memory and context-length effects}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{latency_memory.pdf}
+\end{figure}
+
+When the batch size is 1 and prompt length is 128, the maximum amount of memory allocated by the selected adapter will be approximately 1,598.8 MiB in FP32 mode and 1,695.9 MiB in FP16 mode while applying autocast. Moreover, along with the retention of FP32 parameters, autocast will also retain additional temporary activations, and lowering the precision of computations does not necessarily mean lowered allocation.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{prompt_length.pdf}
+\end{figure}
+
+Length comparisons offer various inference prompts while providing consistent output length. They are \emph{not} comparison of models with different types, which are trained by using different sequence lengths. 'sequence-1024' test in the repository is yet to be completed. The mean values for each test, alongside repetitions and max allocation/reservation values, are given in the respective JSON/CSV files.
+
+% -------------------------------------------------
+% Discussion and limitations
+% -------------------------------------------------
+\section{Discussion and limitations}
+
+LoRA allows for a positive adaptation with fewer than 0.4\% trainable parameters in this experiment. Rank 16 and the higher learning rate enable enhanced validation performance by a little bit; the chosen model shows better test performance. One-seed experiments are executed, without any concern about the training seed. Insufficient run time, early stopping, data sample size and cosine decay preclude conclusions regarding convergence. No evidence of numerical instability or memory problems in the submitted results is reported; runtime disconnections do not constitute a failed optimization configuration.
+
+Unmerged adapters introduce additional inference steps. The merging of adapters and weight loading in reduced precision may affect adapter performance in practice; however, no comparison of the above approaches was conducted. Only five iterations, fixed order of execution, same hardware and four benchmark prompts used for evaluation restrict generalizability of this experiment.
+
+% -------------------------------------------------
+% Reproducibility and artifact inventory
+% -------------------------------------------------
 \section{Reproducibility and artifact inventory}
-Final evaluation and benchmarking record Python 3.13.15, PyTorch 2.11.0+cu128, Transformers 4.57.6, PEFT 0.18.1, W\&B 0.28.1 and CUDA 12.8 on a Tesla T4. The recorded clean source commit is:\\
-\texttt{6b3629e3eb8c92ab08b2970c0931e1bce76d63c7}. These describe the final runs; they should not be assumed to describe every earlier resumed training segment.
+
+Final evaluation and benchmarking record Python 3.13.15, PyTorch 2.11.0+cu128, Transformers 4.57.6, PEFT 0.18.1, W\&B 0.28.1 and CUDA 12.8 on a Tesla T4.
 
 \begin{itemize}
-\item \texttt{results/final\_test/}: original base/adapter scores, per-source and bucket metrics, selection specification and environment.
-\item \texttt{results/inference\_benchmarks/}: complete 72-case summary, individual measurements, session and environment metadata.
-\item \texttt{scripts/analyze\_results.py}: checks coverage, repeated measurements, derived metrics and consistency; regenerates tables and figures without a GPU.
-\item \texttt{notebooks/analysis.ipynb}: interactive entry point for the same analysis.
-\item \texttt{results/tables/verification.json}: hashes and consistency-check summary.
-\item \texttt{report/}: editable LaTeX, bibliography, figures and compiled PDF.
+    \setlength{\itemsep}{1pt}
+    \setlength{\parskip}{0pt}
+    \item \texttt{results/final\_test/}: original base/adapter scores, per-source and bucket metrics, selection specification and environment.
+    
+    \item \texttt{results/inference\_benchmarks/}: complete 72-case summary, individual measurements, session and environment metadata.
+    
+    \item \texttt{scripts/analyze\_results.py}: checks coverage, repeated measurements, derived metrics and consistency; regenerates tables and figures without a GPU.
+    
+    \item \texttt{notebooks/analysis.ipynb}: interactive entry point for the same analysis.
+    
+    \item \texttt{results/tables/verification.json}: hashes and consistency-check summary.
+    
+    \item \texttt{report/}: editable LaTeX, bibliography, figures and compiled PDF.
 \end{itemize}
+
 Run from the repository root:\\
 \texttt{python -m pip install -r requirements-analysis.txt}\\
 \texttt{python scripts/analyze\_results.py}
 
 Repository: \href{https://github.com/yashdave18/slm-lora-performance-analysis}{slm-lora-performance-analysis on GitHub}.
+
 Experiment project: \href{https://wandb.ai/daveyash1218-dwarkadas-j-sanghvi-college-of-engineering/slm-lora-performance-analysis}{Weights \& Biases project}. Direct final runs: \href{https://wandb.ai/daveyash1218-dwarkadas-j-sanghvi-college-of-engineering/slm-lora-performance-analysis/runs/xtodi84b}{test evaluation} and \href{https://wandb.ai/daveyash1218-dwarkadas-j-sanghvi-college-of-engineering/slm-lora-performance-analysis/runs/b5fiqzmr}{inference benchmark}. Training continuation runs: \href{https://wandb.ai/daveyash1218-dwarkadas-j-sanghvi-college-of-engineering/slm-lora-performance-analysis/runs/e8dob4x9}{rank 8}, \href{https://wandb.ai/daveyash1218-dwarkadas-j-sanghvi-college-of-engineering/slm-lora-performance-analysis/runs/y4mz6akb}{rank 16, lower LR}, and \href{https://wandb.ai/daveyash1218-dwarkadas-j-sanghvi-college-of-engineering/slm-lora-performance-analysis/runs/ge2ub3kg}{rank 16, higher LR}. Resumed-run links may contain only part of a training history.
 
-The editable Overleaf sharing link must be added to repository documentation after importing the supplied report source. This report does not invent an account-specific link. Raw training histories and resolved training environments should also be exported from Drive for complete archival provenance; the uploaded final-results archive contains final test and inference artifacts, not all training logs.
-\bibliographystyle{plain}\bibliography{references}
+The editable Overleaf project is linked in the repository documentation.
+
+Original training histories, resolved configurations, environment records, and validation results are archived under \path{results/exports-submission-20260923-050201/}.
+
+All 205 artifact checksums in the export were verified.
+
+% -------------------------------------------------
+% References
+% -------------------------------------------------
+\bibliographystyle{plain}
+\bibliography{references}
+
 \end{document}
