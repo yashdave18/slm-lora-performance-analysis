@@ -19,8 +19,7 @@ dist/
 /outputs/
 /cache/
 wandb/
-checkpoints/*
-!checkpoints/.gitkeep
+/checkpoints/
 *.pt
 *.pth
 *.ckpt
